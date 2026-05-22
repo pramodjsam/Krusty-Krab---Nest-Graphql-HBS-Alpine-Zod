@@ -1,0 +1,45 @@
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Category } from './entities/category.entity';
+import { CategoryService } from './category.service';
+import { TransformDTO } from 'src/core/interceptors/transform-dto.interceptor';
+import { CreateCategoryDto } from './dto/create-category.dto';
+import { UpdateCategoryDto } from './dto/update-category.dto';
+import { DeleteResponseDto } from 'src/core/dto/delete.response.dto';
+
+@Resolver(() => Category)
+export class CategoryResolver {
+  constructor(private readonly categoryService: CategoryService) {}
+
+  @Query(() => [Category])
+  @TransformDTO(Category)
+  getCategories() {
+    return this.categoryService.findAll();
+  }
+
+  @Query(() => Category, { nullable: true })
+  @TransformDTO(Category)
+  getCategory(@Args('id', { type: () => Int }) id: number) {
+    return this.categoryService.findOne(id);
+  }
+
+  @Mutation(() => Category)
+  @TransformDTO(Category)
+  createCategory(@Args('createCategory') createCategory: CreateCategoryDto) {
+    return this.categoryService.create(createCategory);
+  }
+
+  @Mutation(() => Category, { nullable: true })
+  @TransformDTO(Category)
+  updateCategory(
+    @Args('id', { type: () => Int }) id: number,
+    @Args('updateCategory') updateCategory: UpdateCategoryDto,
+  ) {
+    return this.categoryService.update(id, updateCategory);
+  }
+
+  @Mutation(() => DeleteResponseDto, { nullable: true })
+  @TransformDTO(DeleteResponseDto)
+  deleteCategory(@Args('id', { type: () => Int }) id: number) {
+    return this.categoryService.remove(id);
+  }
+}

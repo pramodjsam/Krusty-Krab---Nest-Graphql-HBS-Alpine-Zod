@@ -1,0 +1,70 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Product {
+  id: Int!
+  name: String!
+  price: Float!
+  category: Category!
+}
+
+type Category {
+  id: Int!
+  name: String!
+  products: [Product!]
+}
+
+type DeleteResponseDto {
+  success: Boolean!
+  message: String!
+}
+
+type Image {
+  id: Int!
+  url: String!
+  publicId: String!
+}
+
+type Query {
+  getCategories: [Category!]!
+  getCategory(id: Int!): Category
+  getProducts: [Product!]!
+  getProduct(id: Int!): Product!
+  getImage(id: Int!): Image!
+}
+
+type Mutation {
+  createCategory(createCategory: CreateCategoryDto!): Category!
+  updateCategory(id: Int!, updateCategory: UpdateCategoryDto!): Category
+  deleteCategory(id: Int!): DeleteResponseDto
+  createProduct(createProduct: CreateProductDto!): Product!
+  updateProduct(id: Int!, updateProduct: UpdateProductDto!): Product!
+  deleteProduct(id: Int!): DeleteResponseDto!
+  uploadImage(file: Upload!): Image!
+  deleteImage(id: Int!): DeleteResponseDto!
+  updateImage(publicId: String!, file: Upload!): Image!
+}
+
+input CreateCategoryDto {
+  name: String!
+}
+
+input UpdateCategoryDto {
+  name: String
+}
+
+input CreateProductDto {
+  name: String!
+  price: Float!
+  categoryId: Int!
+}
+
+input UpdateProductDto {
+  name: String
+  price: Float
+  categoryId: Int
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload

@@ -1,20 +1,37 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Category } from './entities/category.entity';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+import { FileUpload } from 'graphql-upload';
+import { ImageService } from '../image/image.service';
+import { streamToBase64Image } from 'src/utils/file.util';
+import { Image } from '../image/entities/image.entity';
+import { CloudinaryService } from 'src/core/cloudinary/cloudinary.service';
 
 @Injectable()
 export class CategoryService {
   constructor(
     @InjectRepository(Category)
     private readonly categoryRepository: Repository<Category>,
+    private readonly imageService: ImageService,
+    private readonly dataSource: DataSource,
+    private readonly cloudinaryService: CloudinaryService,
   ) {}
 
-  async create(createCategoryDto: CreateCategoryDto) {
+  async create(createCategoryDto: CreateCategoryDto, file?: FileUpload | null) {
     const category = new Category();
     Object.assign(category, createCategoryDto);
+
+    if (file) {
+      const { url, publicId, version } = await this.imageService.upload(
+        await streamToBase64Image(file.createReadStream(), file.mimetype),
+      );
+      const image = new Image(url, publicId, version);
+      category.image = image;
+    }
+
     return await this.categoryRepository.save(category);
   }
 
@@ -27,6 +44,9 @@ export class CategoryService {
       where: {
         id,
       },
+      relations: {
+        image: true,
+      },
     });
 
     if (!category) {
@@ -36,22 +56,75 @@ export class CategoryService {
     return category;
   }
 
-  async update(id: number, updateCategoryDto: UpdateCategoryDto) {
+  async update(
+    id: number,
+    updateCategoryDto: UpdateCategoryDto,
+    file?: FileUpload | null,
+  ) {
     const category = await this.findOne(id);
 
     Object.assign(category, updateCategoryDto);
+
+    if (file) {
+      if (category.image) {
+        const updatedImage = await this.imageService.update(
+          await streamToBase64Image(file.createReadStream(), file.mimetype),
+          category.image.publicId,
+        );
+        category.image = updatedImage;
+      } else {
+        const newCategoryImage = await this.imageService.upload(
+          await streamToBase64Image(file.createReadStream(), file.mimetype),
+        );
+        category.image = newCategoryImage;
+      }
+    }
 
     return await this.categoryRepository.save(category);
   }
 
   async remove(id: number) {
-    const category = await this.findOne(id);
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
 
-    await this.categoryRepository.remove(category);
+    try {
+      const category = await queryRunner.manager.findOne(Category, {
+        where: {
+          id,
+        },
+        relations: {
+          image: true,
+        },
+      });
+      if (!category) {
+        throw new NotFoundException('Category not found');
+      }
 
-    return {
-      success: true,
-      message: 'Category deleted successfully',
-    };
+      const image = category.image;
+
+      if (image) {
+        await this.cloudinaryService.deleteImage(image.publicId);
+        await queryRunner.manager.remove(Image, image);
+      }
+
+      await queryRunner.manager.remove(category);
+      await queryRunner.commitTransaction();
+
+      return {
+        success: true,
+        message: 'Category deleted successfully',
+      };
+    } catch (error) {
+      await queryRunner.rollbackTransaction();
+
+      if (error instanceof NotFoundException) {
+        throw error;
+      }
+
+      throw new Error('Something went wrong');
+    } finally {
+      await queryRunner.release();
+    }
   }
 }

@@ -5,6 +5,7 @@ import { TransformDTO } from 'src/core/interceptors/transform-dto.interceptor';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { DeleteResponseDto } from 'src/core/dto/delete.response.dto';
+import { FileUpload, GraphQLUpload } from 'graphql-upload';
 
 @Resolver()
 export class ProductResolver {
@@ -24,8 +25,12 @@ export class ProductResolver {
 
   @Mutation(() => Product)
   @TransformDTO(Product)
-  createProduct(@Args('createProduct') createProduct: CreateProductDto) {
-    return this.productService.create(createProduct);
+  createProduct(
+    @Args('createProduct') createProduct: CreateProductDto,
+    @Args({ name: 'file', type: () => GraphQLUpload, nullable: true })
+    file?: FileUpload | null,
+  ) {
+    return this.productService.create(createProduct, file);
   }
 
   @Mutation(() => Product)
@@ -33,8 +38,10 @@ export class ProductResolver {
   updateProduct(
     @Args('id', { type: () => Int }) id: number,
     @Args('updateProduct') updateProduct: UpdateProductDto,
+    @Args({ name: 'file', type: () => GraphQLUpload, nullable: true })
+    file?: FileUpload | null,
   ) {
-    return this.productService.update(id, updateProduct);
+    return this.productService.update(id, updateProduct, file);
   }
 
   @Mutation(() => DeleteResponseDto)

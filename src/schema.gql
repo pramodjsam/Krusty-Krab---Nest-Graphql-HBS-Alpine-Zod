@@ -2,17 +2,26 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Image {
+  id: Int!
+  url: String!
+  publicId: String!
+  version: Int!
+}
+
 type Product {
   id: Int!
   name: String!
   price: Float!
   category: Category!
+  image: Image
 }
 
 type Category {
   id: Int!
   name: String!
   products: [Product!]
+  image: Image
 }
 
 type DeleteResponseDto {
@@ -20,35 +29,32 @@ type DeleteResponseDto {
   message: String!
 }
 
-type Image {
-  id: Int!
-  url: String!
-  publicId: String!
-}
-
 type Query {
   getCategories: [Category!]!
   getCategory(id: Int!): Category
+  getImage(id: Int!): Image!
   getProducts: [Product!]!
   getProduct(id: Int!): Product!
-  getImage(id: Int!): Image!
 }
 
 type Mutation {
-  createCategory(createCategory: CreateCategoryDto!): Category!
-  updateCategory(id: Int!, updateCategory: UpdateCategoryDto!): Category
+  createCategory(createCategory: CreateCategoryDto!, file: Upload): Category!
+  updateCategory(id: Int!, updateCategory: UpdateCategoryDto!, file: Upload): Category
   deleteCategory(id: Int!): DeleteResponseDto
-  createProduct(createProduct: CreateProductDto!): Product!
-  updateProduct(id: Int!, updateProduct: UpdateProductDto!): Product!
-  deleteProduct(id: Int!): DeleteResponseDto!
   uploadImage(file: Upload!): Image!
   deleteImage(id: Int!): DeleteResponseDto!
   updateImage(publicId: String!, file: Upload!): Image!
+  createProduct(createProduct: CreateProductDto!, file: Upload): Product!
+  updateProduct(id: Int!, updateProduct: UpdateProductDto!, file: Upload): Product!
+  deleteProduct(id: Int!): DeleteResponseDto!
 }
 
 input CreateCategoryDto {
   name: String!
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
 
 input UpdateCategoryDto {
   name: String
@@ -65,6 +71,3 @@ input UpdateProductDto {
   price: Float
   categoryId: Int
 }
-
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload

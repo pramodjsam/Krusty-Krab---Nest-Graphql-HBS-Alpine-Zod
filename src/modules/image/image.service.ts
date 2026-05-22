@@ -14,16 +14,16 @@ export class ImageService {
   ) {}
 
   async upload(base64String: string) {
-    const { secure_url, public_id } =
+    const { secure_url, public_id, version } =
       await this.cloudinaryService.uploadImage(base64String);
-    const image = new Image(secure_url, public_id);
+    const image = new Image(secure_url, public_id, version);
     return await this.imageRepository.save(image);
   }
 
   async uploadStream(stream: Readable) {
-    const { secure_url, public_id } =
+    const { secure_url, public_id, version } =
       await this.cloudinaryService.uploadStream(stream);
-    const image = new Image(secure_url, public_id);
+    const image = new Image(secure_url, public_id, version);
     return await this.imageRepository.save(image);
   }
 
@@ -52,9 +52,15 @@ export class ImageService {
       throw new NotFoundException('Image not found');
     }
 
-    await this.cloudinaryService.updateImage(base64String, publicId);
+    const { secure_url, version } = await this.cloudinaryService.updateImage(
+      base64String,
+      publicId,
+    );
 
-    return image;
+    image.url = secure_url;
+    image.version = version;
+
+    return await this.imageRepository.save(image);
   }
 
   async remove(id: number) {

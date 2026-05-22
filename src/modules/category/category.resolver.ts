@@ -5,6 +5,7 @@ import { TransformDTO } from 'src/core/interceptors/transform-dto.interceptor';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { DeleteResponseDto } from 'src/core/dto/delete.response.dto';
+import { FileUpload, GraphQLUpload } from 'graphql-upload';
 
 @Resolver(() => Category)
 export class CategoryResolver {
@@ -24,8 +25,12 @@ export class CategoryResolver {
 
   @Mutation(() => Category)
   @TransformDTO(Category)
-  createCategory(@Args('createCategory') createCategory: CreateCategoryDto) {
-    return this.categoryService.create(createCategory);
+  createCategory(
+    @Args('createCategory') createCategory: CreateCategoryDto,
+    @Args({ name: 'file', type: () => GraphQLUpload, nullable: true })
+    file?: FileUpload | null,
+  ) {
+    return this.categoryService.create(createCategory, file);
   }
 
   @Mutation(() => Category, { nullable: true })
@@ -33,8 +38,10 @@ export class CategoryResolver {
   updateCategory(
     @Args('id', { type: () => Int }) id: number,
     @Args('updateCategory') updateCategory: UpdateCategoryDto,
+    @Args({ name: 'file', type: () => GraphQLUpload, nullable: true })
+    file?: FileUpload | null,
   ) {
-    return this.categoryService.update(id, updateCategory);
+    return this.categoryService.update(id, updateCategory, file);
   }
 
   @Mutation(() => DeleteResponseDto, { nullable: true })

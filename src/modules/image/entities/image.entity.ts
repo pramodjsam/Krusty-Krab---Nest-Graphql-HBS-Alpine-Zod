@@ -20,8 +20,14 @@ export class Image {
   @Expose()
   publicId: string;
 
-  constructor(url, publicId) {
+  @Field(() => Int)
+  @Column()
+  @Expose()
+  version: number;
+
+  constructor(url, publicId, version) {
     this.url = url;
     this.publicId = publicId;
+    this.version = version;
   }
 }

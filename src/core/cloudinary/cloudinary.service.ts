@@ -62,15 +62,13 @@ export class CloudinaryService {
     image: string,
     publicId: string,
     opts: Record<string, any> = {},
-  ): Promise<boolean> {
+  ) {
     try {
-      const result = await cloudinary.uploader.upload(image, {
+      return await cloudinary.uploader.upload(image, {
         ...opts,
         public_id: publicId,
         overwrite: true,
       });
-
-      return !!result;
     } catch (error) {
       throw new InternalServerErrorException(
         `Cloudinary update failed: ${error.message}`,

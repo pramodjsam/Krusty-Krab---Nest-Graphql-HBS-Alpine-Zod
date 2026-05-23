@@ -4,11 +4,13 @@ import { Image } from 'src/modules/image/entities/image.entity';
 import { Product } from 'src/modules/product/entities/product.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @ObjectType()
@@ -33,4 +35,12 @@ export class Category {
   @JoinColumn()
   @Expose()
   image?: Image;
+
+  @Field()
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @Field()
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

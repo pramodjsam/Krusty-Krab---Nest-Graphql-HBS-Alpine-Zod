@@ -2,6 +2,26 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  address: String
+  city: String
+  province: String
+  zipCode: String
+  phone: String
+  role: String!
+  resetToken: Int
+  resetTokenExpiry: DateTime
+  passwordChangedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Image {
   id: Int!
   url: String!
@@ -22,6 +42,8 @@ type Category {
   name: String!
   products: [Product!]
   image: Image
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type DeleteResponseDto {
@@ -35,6 +57,8 @@ type Query {
   getImage(id: Int!): Image!
   getProducts: [Product!]!
   getProduct(id: Int!): Product!
+  getUsers: [User!]!
+  getUser(id: Int!): User!
 }
 
 type Mutation {
@@ -47,6 +71,9 @@ type Mutation {
   createProduct(createProduct: CreateProductDto!, file: Upload): Product!
   updateProduct(id: Int!, updateProduct: UpdateProductDto!, file: Upload): Product!
   deleteProduct(id: Int!): DeleteResponseDto!
+  createUser(createUser: CreateUserDto!): User!
+  updateUser(id: Int!, updateUser: UpdateUserDto!): User!
+  deleteUser(id: Int!): DeleteResponseDto!
 }
 
 input CreateCategoryDto {
@@ -70,4 +97,25 @@ input UpdateProductDto {
   name: String
   price: Float
   categoryId: Int
+}
+
+input CreateUserDto {
+  name: String!
+  email: String!
+  password: String!
+  address: String
+  city: String
+  province: String
+  zipCode: String
+  phone: String
+}
+
+input UpdateUserDto {
+  name: String
+  email: String
+  address: String
+  city: String
+  province: String
+  zipCode: String
+  phone: String
 }

@@ -8,6 +8,7 @@ import config from 'src/config';
 import { CloudinaryProvider } from './cloudinary/cloudinary.provider';
 import { CloudinaryService } from './cloudinary/cloudinary.service';
 import { GraphQLUpload } from 'graphql-upload';
+import { UserSubscriber } from 'src/modules/user/user.subscriber';
 
 @Global()
 @Module({
@@ -47,6 +48,7 @@ import { GraphQLUpload } from 'graphql-upload';
         database: configService.get('database.name'),
         synchronize: true,
         autoLoadEntities: true,
+        subscribers: [UserSubscriber],
       }),
       inject: [ConfigService],
     }),

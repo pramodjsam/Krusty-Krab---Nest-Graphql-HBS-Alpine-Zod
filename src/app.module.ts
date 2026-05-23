@@ -4,9 +4,17 @@ import { CategoryModule } from './modules/category/category.module';
 import { ProductModule } from './modules/product/product.module';
 import { ImageModule } from './modules/image/image.module';
 import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
-  imports: [CoreModule, CategoryModule, ProductModule, ImageModule, UserModule],
+  imports: [
+    CoreModule,
+    CategoryModule,
+    ProductModule,
+    ImageModule,
+    UserModule,
+    AuthModule,
+  ],
   controllers: [],
   providers: [],
 })

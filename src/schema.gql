@@ -51,6 +51,13 @@ type DeleteResponseDto {
   message: String!
 }
 
+type ResponseAuthDto {
+  id: Int!
+  name: String!
+  email: String!
+  accessToken: String!
+}
+
 type Query {
   getCategories: [Category!]!
   getCategory(id: Int!): Category
@@ -59,6 +66,7 @@ type Query {
   getProduct(id: Int!): Product!
   getUsers: [User!]!
   getUser(id: Int!): User!
+  currentUser: User!
 }
 
 type Mutation {
@@ -74,6 +82,8 @@ type Mutation {
   createUser(createUser: CreateUserDto!): User!
   updateUser(id: Int!, updateUser: UpdateUserDto!): User!
   deleteUser(id: Int!): DeleteResponseDto!
+  signUp(signUpAuth: SignUpAuthDto!): ResponseAuthDto!
+  signIn(signInAuth: SignInAuthDto!): ResponseAuthDto!
 }
 
 input CreateCategoryDto {
@@ -118,4 +128,20 @@ input UpdateUserDto {
   province: String
   zipCode: String
   phone: String
+}
+
+input SignUpAuthDto {
+  name: String!
+  email: String!
+  password: String!
+  address: String
+  city: String
+  province: String
+  zipCode: String
+  phone: String
+}
+
+input SignInAuthDto {
+  email: String!
+  password: String!
 }

@@ -36,6 +36,7 @@ import { UserSubscriber } from 'src/modules/user/user.subscriber';
       graphiql: true,
       playground: false,
       resolvers: { Upload: GraphQLUpload },
+      context: ({ req }) => ({ req }),
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],

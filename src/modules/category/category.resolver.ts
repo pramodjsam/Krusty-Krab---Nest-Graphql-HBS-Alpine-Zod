@@ -6,6 +6,7 @@ import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { DeleteResponseDto } from 'src/core/dto/delete.response.dto';
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
+import { FileValidationPipe } from 'src/core/pipe/file-validation.pipe';
 
 @Resolver(() => Category)
 export class CategoryResolver {
@@ -27,7 +28,10 @@ export class CategoryResolver {
   @TransformDTO(Category)
   createCategory(
     @Args('createCategory') createCategory: CreateCategoryDto,
-    @Args({ name: 'file', type: () => GraphQLUpload, nullable: true })
+    @Args(
+      { name: 'file', type: () => GraphQLUpload, nullable: true },
+      FileValidationPipe,
+    )
     file?: FileUpload | null,
   ) {
     return this.categoryService.create(createCategory, file);
@@ -38,7 +42,10 @@ export class CategoryResolver {
   updateCategory(
     @Args('id', { type: () => Int }) id: number,
     @Args('updateCategory') updateCategory: UpdateCategoryDto,
-    @Args({ name: 'file', type: () => GraphQLUpload, nullable: true })
+    @Args(
+      { name: 'file', type: () => GraphQLUpload, nullable: true },
+      FileValidationPipe,
+    )
     file?: FileUpload | null,
   ) {
     return this.categoryService.update(id, updateCategory, file);

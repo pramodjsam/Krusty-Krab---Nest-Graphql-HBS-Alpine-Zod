@@ -14,5 +14,6 @@ import { ProductModule } from '../product/product.module';
     UserModule,
     ProductModule,
   ],
+  exports: [CartService],
 })
 export class CartModule {}

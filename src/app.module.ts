@@ -6,6 +6,7 @@ import { ImageModule } from './modules/image/image.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { CartModule } from './modules/cart/cart.module';
+import { OrderModule } from './modules/order/order.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { CartModule } from './modules/cart/cart.module';
     UserModule,
     AuthModule,
     CartModule,
+    OrderModule,
   ],
   controllers: [],
   providers: [],

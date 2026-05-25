@@ -85,6 +85,41 @@ type ResponseCartDto {
   cartItem: [ResponseCartItemDto!]!
 }
 
+type OrderItem {
+  id: Int!
+  quantity: Int!
+  price: Float!
+  product: Product!
+  order: Order!
+}
+
+type Order {
+  id: Int!
+  user: User!
+  orderItem: [OrderItem!]!
+  paymentMethod: PaymentMethod!
+  taxPrice: Float!
+  shippingPrice: Float!
+  totalPrice: Float!
+  isPaid: Boolean!
+  status: OrderStatus!
+  deliveredAt: DateTime
+}
+
+enum PaymentMethod {
+  CASH
+  CARD
+}
+
+enum OrderStatus {
+  PLACED
+  CONFIRMED
+  PREPARATION
+  DELIVERY
+  COMPLETE
+  CANCELLED
+}
+
 type Query {
   getCategories: [Category!]!
   getCategory(id: Int!): Category
@@ -97,6 +132,8 @@ type Query {
   getAllCarts: [ResponseCartDto!]!
   getCart(id: Int!): ResponseCartDto!
   getCartItem(id: Int!): ResponseCartItemDto!
+  getAllOrders: [Order!]!
+  getOrder(id: Int!): Order!
 }
 
 type Mutation {
@@ -120,6 +157,8 @@ type Mutation {
   updateCartItem(id: Int!, updateCart: UpdateCartItemDto!): ResponseCartItemDto!
   deleteCart(id: Int!): DeleteResponseDto!
   deleteCartItem(id: Int!): DeleteResponseDto!
+  createOrder: Order!
+  updateOrder(id: Int!, updateOrder: UpdateOrderDto!): Order!
 }
 
 input CreateCategoryDto {
@@ -189,4 +228,11 @@ input CreateCartDto {
 
 input UpdateCartItemDto {
   quantity: Float!
+}
+
+input UpdateOrderDto {
+  paymentMethod: PaymentMethod
+  isPaid: Boolean
+  status: OrderStatus
+  deliveredAt: String
 }

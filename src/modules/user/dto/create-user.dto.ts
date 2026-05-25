@@ -1,5 +1,11 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MinLength,
+} from 'class-validator';
 
 @InputType()
 export class CreateUserDto {
@@ -20,27 +26,27 @@ export class CreateUserDto {
   password: string;
 
   @Field(() => String, { nullable: true })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  address?: string | null;
+  address?: string;
 
   @Field(() => String, { nullable: true })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  city?: string | null;
+  city?: string;
 
   @Field(() => String, { nullable: true })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  province?: string | null;
+  province?: string;
 
   @Field(() => String, { nullable: true })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  zipCode?: string | null;
+  zipCode?: string;
 
   @Field(() => String, { nullable: true })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  phone?: string | null;
+  phone?: string;
 }

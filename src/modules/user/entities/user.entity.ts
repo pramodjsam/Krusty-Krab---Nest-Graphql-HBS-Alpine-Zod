@@ -62,12 +62,15 @@ export class User {
   resetToken?: number | null;
 
   @Field(() => Date, { nullable: true })
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ type: 'timestamp with time zone', nullable: true })
   @Expose()
   resetTokenExpiry?: Date | null;
 
   @Field(() => Date)
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    type: 'timestamp with time zone',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   @Expose()
   passwordChangedAt: Date;
 

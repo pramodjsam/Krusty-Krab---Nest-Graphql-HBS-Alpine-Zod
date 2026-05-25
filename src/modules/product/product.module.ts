@@ -9,5 +9,6 @@ import { ImageModule } from '../image/image.module';
 @Module({
   providers: [ProductService, ProductResolver],
   imports: [TypeOrmModule.forFeature([Product]), CategoryModule, ImageModule],
+  exports: [ProductService],
 })
 export class ProductModule {}

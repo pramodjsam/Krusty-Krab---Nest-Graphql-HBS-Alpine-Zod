@@ -1,7 +1,8 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Expose } from 'class-transformer';
 import { Role } from 'src/core/constants';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Cart } from 'src/modules/cart/entity/cart.entity';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -69,4 +70,9 @@ export class User {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   @Expose()
   passwordChangedAt: Date;
+
+  @Field(() => Cart, { nullable: true })
+  @OneToOne(() => Cart, (cart) => cart.user, { nullable: true })
+  @Expose()
+  cart?: Cart | null;
 }

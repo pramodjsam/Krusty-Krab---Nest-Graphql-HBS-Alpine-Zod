@@ -5,6 +5,7 @@ import { ProductModule } from './modules/product/product.module';
 import { ImageModule } from './modules/image/image.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { CartModule } from './modules/cart/cart.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AuthModule } from './modules/auth/auth.module';
     ImageModule,
     UserModule,
     AuthModule,
+    CartModule,
   ],
   controllers: [],
   providers: [],

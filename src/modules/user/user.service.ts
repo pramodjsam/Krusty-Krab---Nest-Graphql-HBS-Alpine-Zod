@@ -40,6 +40,9 @@ export class UserService {
       where: {
         id,
       },
+      relations: {
+        cart: true,
+      },
     });
 
     if (!user) {
@@ -53,6 +56,9 @@ export class UserService {
     const user = await this.userRepository.findOne({
       where: {
         email,
+      },
+      relations: {
+        cart: true,
       },
     });
 

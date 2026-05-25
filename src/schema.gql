@@ -2,6 +2,48 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Image {
+  id: Int!
+  url: String!
+  publicId: String!
+  version: Int!
+}
+
+type Category {
+  id: Int!
+  name: String!
+  products: [Product!]
+  image: Image
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Product {
+  id: Int!
+  name: String!
+  price: Float!
+  category: Category!
+  image: Image
+}
+
+type CartItem {
+  id: Int!
+  quantity: Int!
+  product: Product!
+  cart: Cart!
+}
+
+type Cart {
+  id: Int!
+  user: User!
+  cartItem: [CartItem!]
+}
+
 type User {
   id: Int!
   name: String!
@@ -15,35 +57,7 @@ type User {
   resetToken: Int
   resetTokenExpiry: DateTime
   passwordChangedAt: DateTime!
-}
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
-
-type Image {
-  id: Int!
-  url: String!
-  publicId: String!
-  version: Int!
-}
-
-type Product {
-  id: Int!
-  name: String!
-  price: Float!
-  category: Category!
-  image: Image
-}
-
-type Category {
-  id: Int!
-  name: String!
-  products: [Product!]
-  image: Image
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  cart: Cart
 }
 
 type DeleteResponseDto {
@@ -58,6 +72,19 @@ type ResponseAuthDto {
   accessToken: String!
 }
 
+type ResponseCartItemDto {
+  id: Int!
+  quantity: Int!
+  productId: Int!
+  cartId: Int!
+}
+
+type ResponseCartDto {
+  id: Int!
+  userId: Float!
+  cartItem: [ResponseCartItemDto!]!
+}
+
 type Query {
   getCategories: [Category!]!
   getCategory(id: Int!): Category
@@ -67,6 +94,9 @@ type Query {
   getUsers: [User!]!
   getUser(id: Int!): User!
   currentUser: User!
+  getAllCarts: [ResponseCartDto!]!
+  getCart(id: Int!): ResponseCartDto!
+  getCartItem(id: Int!): ResponseCartItemDto!
 }
 
 type Mutation {
@@ -84,6 +114,12 @@ type Mutation {
   deleteUser(id: Int!): DeleteResponseDto!
   signUp(signUpAuth: SignUpAuthDto!): ResponseAuthDto!
   signIn(signInAuth: SignInAuthDto!): ResponseAuthDto!
+  createCart(createCart: CreateCartDto!): ResponseCartDto!
+  incrementCartItemQuantity(id: Int!): ResponseCartItemDto!
+  decrementCartItemQuantity(id: Int!): ResponseCartItemDto!
+  updateCartItem(id: Int!, updateCart: UpdateCartItemDto!): ResponseCartItemDto!
+  deleteCart(id: Int!): DeleteResponseDto!
+  deleteCartItem(id: Int!): DeleteResponseDto!
 }
 
 input CreateCategoryDto {
@@ -144,4 +180,13 @@ input SignUpAuthDto {
 input SignInAuthDto {
   email: String!
   password: String!
+}
+
+input CreateCartDto {
+  quantity: Float!
+  productId: Float!
+}
+
+input UpdateCartItemDto {
+  quantity: Float!
 }

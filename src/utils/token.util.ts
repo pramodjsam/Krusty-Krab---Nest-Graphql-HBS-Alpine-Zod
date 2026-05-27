@@ -17,3 +17,7 @@ export const extractTokenFromHeader = (request: Request) => {
   const [type, token] = request.headers?.authorization?.split(' ') ?? [];
   return type === 'Bearer' ? token : undefined;
 };
+
+export const generatePasswordResetToken = () => {
+  return Math.floor(Math.random() * (10000 - 1000) + 1000);
+};

@@ -9,6 +9,8 @@ import { CloudinaryProvider } from './cloudinary/cloudinary.provider';
 import { CloudinaryService } from './cloudinary/cloudinary.service';
 import { GraphQLUpload } from 'graphql-upload';
 import { UserSubscriber } from 'src/modules/user/user.subscriber';
+import { EmailModule } from './email/email.module';
+import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
 
 @Global()
 @Module({
@@ -53,6 +55,8 @@ import { UserSubscriber } from 'src/modules/user/user.subscriber';
       }),
       inject: [ConfigService],
     }),
+    EmailModule,
+    RabbitmqModule,
   ],
 })
 export class CoreModule {}

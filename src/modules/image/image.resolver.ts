@@ -3,7 +3,7 @@ import { ImageService } from './image.service';
 import { Image } from './entities/image.entity';
 import { GraphQLUpload, FileUpload } from 'graphql-upload';
 import { streamToBase64Image } from 'src/utils/file.util';
-import { DeleteResponseDto } from 'src/core/dto/delete.response.dto';
+import { DeleteResponseDto } from 'src/core/dto/delete-response.dto';
 
 @Resolver(() => Image)
 export class ImageResolver {

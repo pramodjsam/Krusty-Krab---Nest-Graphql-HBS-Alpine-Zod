@@ -65,6 +65,11 @@ type DeleteResponseDto {
   message: String!
 }
 
+type PasswordResetResponseDto {
+  success: Boolean!
+  message: String!
+}
+
 type ResponseAuthDto {
   id: Int!
   name: String!
@@ -149,6 +154,9 @@ type Mutation {
   createUser(createUser: CreateUserDto!): User!
   updateUser(id: Int!, updateUser: UpdateUserDto!): User!
   deleteUser(id: Int!): DeleteResponseDto!
+  forgotPassword(sendResetToken: SendResetTokenDto!): PasswordResetResponseDto!
+  verifyToken(verifyToken: VerifyTokenDto!): PasswordResetResponseDto!
+  resetPassword(resetPassword: ResetPasswordDto!): PasswordResetResponseDto!
   signUp(signUpAuth: SignUpAuthDto!): ResponseAuthDto!
   signIn(signInAuth: SignInAuthDto!): ResponseAuthDto!
   createCart(createCart: CreateCartDto!): ResponseCartDto!
@@ -203,6 +211,22 @@ input UpdateUserDto {
   province: String
   zipCode: String
   phone: String
+}
+
+input SendResetTokenDto {
+  email: String!
+}
+
+input VerifyTokenDto {
+  email: String!
+  resetToken: Int!
+}
+
+input ResetPasswordDto {
+  email: String!
+  resetToken: Int!
+  password: String!
+  confirmPassword: String!
 }
 
 input SignUpAuthDto {

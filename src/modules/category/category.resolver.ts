@@ -4,7 +4,7 @@ import { CategoryService } from './category.service';
 import { TransformDTO } from 'src/core/interceptors/transform-dto.interceptor';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
-import { DeleteResponseDto } from 'src/core/dto/delete.response.dto';
+import { DeleteResponseDto } from 'src/core/dto/delete-response.dto';
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
 import { FileValidationPipe } from 'src/core/pipe/file-validation.pipe';
 

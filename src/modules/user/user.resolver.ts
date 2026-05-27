@@ -4,11 +4,15 @@ import { User } from './entities/user.entity';
 import { TransformDTO } from 'src/core/interceptors/transform-dto.interceptor';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { DeleteResponseDto } from 'src/core/dto/delete.response.dto';
+import { DeleteResponseDto } from 'src/core/dto/delete-response.dto';
 import { CurrentUser } from 'src/core/decorators/current-user.decorator';
 import { UserPayload } from './interfaces/user-payload.interface';
 import { UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/core/guards/auth.guard';
+import { PasswordResetResponseDto } from './dto/password-reset-response.dto';
+import { SendResetTokenDto } from './dto/send-reset-token.dto';
+import { VerifyTokenDto } from './dto/verify-token.dto';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -52,8 +56,36 @@ export class UserResolver {
   }
 
   @Query(() => User)
+  @TransformDTO(User)
   @UseGuards(AuthGuard)
   currentUser(@CurrentUser() user: UserPayload) {
     return this.userService.findOne(user.id);
+  }
+
+  @Mutation(() => PasswordResetResponseDto)
+  @TransformDTO(PasswordResetResponseDto)
+  forgotPassword(
+    @Args('sendResetToken', { type: () => SendResetTokenDto })
+    sendResetToken: SendResetTokenDto,
+  ) {
+    return this.userService.sendResetToken(sendResetToken);
+  }
+
+  @Mutation(() => PasswordResetResponseDto)
+  @TransformDTO(PasswordResetResponseDto)
+  verifyToken(
+    @Args('verifyToken', { type: () => VerifyTokenDto })
+    verifyToken: VerifyTokenDto,
+  ) {
+    return this.userService.verifyToken(verifyToken);
+  }
+
+  @Mutation(() => PasswordResetResponseDto)
+  @TransformDTO(PasswordResetResponseDto)
+  resetPassword(
+    @Args('resetPassword', { type: () => ResetPasswordDto })
+    resetPassword: ResetPasswordDto,
+  ) {
+    return this.userService.resetPassword(resetPassword);
   }
 }

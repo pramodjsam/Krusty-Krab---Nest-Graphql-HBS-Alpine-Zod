@@ -10,7 +10,7 @@ import { UserPayload } from '../user/interfaces/user-payload.interface';
 import { CurrentUser } from 'src/core/decorators/current-user.decorator';
 import { ResponseCartItemDto } from './dto/response-cart-item.dto';
 import { UpdateCartItemDto } from './dto/update-cart-item.dto';
-import { DeleteResponseDto } from 'src/core/dto/delete.response.dto';
+import { DeleteResponseDto } from 'src/core/dto/delete-response.dto';
 
 @Resolver(() => Cart)
 @UseGuards(AuthGuard)

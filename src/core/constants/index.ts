@@ -31,3 +31,6 @@ export enum OrderStatus {
 registerEnumType(OrderStatus, {
   name: 'OrderStatus',
 });
+
+export const EMAIL_SERVICE_MQ = 'EMAIL_SERVICE_MQ';
+export const EMAIL_SERVICE_PUB = 'EMAIL_SERVICE.pub';

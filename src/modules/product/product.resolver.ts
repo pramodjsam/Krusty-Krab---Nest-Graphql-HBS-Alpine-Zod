@@ -4,7 +4,7 @@ import { Product } from './entities/product.entity';
 import { TransformDTO } from 'src/core/interceptors/transform-dto.interceptor';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { DeleteResponseDto } from 'src/core/dto/delete.response.dto';
+import { DeleteResponseDto } from 'src/core/dto/delete-response.dto';
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
 import { FileValidationPipe } from 'src/core/pipe/file-validation.pipe';
 

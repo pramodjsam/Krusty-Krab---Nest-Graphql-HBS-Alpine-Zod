@@ -16,4 +16,10 @@ export default () => ({
     apiKey: process.env.CLOUDINARY_API_KEY,
     apiSecret: process.env.CLOUDINARY_API_SECRET,
   },
+  email: {
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
+    authUser: process.env.EMAIL_AUTH_USER,
+    authPass: process.env.EMAIL_AUTH_PASS,
+  },
 });

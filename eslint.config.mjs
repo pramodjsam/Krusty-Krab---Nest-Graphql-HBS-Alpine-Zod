@@ -38,6 +38,12 @@ export default tseslint.config(
         },
       ],
       'prettier/prettier': 'off',
+      '@typescript-eslint/no-unsafe-call': [
+        'error',
+        {
+          ignorePattern: 'mock|jest',
+        },
+      ],
     },
   },
 );

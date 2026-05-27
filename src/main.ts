@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { graphqlUploadExpress } from 'graphql-upload';
+import helmet from 'helmet';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { ValidationPipe } from '@nestjs/common';
 
@@ -21,6 +22,8 @@ async function bootstrap() {
   await app.startAllMicroservices();
 
   app.enableCors();
+
+  app.use(helmet());
 
   app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 1 }));
 

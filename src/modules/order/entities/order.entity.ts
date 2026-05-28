@@ -83,7 +83,7 @@ export class Order {
     default: OrderStatus.PLACED,
   })
   @Expose()
-  status: boolean;
+  status: OrderStatus;
 
   @Field(() => Date, { nullable: true })
   @Column({

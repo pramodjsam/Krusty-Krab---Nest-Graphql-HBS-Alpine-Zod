@@ -66,7 +66,10 @@ export class OrderService {
       } else {
         throw new NotFoundException('Cart not found');
       }
-    } catch {
+    } catch (error) {
+      if (error instanceof NotFoundException) {
+        throw error;
+      }
       throw new BadRequestException('Something went wrong');
     }
   }
@@ -107,6 +110,6 @@ export class OrderService {
 
     Object.assign(order, updateOrderDto);
 
-    return this.orderRepository.save(order);
+    return await this.orderRepository.save(order);
   }
 }

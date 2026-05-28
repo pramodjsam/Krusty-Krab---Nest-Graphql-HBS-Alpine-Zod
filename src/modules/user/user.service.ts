@@ -41,6 +41,7 @@ export class UserService {
 
     return this.userRepository.save(user);
   }
+
   findAll() {
     return this.userRepository.find();
   }

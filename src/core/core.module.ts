@@ -11,12 +11,25 @@ import { GraphQLUpload } from 'graphql-upload';
 import { UserSubscriber } from 'src/modules/user/user.subscriber';
 import { EmailModule } from './email/email.module';
 import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
+import { CacheModule } from '@nestjs/cache-manager';
+import { RedisCacheModule } from './redis-cache/redis-cache.module';
+import KeyvRedis from '@keyv/redis';
+import { RedisCacheService } from './redis-cache/redis-cache.service';
 
 @Global()
 @Module({
-  providers: [CloudinaryProvider, CloudinaryService],
-  exports: [CloudinaryService],
+  providers: [CloudinaryProvider, CloudinaryService, RedisCacheService],
+  exports: [CloudinaryService, RedisCacheService],
   imports: [
+    CacheModule.registerAsync({
+      isGlobal: true,
+      useFactory: async () => ({
+        stores: [
+          new KeyvRedis('redis://127.0.0.1:6379'), //TODO: move to env variables
+        ],
+        ttl: 600000,
+      }),
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
       load: [config],
@@ -57,6 +70,7 @@ import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
     }),
     EmailModule,
     RabbitmqModule,
+    RedisCacheModule,
   ],
 })
 export class CoreModule {}

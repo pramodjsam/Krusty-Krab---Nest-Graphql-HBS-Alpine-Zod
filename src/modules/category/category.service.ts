@@ -9,6 +9,7 @@ import { ImageService } from '../image/image.service';
 import { streamToBase64Image } from 'src/utils/file.util';
 import { Image } from '../image/entities/image.entity';
 import { CloudinaryService } from 'src/core/cloudinary/cloudinary.service';
+import { RedisCacheService } from 'src/core/redis-cache/redis-cache.service';
 
 @Injectable()
 export class CategoryService {
@@ -16,8 +17,9 @@ export class CategoryService {
     @InjectRepository(Category)
     private readonly categoryRepository: Repository<Category>,
     private readonly imageService: ImageService,
-    private readonly dataSource: DataSource,
     private readonly cloudinaryService: CloudinaryService,
+    private readonly dataSource: DataSource,
+    private readonly redisCacheService: RedisCacheService,
   ) {}
 
   async create(createCategoryDto: CreateCategoryDto, file?: FileUpload | null) {
@@ -31,6 +33,8 @@ export class CategoryService {
       const image = new Image(url, publicId, version);
       category.image = image;
     }
+
+    await this.invalidateCategory();
 
     return await this.categoryRepository.save(category);
   }
@@ -80,6 +84,8 @@ export class CategoryService {
       }
     }
 
+    await this.invalidateCategory(category.id);
+
     return await this.categoryRepository.save(category);
   }
 
@@ -108,6 +114,8 @@ export class CategoryService {
         await queryRunner.manager.remove(Image, image);
       }
 
+      await this.invalidateCategory(id);
+
       await queryRunner.manager.remove(category);
       await queryRunner.commitTransaction();
 
@@ -126,5 +134,13 @@ export class CategoryService {
     } finally {
       await queryRunner.release();
     }
+  }
+
+  private async invalidateCategory(id?: number) {
+    if (id !== undefined) {
+      this.redisCacheService.invalidateTag('category:detail', { id });
+    }
+
+    this.redisCacheService.invalidateTag('category:list');
   }
 }

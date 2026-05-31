@@ -7,12 +7,17 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 import { DeleteResponseDto } from 'src/core/dto/delete-response.dto';
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
 import { FileValidationPipe } from 'src/core/pipe/file-validation.pipe';
+import { UseInterceptors } from '@nestjs/common';
+import { GqlCacheInterceptor } from 'src/core/interceptors/gql-cache.interceptor';
+import { CacheTag } from 'src/core/decorators/cache-tag.decorator';
 
 @Resolver(() => Category)
 export class CategoryResolver {
   constructor(private readonly categoryService: CategoryService) {}
 
   @Query(() => [Category])
+  @CacheTag('category:list')
+  @UseInterceptors(GqlCacheInterceptor)
   @TransformDTO(Category)
   getCategories() {
     return this.categoryService.findAll();
@@ -20,6 +25,8 @@ export class CategoryResolver {
 
   @Query(() => Category, { nullable: true })
   @TransformDTO(Category)
+  @CacheTag('category:detail')
+  @UseInterceptors(GqlCacheInterceptor)
   getCategory(@Args('id', { type: () => Int }) id: number) {
     return this.categoryService.findOne(id);
   }

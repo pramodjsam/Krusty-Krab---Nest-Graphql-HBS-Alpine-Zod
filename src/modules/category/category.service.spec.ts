@@ -10,6 +10,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { streamToBase64Image } from 'src/utils/file.util';
 import { NotFoundException } from '@nestjs/common';
+import { RedisCacheService } from 'src/core/redis-cache/redis-cache.service';
 
 jest.mock('src/utils/file.util', () => ({
   streamToBase64Image: jest.fn(),
@@ -22,6 +23,7 @@ describe('CategoryService', () => {
   let cloudinaryService: DeepMocked<CloudinaryService>;
   let dataSource: DeepMocked<DataSource>;
   let queryRunner: DeepMocked<QueryRunner>;
+  let redisCacheService: DeepMocked<RedisCacheService>;
 
   let mockImage: Image;
   let mockCategory: Category;
@@ -37,7 +39,6 @@ describe('CategoryService', () => {
       publicId: 'public-id',
       version: 1,
     };
-
     mockCategory = {
       id: 1,
       name: 'Electronics',
@@ -46,7 +47,6 @@ describe('CategoryService', () => {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-
     mockCategoryWithoutImage = {
       id: 1,
       name: 'Electronics',
@@ -88,6 +88,10 @@ describe('CategoryService', () => {
           provide: DataSource,
           useValue: dataSource,
         },
+        {
+          provide: RedisCacheService,
+          useValue: createMock<RedisCacheService>(),
+        },
       ],
     })
       .useMocker(createMock)
@@ -97,6 +101,7 @@ describe('CategoryService', () => {
     categoryRepository = module.get(getRepositoryToken(Category));
     imageService = module.get(ImageService);
     cloudinaryService = module.get(CloudinaryService);
+    redisCacheService = module.get(RedisCacheService);
   });
 
   afterEach(() => {

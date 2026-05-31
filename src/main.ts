@@ -23,7 +23,12 @@ async function bootstrap() {
 
   app.enableCors();
 
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy:
+        process.env.NODE_ENV === 'production' ? undefined : false,
+    }),
+  );
 
   app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 1 }));
 

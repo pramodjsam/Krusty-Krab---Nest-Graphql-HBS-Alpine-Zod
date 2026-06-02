@@ -1,0 +1,56 @@
+<section id='adminUser' class='p-3'>
+	<div class='info'>
+		<h1>Users</h1>
+	</div>
+	<table class='table striped mt-5'>
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Role</th>
+				<th>Created At</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>John Doe</td>
+				<td>john@email.com</td>
+				<td>USER</td>
+				<td>14 May 2026 15:30 EDT</td>
+				<td>
+					<a class='btn btn-warning btn-sm text-black' href='#'>Edit</a>
+					<button class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteModal'>
+						Delete
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div
+		id='deleteModal'
+		class='modal'
+		tabindex='-1'
+		tabindex='-1'
+		aria-labelledby='deleteModalLabel'
+		aria-hidden='true'
+	>
+		<div class='modal-dialog'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<h5 class='modal-title'>Warning</h5>
+					<button class='btn-close' type='button' data-bs-dismiss='modal' aria-label='Close'></button>
+				</div>
+				<div class='modal-body'>
+					<p>Are you sure you want to delete?</p>
+				</div>
+				<div class='modal-footer'>
+					<button class='btn btn-secondary' type='button' data-bs-dismiss='modal'>Close</button>
+					<button class='btn btn-danger' type='button'>Yes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

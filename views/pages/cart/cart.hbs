@@ -1,0 +1,213 @@
+<section id='cart' class='my-5'>
+	<div class='container'>
+		<h2>Order Details</h2>
+		<div class='row mt-4'>
+			<div class='col'>
+				<div id='itemAccordion' class='accordion'>
+					{{!-- Accordion item --}}
+					<div class='accordion-item'>
+						<h2 class='accordion-header'>
+							<button
+								class='accordion-button'
+								type='button'
+								data-bs-toggle='collapse'
+								data-bs-target='#collapseOne'
+								aria-expanded='true'
+								aria-controls='collapseOne'
+							>
+								Items
+							</button>
+						</h2>
+						<div id='collapseOne' class='accordion-collapse collapse show' data-bs-parent='#itemAccordion'>
+							<div class='accordion-body'>
+								<div class='container'>
+									<div class='row d-flex align-items-center justify-content-between'>
+										<div class='col-12 col-md-12 mb-3'>
+											<div class='row d-flex align-items-center justify-content-between'>
+												<div
+													class='col-12 col-md-1 d-flex align-items-center justify-content-center'
+												>
+													<img
+														class='order__img'
+														src='/images/sidebar/Beef.webp'
+														alt='order mac'
+													/>
+												</div>
+												<div class='col-md-5'>
+													<h4 class='order__title'>Burger</h4>
+												</div>
+												<div class='col-md-1'>
+													<h5>$12.99</h5>
+												</div>
+												<div class='col-md-2'>
+													<label class='form-label'>Qty</label>
+													<select class='form-control mb-2'>
+														<option value='1'>1</option>
+														<option value='2'>2</option>
+														<option value='3'>3</option>
+													</select>
+												</div>
+												<div class='col-md-2'>
+													<button class='btn btn-outline-danger'>Remove</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{{!-- End of Accordion Item --}}
+
+					{{!-- Accordion item --}}
+					<div class='accordion-item'>
+						<h2 class='accordion-header'>
+							<button
+								class='accordion-button collapsed'
+								type='button'
+								data-bs-toggle='collapse'
+								data-bs-target='#collapseTwo'
+								aria-expanded='false'
+								aria-controls='collapseTwo'
+							>
+								Personal Information
+							</button>
+						</h2>
+						<div id='collapseTwo' class='accordion-collapse collapse' data-bs-parent='#itemAccordion'>
+							<div class='accordion-body'>
+								<div>
+									<label class='form-label text-black' for='cartName'>Name</label>
+									<input
+										id='cartName'
+										class='form-control border-secondary mb-3'
+										name='name'
+										type='text'
+										placeholder='Name'
+									/>
+								</div>
+								<div>
+									<label class='form-label text-black' for='cartEmail'>Email</label>
+									<input
+										id='cartEmail'
+										class='form-control border-secondary mb-3'
+										name='email'
+										type='email'
+										placeholder='email@email.com'
+									/>
+								</div>
+								<div>
+									<label class='form-label text-black' for='cartPhone'>Phone</label>
+									<input
+										id='cartPhone'
+										class='form-control border-secondary mb-3'
+										name='phone'
+										type='text'
+										placeholder='Your 10 digit phone number'
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+					{{!-- End of Accordion item --}}
+
+					{{!-- Accordion --}}
+					<div class='accordion-item'>
+						<h2 class='accordion-header'>
+							<button
+								class='accordion-button collapsed'
+								type='button'
+								data-bs-toggle='collapse'
+								data-bs-target='#collapseThree'
+								aria-expanded='false'
+								aria-controls='collapseThree'
+							>
+								Shipping Address
+							</button>
+						</h2>
+						<div id='collapseThree' class='accordion-collapse collapse' data-bs-parent='#itemAccordion'>
+							<div class='accordion-body'>
+								<div>
+									<label class='form-label text-black' for='cartAddress'>Address</label>
+									<input
+										id='cartAddress'
+										class='form-control border-secondary mb-3'
+										type='text'
+										name='address'
+										placeholder='Enter Address'
+									/>
+								</div>
+								<div>
+									<label class='form-label text-black' for='cartBranch'>Branch</label>
+									<select id='cartBranch' class='form-control border-secondary  mb-3' name='branch'>
+										<option value=''>Please select branch</option>
+										<option value='kitchener'>Kitchener</option>
+										<option value='waterloo'>Waterloo</option>
+									</select>
+								</div>
+								<div>
+									<label class='form-label text-black' for='cartCity'>City</label>
+									<input
+										id='cartCity'
+										class='form-control border-secondary  mb-3'
+										type='text'
+										name='city'
+										placeholder='Enter City'
+									/>
+								</div>
+								<div>
+									<label class='form-label text-black' for='cartProvince'>Province</label>
+									<input
+										id='cartProvince'
+										class='form-control border-secondary  mb-3'
+										type='text'
+										name='province'
+										placeholder='Enter Province'
+									/>
+								</div>
+								<div>
+									<label class='form-label text-black' for='cartZipCode'>Zip Code</label>
+									<input
+										id='cartZipCode'
+										class='form-control border-secondary  mb-3'
+										type='text'
+										name='zipCode'
+										placeholder='Enter zip code'
+									/>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					{{!-- End of Accordion --}}
+				</div>
+			</div>
+		</div>
+
+		<div class='row mt-5'>
+			<div class='col'>
+				<div class='text-end'>
+					<h5>
+						Total:
+						<span>$12.99</span>
+					</h5>
+					<h5>
+						Delivery:
+						<span>$5.00</span>
+					</h5>
+					<h5>
+						Tax:
+						<span>13%</span>
+					</h5>
+					<hr />
+					<h5>
+						Net Total:
+						<span>$50.99</span>
+					</h5>
+					<a href='/cart/checkout'>
+						<button class='btn btn-danger btn-lg mt-4 mb-5'>Proceed to Payment</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

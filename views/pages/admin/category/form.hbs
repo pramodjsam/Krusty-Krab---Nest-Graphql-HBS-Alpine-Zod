@@ -1,0 +1,21 @@
+<section id='add-category' class='p-3'>
+	<div class='info'>
+		<h1>{{ title }}</h1>
+	</div>
+	<form class='w-75 mx-auto mt-5' action='{{ action }}'>
+		<div class='row'>
+
+			<div class='col'>
+				<div class='mb-3'>
+					<label class='text-black'>Name</label>
+					<input class='form-control border-secondary' type='text' placeholder='Enter Name' name='name' />
+				</div>
+			</div>
+
+		</div>
+
+		<div class='d-grid mb-3'>
+			<button class='btn btn-block mt-3 btn-{{ buttonClass }}' type='submit'>{{ buttonText }}</button>
+		</div>
+	</form>
+</section>

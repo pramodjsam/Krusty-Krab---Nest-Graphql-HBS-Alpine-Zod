@@ -2,7 +2,13 @@ import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Expose } from 'class-transformer';
 import { Role } from 'src/core/constants';
 import { Cart } from 'src/modules/cart/entity/cart.entity';
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -78,4 +84,8 @@ export class User {
   @OneToOne(() => Cart, (cart) => cart.user, { nullable: true })
   @Expose()
   cart?: Cart | null;
+
+  @Field(() => Date)
+  @CreateDateColumn()
+  createdAt: Date;
 }

@@ -1,0 +1,31 @@
+section {
+  min-height: calc(100vh - 74px - 72px);
+}
+
+.order__img {
+  height: 4rem;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.order__title {
+  font-size: 1.2rem;
+}
+
+.geoapify-autocomplete-input {
+  border: none !important;
+}
+
+.accordion {
+  --bs-accordion-active-bg: var(--dark-yellow) !important;
+  color: white !important;
+}
+
+.accordion-button:focus {
+  border-color: var(--dark-yellow) !important;
+  box-shadow: none !important;
+}
+
+.accordion-button {
+  font-size: 1.5rem !important;
+}

@@ -1,0 +1,10 @@
+section {
+  min-height: calc(100vh - 74px - 72px);
+}
+
+.tick__icon {
+  /* border: 1rem solid green;
+  border-radius: 50%; */
+  font-size: 5rem;
+  color: green;
+}

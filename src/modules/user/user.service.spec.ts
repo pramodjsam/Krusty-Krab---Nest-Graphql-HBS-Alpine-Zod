@@ -30,6 +30,7 @@ describe('User Service', () => {
       role: Role.EMPLOYEE,
       cart: null,
       passwordChangedAt: new Date(),
+      createdAt: new Date(),
     };
 
     mockUserWithResetToken = {
@@ -42,6 +43,7 @@ describe('User Service', () => {
       passwordChangedAt: new Date(),
       resetToken: 1234,
       resetTokenExpiry: new Date(Date.now() + 5 * 60 * 1000),
+      createdAt: new Date(),
     };
 
     const module: TestingModule = await Test.createTestingModule({

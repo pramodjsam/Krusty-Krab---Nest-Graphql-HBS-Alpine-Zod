@@ -1,0 +1,47 @@
+.nav__cart {
+  position: relative;
+}
+
+.nav__cart p {
+  position: absolute;
+  top: -80%;
+  right: -50%;
+  padding: 0.1rem 0.25rem;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.8rem;
+}
+
+.navbar,
+.navbar-default {
+  background-image: linear-gradient(
+    to bottom,
+    var(--dark-yellow) 0,
+    var(--dark-yellow) 100%
+  ) !important; /* override background image gradient w/ flat color */
+}
+
+#navbar a {
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+#navbar a:hover {
+  transform: scale(1.07);
+}
+
+.logo {
+  width: 3rem;
+}
+
+#admin a {
+  color: white;
+  transition: all 0.2s ease;
+}
+
+#admin a:hover {
+  color: lightyellow;
+  transform: scale(1.02);
+}

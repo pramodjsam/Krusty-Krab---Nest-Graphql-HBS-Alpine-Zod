@@ -1,4 +1,16 @@
 {
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "plugins": ["@poliklot/prettier-plugin-handlebars"],
+  "overrides": [
+    {
+      "files": "**/*.hbs",
+      "options": {
+        "parser": "handlebars",
+        "printWidth": 120,
+        "useTabs": true,
+        "tabWidth": 4
+      }
+    }
+  ]
 }

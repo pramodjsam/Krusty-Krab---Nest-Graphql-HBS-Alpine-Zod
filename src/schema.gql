@@ -58,6 +58,7 @@ type User {
   resetTokenExpiry: DateTime
   passwordChangedAt: DateTime!
   cart: Cart
+  createdAt: DateTime!
 }
 
 type DeleteResponseDto {

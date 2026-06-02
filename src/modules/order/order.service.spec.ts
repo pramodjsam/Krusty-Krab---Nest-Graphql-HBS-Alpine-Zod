@@ -42,6 +42,7 @@ describe('OrderService', () => {
       role: Role.EMPLOYEE,
       cart: null,
       passwordChangedAt: new Date(),
+      createdAt: new Date(),
     };
     mockUserPayload = {
       id: 1,
@@ -82,6 +83,7 @@ describe('OrderService', () => {
       role: Role.EMPLOYEE,
       cart: mockCart,
       passwordChangedAt: new Date(),
+      createdAt: new Date(),
     };
     mockCartItem.cart = mockCart;
     mockOrderItem = {

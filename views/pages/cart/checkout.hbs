@@ -1,0 +1,52 @@
+<section id='checkout'>
+	<div class='container-fluid'>
+		<div class='row'>
+
+			<div class='col d-flex flex-column checkout-left'>
+				<div class='checkout-left--back'>
+					<a class='text-decoration-none backlink d-flex align-items-center' href='/cart'>
+						<i class='bi bi-arrow-left fs-2 me-2'></i>
+						<span>Go Back</span>
+					</a>
+				</div>
+				<div class='checkout-left--info'>
+					<h1>Total: $12.99</h1>
+					<div class='checkout-left--cart'>
+						{{!-- List Item --}}
+						<div class='checkout-left--cart-list'>
+							<div class='d-flex align-items-center'>
+								<img src='/images/sidebar/Beef.webp' alt='big mac' />
+								<div class='d-flex align-items-center justify-content-center flex-column ms-4'>
+									<h6 class='p-0 m-0'>Big Mac</h6>
+									<p class='p-0 m-0'>Qty: 1</p>
+								</div>
+							</div>
+							<h6>$12.99</h6>
+						</div>
+						{{!-- End of List Item --}}
+					</div>
+
+					<div class='checkout-left--summary text-end'>
+						<p class='m-0 p-0'><b>Total:</b> <span>$12.99</span></p>
+						<p class='m-0 p-0'><b>Delivery:</b> <span>$5.00</span></p>
+						<p class='m-0 p-0'><b>Tax:</b> <span>13%</span></p>
+						<p class='m-0 p-0'><b>Net Total:</b> <span>$17.99</span></p>
+					</div>
+				</div>
+				<div class='checkout-left-footer'>
+					Powered by
+					<i class='bi bi-stripe fs-5'></i>
+				</div>
+			</div>
+
+			<div class='col vh-100 d-flex flex-column align-items-center justify-content-center'>
+				<h3>Secure payment gateway</h3>
+
+				{{!-- TODO: STRIPE CHECKOUT --}}
+				<a href='/cart/order-confirmation'>
+					<button id='submit' class='btn btn-primary btn-large btn-block'>Pay Now</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

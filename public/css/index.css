@@ -1,0 +1,23 @@
+@import './base/variables.css';
+@import './base/reset.css';
+
+/* Header */
+@import './pages/header.css';
+/* Footer */
+@import './pages/footer.css';
+/* Home */
+@import './pages/home.css';
+/* Login */
+@import './pages/login.css';
+/* Forgot Password */
+@import './pages/forgot-password.css';
+/* Order */
+@import './pages/order.css';
+/* Order Details */
+@import './pages/order-details.css';
+/* Cart */
+@import './pages/cart.css';
+/* Checkout */
+@import './pages/checkout.css';
+/* Order Confirmation */
+@import './pages/order-confirmation.css';

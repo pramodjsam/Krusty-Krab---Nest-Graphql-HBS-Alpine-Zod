@@ -1,0 +1,13 @@
+:root {
+  --dark-yellow: #ffc107;
+  --light-yellow: rgb(224, 189, 85) 7;
+  --dark-red: #db0006;
+  --black: #000;
+  --grey-1: rgba(204, 204, 204, 0.219);
+  --grey-2: rgba(0, 0, 0, 0.199);
+  --grey-3: rgba(0, 0, 0, 0.05);
+  --black-1: #232323;
+  --white-1: #f8f8f8;
+  --white-2: #ccc;
+  --dark-orange: #fe5f1e;
+}

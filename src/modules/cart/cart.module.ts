@@ -6,6 +6,7 @@ import { Cart } from './entity/cart.entity';
 import { CartItem } from './entity/cart-item.entity';
 import { UserModule } from '../user/user.module';
 import { ProductModule } from '../product/product.module';
+import { CartController } from './cart.controller';
 
 @Module({
   providers: [CartService, CartResolver],
@@ -15,5 +16,6 @@ import { ProductModule } from '../product/product.module';
     ProductModule,
   ],
   exports: [CartService],
+  controllers: [CartController],
 })
 export class CartModule {}

@@ -40,6 +40,7 @@ describe('CartService', () => {
       role: Role.EMPLOYEE,
       cart: null,
       passwordChangedAt: new Date(),
+      createdAt: new Date(),
     };
     mockUserPayload = {
       id: 1,
@@ -81,6 +82,7 @@ describe('CartService', () => {
       role: Role.EMPLOYEE,
       cart: mockCart,
       passwordChangedAt: new Date(),
+      createdAt: new Date(),
     };
 
     const module: TestingModule = await Test.createTestingModule({

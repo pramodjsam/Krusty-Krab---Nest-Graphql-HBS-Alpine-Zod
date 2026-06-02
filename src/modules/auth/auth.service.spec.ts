@@ -37,6 +37,7 @@ describe('AuthService', () => {
       role: Role.EMPLOYEE,
       cart: null,
       passwordChangedAt: new Date(),
+      createdAt: new Date(),
     };
 
     mockResponseAuth = {

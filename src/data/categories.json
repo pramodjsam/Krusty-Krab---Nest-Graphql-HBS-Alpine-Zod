@@ -1,0 +1,112 @@
+[
+  {
+    "_id": "650dd6c9cd20902cf312be7e",
+    "category": "McPicks",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695405776/cserver/krusty_krab/uploads/uklvk7bp5ruq17ch6abh.webp",
+      "publicId": "cserver/krusty_krab/uploads/uklvk7bp5ruq17ch6abh"
+    },
+    "createdAt": "2023-09-22T18:02:49.648Z",
+    "updatedAt": "2023-09-22T18:02:49.648Z",
+    "__v": 0
+  },
+  {
+    "_id": "64fca44d48d8a466c9262faf",
+    "category": "Desserts & Shakes",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1694278735/cserver/krusty_krab/uploads/gu1oecgswwvub2fhetm1.webp",
+      "publicId": "cserver/krusty_krab/uploads/gu1oecgswwvub2fhetm1"
+    },
+    "createdAt": "2023-09-09T16:58:53.204Z",
+    "updatedAt": "2023-09-09T16:58:53.204Z",
+    "__v": 0
+  },
+  {
+    "_id": "64fca34948d8a466c9262f9b",
+    "category": "Beef",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1694278475/cserver/krusty_krab/uploads/acfg8pgz29qtbpbwmqsz.webp",
+      "publicId": "cserver/krusty_krab/uploads/acfg8pgz29qtbpbwmqsz"
+    },
+    "createdAt": "2023-09-09T16:54:33.147Z",
+    "updatedAt": "2023-09-09T16:54:33.147Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dd6bbcd20902cf312be7b",
+    "category": "McCafe",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695405761/cserver/krusty_krab/uploads/gknttnpzh1lhcl9m82cn.webp",
+      "publicId": "cserver/krusty_krab/uploads/gknttnpzh1lhcl9m82cn"
+    },
+    "createdAt": "2023-09-22T18:02:35.089Z",
+    "updatedAt": "2023-09-22T18:02:35.089Z",
+    "__v": 0
+  },
+  {
+    "_id": "64fca3c248d8a466c9262fa8",
+    "category": "Sandwiches & Wraps",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1694278596/cserver/krusty_krab/uploads/zlu55ksaozd7njnlcnlz.webp",
+      "publicId": "cserver/krusty_krab/uploads/zlu55ksaozd7njnlcnlz"
+    },
+    "createdAt": "2023-09-09T16:56:34.507Z",
+    "updatedAt": "2023-09-09T16:56:34.507Z",
+    "__v": 0
+  },
+  {
+    "_id": "64fca42948d8a466c9262fac",
+    "category": "Snacks & Sides",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1694278699/cserver/krusty_krab/uploads/xs2t5zhhzk1xw9zxvvtz.webp",
+      "publicId": "cserver/krusty_krab/uploads/xs2t5zhhzk1xw9zxvvtz"
+    },
+    "createdAt": "2023-09-09T16:58:17.646Z",
+    "updatedAt": "2023-09-09T16:58:17.646Z",
+    "__v": 0
+  },
+  {
+    "_id": "64fccdfd7823ad9d0b052a52",
+    "category": "Breakfast",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1694289556/cserver/krusty_krab/uploads/uidbnyg6oysuntkomy1i.webp",
+      "publicId": "cserver/krusty_krab/uploads/uidbnyg6oysuntkomy1i"
+    },
+    "createdAt": "2023-09-09T19:56:45.619Z",
+    "updatedAt": "2023-09-09T19:59:14.202Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dd6d8cd20902cf312be81",
+    "category": "Happy Meal",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695405791/cserver/krusty_krab/uploads/aa6jdmnejz1s4rdc4mni.webp",
+      "publicId": "cserver/krusty_krab/uploads/aa6jdmnejz1s4rdc4mni"
+    },
+    "createdAt": "2023-09-22T18:03:04.468Z",
+    "updatedAt": "2023-09-22T18:03:04.468Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dd6a8cd20902cf312be78",
+    "category": "Beverages",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695405743/cserver/krusty_krab/uploads/dngz8tqlzfaf2yx9mf1r.webp",
+      "publicId": "cserver/krusty_krab/uploads/dngz8tqlzfaf2yx9mf1r"
+    },
+    "createdAt": "2023-09-22T18:02:16.859Z",
+    "updatedAt": "2023-09-22T18:02:16.859Z",
+    "__v": 0
+  },
+  {
+    "_id": "64fca39b48d8a466c9262fa3",
+    "category": "Chicken",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1694278557/cserver/krusty_krab/uploads/uramktpxx7qhr1desutw.webp",
+      "publicId": "cserver/krusty_krab/uploads/uramktpxx7qhr1desutw"
+    },
+    "createdAt": "2023-09-09T16:55:55.138Z",
+    "updatedAt": "2023-09-09T16:55:55.138Z",
+    "__v": 0
+  }
+]

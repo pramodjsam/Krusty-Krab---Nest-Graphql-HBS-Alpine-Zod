@@ -1,0 +1,2807 @@
+[
+  {
+    "_id": "650dfda78c59c59a14db146b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/pj0q0qv96bwrcx30lwec.webp",
+      "publicId": "cserver/krusty_krab/uploads/pj0q0qv96bwrcx30lwec"
+    },
+    "name": "Chicken McMuffin",
+    "price": 11.58,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:39.971Z",
+    "updatedAt": "2023-09-22T20:48:39.971Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1489",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/gq51wvupq0aeszgynwbo.webp",
+      "publicId": "cserver/krusty_krab/uploads/gq51wvupq0aeszgynwbo"
+    },
+    "name": "Hamburger",
+    "price": 7.78,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.016Z",
+    "updatedAt": "2023-09-22T20:48:40.016Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14ef",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/xel8y5mhjpzvdxkhur2i.webp",
+      "publicId": "cserver/krusty_krab/uploads/xel8y5mhjpzvdxkhur2i"
+    },
+    "name": "Double Cheeseburger",
+    "price": 10.95,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.239Z",
+    "updatedAt": "2023-09-22T20:48:40.239Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1503",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/bskcyztnwb5thyjx9dhe.webp",
+      "publicId": "cserver/krusty_krab/uploads/bskcyztnwb5thyjx9dhe"
+    },
+    "name": "Coffee Frapp",
+    "price": 5.64,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.258Z",
+    "updatedAt": "2023-09-22T20:48:40.258Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db150b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/f11o7yvkkvkylrtmpars.webp",
+      "publicId": "cserver/krusty_krab/uploads/f11o7yvkkvkylrtmpars"
+    },
+    "name": "Cheeseburger",
+    "price": 9.26,
+    "category": {
+      "_id": "650dd6c9cd20902cf312be7e"
+    },
+    "createdAt": "2023-09-22T20:48:40.275Z",
+    "updatedAt": "2023-09-22T20:48:40.275Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db153f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/mmrvs0vusuou97p1hbjx.webp",
+      "publicId": "cserver/krusty_krab/uploads/mmrvs0vusuou97p1hbjx"
+    },
+    "name": "Spicy McCrispy",
+    "price": 12.37,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.450Z",
+    "updatedAt": "2023-09-22T20:48:40.450Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1591",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/g61kymq1h06wxuetqyso.webp",
+      "publicId": "cserver/krusty_krab/uploads/g61kymq1h06wxuetqyso"
+    },
+    "name": "Sesame Bacon  N Egg Bagel",
+    "price": 6.99,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.572Z",
+    "updatedAt": "2023-09-22T20:48:40.572Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1599",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/gzz3kiiyewbeivjbhkvc.webp",
+      "publicId": "cserver/krusty_krab/uploads/gzz3kiiyewbeivjbhkvc"
+    },
+    "name": "Hamburger Happy Meal",
+    "price": 11.75,
+    "category": {
+      "_id": "650dd6d8cd20902cf312be81"
+    },
+    "createdAt": "2023-09-22T20:48:40.596Z",
+    "updatedAt": "2023-09-22T20:48:40.596Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15ad",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/jhjbuultp2rdertcakx7.webp",
+      "publicId": "cserver/krusty_krab/uploads/jhjbuultp2rdertcakx7"
+    },
+    "name": "Zesty Lime McWrap   Grilled",
+    "price": 15.64,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.708Z",
+    "updatedAt": "2023-09-22T20:48:40.708Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15b5",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/hx8rjfl9z9m23lf7isdq.webp",
+      "publicId": "cserver/krusty_krab/uploads/hx8rjfl9z9m23lf7isdq"
+    },
+    "name": "Sausage McGriddles",
+    "price": 15.52,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.772Z",
+    "updatedAt": "2023-09-22T20:48:40.772Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda98c59c59a14db1682",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415728/cserver/krusty_krab/uploads/fbn3qbi9tuxo9x1rbirl.webp",
+      "publicId": "cserver/krusty_krab/uploads/fbn3qbi9tuxo9x1rbirl"
+    },
+    "name": "Filet O Fish",
+    "price": 12.34,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:41.091Z",
+    "updatedAt": "2023-09-22T20:48:41.091Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db148f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/rmx4sdrg3rwmqwcoruwv.webp",
+      "publicId": "cserver/krusty_krab/uploads/rmx4sdrg3rwmqwcoruwv"
+    },
+    "name": "Double Big Mac",
+    "price": 9.93,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.021Z",
+    "updatedAt": "2023-09-22T20:48:40.021Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14bb",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/wpeamde62607kh9vkef3.webp",
+      "publicId": "cserver/krusty_krab/uploads/wpeamde62607kh9vkef3"
+    },
+    "name": "Blueberry Muffin",
+    "price": 14.44,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.158Z",
+    "updatedAt": "2023-09-22T20:48:40.158Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14dd",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/grq1xziflg5a4thfgvxb.webp",
+      "publicId": "cserver/krusty_krab/uploads/grq1xziflg5a4thfgvxb"
+    },
+    "name": "Iced Coffee with Sugar Free Syrup",
+    "price": 7.5,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.215Z",
+    "updatedAt": "2023-09-22T20:48:40.215Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1515",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/fwvf9ytwgbkzjxsubb2e.webp",
+      "publicId": "cserver/krusty_krab/uploads/fwvf9ytwgbkzjxsubb2e"
+    },
+    "name": "Cranberry Orange Muffin",
+    "price": 15,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.286Z",
+    "updatedAt": "2023-09-22T20:48:40.286Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db151d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/ipmjdqxoilvvmvpczvoa.webp",
+      "publicId": "cserver/krusty_krab/uploads/ipmjdqxoilvvmvpczvoa"
+    },
+    "name": "Minute Maid Orange Juice",
+    "price": 8.11,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.294Z",
+    "updatedAt": "2023-09-22T20:48:40.294Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db167e",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/fettptpxylkm9ftjcg5t.webp",
+      "publicId": "cserver/krusty_krab/uploads/fettptpxylkm9ftjcg5t"
+    },
+    "name": "Sweet Chili McWrap   Crispy",
+    "price": 7.22,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.966Z",
+    "updatedAt": "2023-09-22T20:48:40.966Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db1475",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/x50piollwb7musku2zup.webp",
+      "publicId": "cserver/krusty_krab/uploads/x50piollwb7musku2zup"
+    },
+    "name": "Bacon  Egg   Cheese McGriddles",
+    "price": 14.69,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:39.986Z",
+    "updatedAt": "2023-09-22T20:48:39.986Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14c7",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/hwjzzdzpo3tblvjywsqq.webp",
+      "publicId": "cserver/krusty_krab/uploads/hwjzzdzpo3tblvjywsqq"
+    },
+    "name": "Fruit   Fibre Muffin",
+    "price": 9.87,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.173Z",
+    "updatedAt": "2023-09-22T20:48:40.173Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14cf",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/pydnjl4whjrv0lte2oxr.webp",
+      "publicId": "cserver/krusty_krab/uploads/pydnjl4whjrv0lte2oxr"
+    },
+    "name": "English Muffin with Butter",
+    "price": 7.28,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.184Z",
+    "updatedAt": "2023-09-22T20:48:40.184Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14d3",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/a02wwm4by4qmtcffabo3.webp",
+      "publicId": "cserver/krusty_krab/uploads/a02wwm4by4qmtcffabo3"
+    },
+    "name": "Cheeseburger",
+    "price": 9.26,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.200Z",
+    "updatedAt": "2023-09-22T20:48:40.200Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14d5",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ou9va0mayo2mwkmy7xeq.webp",
+      "publicId": "cserver/krusty_krab/uploads/ou9va0mayo2mwkmy7xeq"
+    },
+    "name": "Blueberry Muffin",
+    "price": 14.44,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.203Z",
+    "updatedAt": "2023-09-22T20:48:40.203Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1509",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/cexf2csftvmq9ggbe5tr.webp",
+      "publicId": "cserver/krusty_krab/uploads/cexf2csftvmq9ggbe5tr"
+    },
+    "name": "McCaf  Vanilla Chai Frapp",
+    "price": 8.32,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.268Z",
+    "updatedAt": "2023-09-22T20:48:40.268Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db151b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/kipt0kva4txmcv5efznn.webp",
+      "publicId": "cserver/krusty_krab/uploads/kipt0kva4txmcv5efznn"
+    },
+    "name": "Grand Big Mac",
+    "price": 4.42,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.293Z",
+    "updatedAt": "2023-09-22T20:48:40.293Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db152d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ppnklelobeqevbexh0yf.webp",
+      "publicId": "cserver/krusty_krab/uploads/ppnklelobeqevbexh0yf"
+    },
+    "name": "Egg BLT Bagel with Everything Bagel",
+    "price": 10.32,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.395Z",
+    "updatedAt": "2023-09-22T20:48:40.395Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1539",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/lqokxt6xlvs3dez1dpk6.webp",
+      "publicId": "cserver/krusty_krab/uploads/lqokxt6xlvs3dez1dpk6"
+    },
+    "name": "Pineapple Chunks",
+    "price": 12.14,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.433Z",
+    "updatedAt": "2023-09-22T20:48:40.433Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1559",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/z8r6upke5tlygiudxual.webp",
+      "publicId": "cserver/krusty_krab/uploads/z8r6upke5tlygiudxual"
+    },
+    "name": "Spicy Buffalo Chicken Snack Wrap with Crispy Chicken",
+    "price": 6.73,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.475Z",
+    "updatedAt": "2023-09-22T20:48:40.475Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1567",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/dd0pkeki74nkqazqaooe.webp",
+      "publicId": "cserver/krusty_krab/uploads/dd0pkeki74nkqazqaooe"
+    },
+    "name": "Sesame Bagel With Regular Cream Cheese Product",
+    "price": 11.87,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.493Z",
+    "updatedAt": "2023-09-22T20:48:40.493Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1595",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/jfcpptupg4ofrktsgfub.webp",
+      "publicId": "cserver/krusty_krab/uploads/jfcpptupg4ofrktsgfub"
+    },
+    "name": "Maple   Brown Sugar Muffin",
+    "price": 11.7,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.576Z",
+    "updatedAt": "2023-09-22T20:48:40.576Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1672",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/awlxu7n6yhy5memknqla.webp",
+      "publicId": "cserver/krusty_krab/uploads/awlxu7n6yhy5memknqla"
+    },
+    "name": "Spicy McCrispy Bacon Deluxe",
+    "price": 12.64,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.937Z",
+    "updatedAt": "2023-09-22T20:48:40.937Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1678",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/uqxttofwyklqu7aemao6.webp",
+      "publicId": "cserver/krusty_krab/uploads/uqxttofwyklqu7aemao6"
+    },
+    "name": "Spicy Grilled Chicken Sandwich",
+    "price": 14.61,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.950Z",
+    "updatedAt": "2023-09-22T20:48:40.950Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14a7",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/oszl9bakq1lacwrhxba4.webp",
+      "publicId": "cserver/krusty_krab/uploads/oszl9bakq1lacwrhxba4"
+    },
+    "name": "Chocolate Triple Thick Milkshake",
+    "price": 13.64,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.134Z",
+    "updatedAt": "2023-09-22T20:48:40.134Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14bd",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/j84wwukdfqnlhgglva53.webp",
+      "publicId": "cserver/krusty_krab/uploads/j84wwukdfqnlhgglva53"
+    },
+    "name": "Bacon  N Egg McMuffin",
+    "price": 7.81,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.160Z",
+    "updatedAt": "2023-09-22T20:48:40.160Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14bf",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/bqbjyzasnfr99keacah4.webp",
+      "publicId": "cserver/krusty_krab/uploads/bqbjyzasnfr99keacah4"
+    },
+    "name": "10 Chicken McNuggets",
+    "price": 4.38,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.162Z",
+    "updatedAt": "2023-09-22T20:48:40.162Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14cd",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/fgey2tivawfnmpyr13ku.webp",
+      "publicId": "cserver/krusty_krab/uploads/fgey2tivawfnmpyr13ku"
+    },
+    "name": "Junior Chicken",
+    "price": 12.06,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.181Z",
+    "updatedAt": "2023-09-22T20:48:40.181Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14ed",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/nraeesxuqrhjmxyr7esd.webp",
+      "publicId": "cserver/krusty_krab/uploads/nraeesxuqrhjmxyr7esd"
+    },
+    "name": "Double Quarter Pounder without Cheese",
+    "price": 9.03,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.237Z",
+    "updatedAt": "2023-09-22T20:48:40.237Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14f7",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ubmx8jt1xfqyshtufuqu.webp",
+      "publicId": "cserver/krusty_krab/uploads/ubmx8jt1xfqyshtufuqu"
+    },
+    "name": "Fruit   Fibre Muffin",
+    "price": 9.87,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.248Z",
+    "updatedAt": "2023-09-22T20:48:40.248Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1519",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ykurz4k8azgjflh2dpr1.webp",
+      "publicId": "cserver/krusty_krab/uploads/ykurz4k8azgjflh2dpr1"
+    },
+    "name": "Double Espresso",
+    "price": 6.12,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.291Z",
+    "updatedAt": "2023-09-22T20:48:40.291Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db152b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/mhe1o95gpiachi3hszvl.webp",
+      "publicId": "cserver/krusty_krab/uploads/mhe1o95gpiachi3hszvl"
+    },
+    "name": "Chicken   Bacon McWrap   Grilled",
+    "price": 9.21,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.392Z",
+    "updatedAt": "2023-09-22T20:48:40.392Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14fd",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/ahwtumm8g9du6v8xyoos.webp",
+      "publicId": "cserver/krusty_krab/uploads/ahwtumm8g9du6v8xyoos"
+    },
+    "name": "French Vanilla Iced Coffee",
+    "price": 5.38,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.252Z",
+    "updatedAt": "2023-09-22T20:48:40.252Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db1469",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/pnx8tzt0flayykzno8z8.webp",
+      "publicId": "cserver/krusty_krab/uploads/pnx8tzt0flayykzno8z8"
+    },
+    "name": "Barq s Root Beer",
+    "price": 3.66,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:39.966Z",
+    "updatedAt": "2023-09-22T20:48:39.966Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14ab",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/eobbm0w6ojvpg6l5fpjw.webp",
+      "publicId": "cserver/krusty_krab/uploads/eobbm0w6ojvpg6l5fpjw"
+    },
+    "name": "Chicken McGriddles",
+    "price": 10.11,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.139Z",
+    "updatedAt": "2023-09-22T20:48:40.139Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14c3",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/vzbuzs7mwredznsx1hru.webp",
+      "publicId": "cserver/krusty_krab/uploads/vzbuzs7mwredznsx1hru"
+    },
+    "name": "Everything Bagel with Butter",
+    "price": 13.8,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.166Z",
+    "updatedAt": "2023-09-22T20:48:40.166Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14c5",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/pq6ba8xjg97sq8go7dfj.webp",
+      "publicId": "cserver/krusty_krab/uploads/pq6ba8xjg97sq8go7dfj"
+    },
+    "name": "Carrot Muffin",
+    "price": 8.05,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.169Z",
+    "updatedAt": "2023-09-22T20:48:40.169Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db154b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ovoxnjjzvrzeqa4jbtbc.webp",
+      "publicId": "cserver/krusty_krab/uploads/ovoxnjjzvrzeqa4jbtbc"
+    },
+    "name": "Chicken   Bacon McWrap   Grilled",
+    "price": 9.21,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.462Z",
+    "updatedAt": "2023-09-22T20:48:40.462Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1569",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/vstrlgwznmzooervqxch.webp",
+      "publicId": "cserver/krusty_krab/uploads/vstrlgwznmzooervqxch"
+    },
+    "name": "Strawberry Banana Real Fruit Smoothie",
+    "price": 7.53,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.495Z",
+    "updatedAt": "2023-09-22T20:48:40.495Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1571",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/mhmqmmdbkjm6owrzuwm5.webp",
+      "publicId": "cserver/krusty_krab/uploads/mhmqmmdbkjm6owrzuwm5"
+    },
+    "name": "Chicken   Bacon McWrap   Crispy",
+    "price": 13.91,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.504Z",
+    "updatedAt": "2023-09-22T20:48:40.504Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda98c59c59a14db1684",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415728/cserver/krusty_krab/uploads/nfxm02bupcfg38cmaozx.webp",
+      "publicId": "cserver/krusty_krab/uploads/nfxm02bupcfg38cmaozx"
+    },
+    "name": "Chocolate Chunk RMHC Cookie",
+    "price": 8.95,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:41.266Z",
+    "updatedAt": "2023-09-22T20:48:41.266Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db1461",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/nqxwtfh9mkpmeihrlsx6.webp",
+      "publicId": "cserver/krusty_krab/uploads/nqxwtfh9mkpmeihrlsx6"
+    },
+    "name": "4 Chicken McNuggets Happy Meal",
+    "price": 3.25,
+    "category": {
+      "_id": "650dd6d8cd20902cf312be81"
+    },
+    "createdAt": "2023-09-22T20:48:39.905Z",
+    "updatedAt": "2023-09-22T20:48:39.905Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1491",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/dzuy64lhxpuwzbukkyok.webp",
+      "publicId": "cserver/krusty_krab/uploads/dzuy64lhxpuwzbukkyok"
+    },
+    "name": "Carrot Muffin",
+    "price": 8.05,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.053Z",
+    "updatedAt": "2023-09-22T20:48:40.053Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db149d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/styjlh5kip5lgff7lkhz.webp",
+      "publicId": "cserver/krusty_krab/uploads/styjlh5kip5lgff7lkhz"
+    },
+    "name": "Higgins   Burke Hot Chocolate",
+    "price": 6.19,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.121Z",
+    "updatedAt": "2023-09-22T20:48:40.121Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14eb",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/amety7nnh52rgmjqrb2v.webp",
+      "publicId": "cserver/krusty_krab/uploads/amety7nnh52rgmjqrb2v"
+    },
+    "name": "6 Chicken McNuggets",
+    "price": 8.4,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.235Z",
+    "updatedAt": "2023-09-22T20:48:40.235Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1531",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/vzjbss5jz0shn3r9ifyq.webp",
+      "publicId": "cserver/krusty_krab/uploads/vzjbss5jz0shn3r9ifyq"
+    },
+    "name": "Baked Apple Pie",
+    "price": 3.46,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.405Z",
+    "updatedAt": "2023-09-22T20:48:40.405Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1551",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/snzrczoemgcwvkwf9oox.webp",
+      "publicId": "cserver/krusty_krab/uploads/snzrczoemgcwvkwf9oox"
+    },
+    "name": "Ranch Chicken Snack Wrap with Crispy Chicken",
+    "price": 12.91,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.468Z",
+    "updatedAt": "2023-09-22T20:48:40.468Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1563",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/uwzjdwkcf8vw7wuqnwcx.webp",
+      "publicId": "cserver/krusty_krab/uploads/uwzjdwkcf8vw7wuqnwcx"
+    },
+    "name": "Squishmallows McFlurry",
+    "price": 15.79,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.485Z",
+    "updatedAt": "2023-09-22T20:48:40.485Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1589",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/yoatcedkllq8bvlj9kif.webp",
+      "publicId": "cserver/krusty_krab/uploads/yoatcedkllq8bvlj9kif"
+    },
+    "name": "Spicy Buffalo Chicken Poutine  Qu bec",
+    "price": 7.57,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.546Z",
+    "updatedAt": "2023-09-22T20:48:40.546Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db159f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/zxrgrdt86amklqthu9cw.webp",
+      "publicId": "cserver/krusty_krab/uploads/zxrgrdt86amklqthu9cw"
+    },
+    "name": "SKOR McFlurry",
+    "price": 13.83,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.639Z",
+    "updatedAt": "2023-09-22T20:48:40.639Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1676",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/zodnnroff9gjomzmkmmw.webp",
+      "publicId": "cserver/krusty_krab/uploads/zodnnroff9gjomzmkmmw"
+    },
+    "name": "McDouble",
+    "price": 11.32,
+    "category": {
+      "_id": "650dd6c9cd20902cf312be7e"
+    },
+    "createdAt": "2023-09-22T20:48:40.941Z",
+    "updatedAt": "2023-09-22T20:48:40.941Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db146d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/w2igsmwfdf6a4zwbocoo.webp",
+      "publicId": "cserver/krusty_krab/uploads/w2igsmwfdf6a4zwbocoo"
+    },
+    "name": "Chicken Snack Wrap Happy Meal with Crispy Chicken",
+    "price": 8.7,
+    "category": {
+      "_id": "650dd6d8cd20902cf312be81"
+    },
+    "createdAt": "2023-09-22T20:48:39.974Z",
+    "updatedAt": "2023-09-22T20:48:39.974Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1497",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/rpmrlymqrbsbjuc8trci.webp",
+      "publicId": "cserver/krusty_krab/uploads/rpmrlymqrbsbjuc8trci"
+    },
+    "name": "Chicken   Bacon McWrap   Crispy",
+    "price": 13.91,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.061Z",
+    "updatedAt": "2023-09-22T20:48:40.061Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14b7",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/mi4xs359sjchtpeugvl8.webp",
+      "publicId": "cserver/krusty_krab/uploads/mi4xs359sjchtpeugvl8"
+    },
+    "name": "Hot Fudge Sundae",
+    "price": 15.13,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.154Z",
+    "updatedAt": "2023-09-22T20:48:40.154Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14c1",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/uibbwrjclg364f1yx7oe.webp",
+      "publicId": "cserver/krusty_krab/uploads/uibbwrjclg364f1yx7oe"
+    },
+    "name": "Cookies   Cream Li L Donut",
+    "price": 5.53,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.164Z",
+    "updatedAt": "2023-09-22T20:48:40.164Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14e5",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/iweydmfit8a4itahgmxp.webp",
+      "publicId": "cserver/krusty_krab/uploads/iweydmfit8a4itahgmxp"
+    },
+    "name": "Dasani Water",
+    "price": 6.64,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.228Z",
+    "updatedAt": "2023-09-22T20:48:40.228Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db150d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/r7wbnlaorjxzroxcblhm.webp",
+      "publicId": "cserver/krusty_krab/uploads/r7wbnlaorjxzroxcblhm"
+    },
+    "name": "Chicken Snack Wrap Happy Meal with Grilled Chicken",
+    "price": 5.03,
+    "category": {
+      "_id": "650dd6d8cd20902cf312be81"
+    },
+    "createdAt": "2023-09-22T20:48:40.277Z",
+    "updatedAt": "2023-09-22T20:48:40.277Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1525",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/bfh0yejxgkhtkq49ezja.webp",
+      "publicId": "cserver/krusty_krab/uploads/bfh0yejxgkhtkq49ezja"
+    },
+    "name": "Mocha",
+    "price": 3.88,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.381Z",
+    "updatedAt": "2023-09-22T20:48:40.381Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14fb",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/pbwmcntdzkuemckixqai.webp",
+      "publicId": "cserver/krusty_krab/uploads/pbwmcntdzkuemckixqai"
+    },
+    "name": "Banana Chocolate Chunk Muffin",
+    "price": 12.36,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.251Z",
+    "updatedAt": "2023-09-22T20:48:40.251Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db154f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/tqxye7dzpoeu0nr8a2sk.webp",
+      "publicId": "cserver/krusty_krab/uploads/tqxye7dzpoeu0nr8a2sk"
+    },
+    "name": "Sesame Sausage  N Egg Bagel",
+    "price": 8.52,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.466Z",
+    "updatedAt": "2023-09-22T20:48:40.466Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15a3",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/aexvux4rby2h36yacgu8.webp",
+      "publicId": "cserver/krusty_krab/uploads/aexvux4rby2h36yacgu8"
+    },
+    "name": "Kiwi Pineapple Banana Real Fruit Smoothie",
+    "price": 6.05,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.643Z",
+    "updatedAt": "2023-09-22T20:48:40.643Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15b1",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/xwlygrm10ipjph2vjqlx.webp",
+      "publicId": "cserver/krusty_krab/uploads/xwlygrm10ipjph2vjqlx"
+    },
+    "name": "Sausage  N Egg Bagel with Everything Bagel",
+    "price": 7.58,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.726Z",
+    "updatedAt": "2023-09-22T20:48:40.726Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15b9",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/okndenpbfxvlv3yyyece.webp",
+      "publicId": "cserver/krusty_krab/uploads/okndenpbfxvlv3yyyece"
+    },
+    "name": "Zesty Lime McWrap   Crispy",
+    "price": 3.11,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.795Z",
+    "updatedAt": "2023-09-22T20:48:40.795Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15bb",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/g5qce7zohtfxgnvpmfzn.webp",
+      "publicId": "cserver/krusty_krab/uploads/g5qce7zohtfxgnvpmfzn"
+    },
+    "name": "Grand Big Mac Bacon",
+    "price": 15.63,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.812Z",
+    "updatedAt": "2023-09-22T20:48:40.812Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1537",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/bsah277s30is9mixzl2g.webp",
+      "publicId": "cserver/krusty_krab/uploads/bsah277s30is9mixzl2g"
+    },
+    "name": "Premium Roast Brewed Iced Coffee",
+    "price": 10.32,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.430Z",
+    "updatedAt": "2023-09-22T20:48:40.430Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db1467",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/nija3q246oqxcosienyi.webp",
+      "publicId": "cserver/krusty_krab/uploads/nija3q246oqxcosienyi"
+    },
+    "name": "Chicken McMuffin BLT",
+    "price": 12.47,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:39.962Z",
+    "updatedAt": "2023-09-22T20:48:39.962Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db146f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/gro2rgofau3aothgwqam.webp",
+      "publicId": "cserver/krusty_krab/uploads/gro2rgofau3aothgwqam"
+    },
+    "name": "Boston Cream Li L Donut",
+    "price": 13.3,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:39.976Z",
+    "updatedAt": "2023-09-22T20:48:39.976Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db148b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/fztb7bzhzg3klqobypwq.webp",
+      "publicId": "cserver/krusty_krab/uploads/fztb7bzhzg3klqobypwq"
+    },
+    "name": "Double Quarter Pounder BLT",
+    "price": 15.55,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.017Z",
+    "updatedAt": "2023-09-22T20:48:40.017Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db149b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/pvdmuei1wtaowfwkrpbx.webp",
+      "publicId": "cserver/krusty_krab/uploads/pvdmuei1wtaowfwkrpbx"
+    },
+    "name": "20 Chicken McNuggets  Serves 2",
+    "price": 11.84,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.119Z",
+    "updatedAt": "2023-09-22T20:48:40.119Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db149f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/wdee270dpmo3xogbkisw.webp",
+      "publicId": "cserver/krusty_krab/uploads/wdee270dpmo3xogbkisw"
+    },
+    "name": "Bacon  N Egg Bagel with Plain Bagel",
+    "price": 11.41,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.124Z",
+    "updatedAt": "2023-09-22T20:48:40.124Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1513",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/ffikcxckrekkfxpjedzj.webp",
+      "publicId": "cserver/krusty_krab/uploads/ffikcxckrekkfxpjedzj"
+    },
+    "name": "Espresso",
+    "price": 3.71,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.283Z",
+    "updatedAt": "2023-09-22T20:48:40.283Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1523",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/nu2kzjheg1bcqebqqyoe.webp",
+      "publicId": "cserver/krusty_krab/uploads/nu2kzjheg1bcqebqqyoe"
+    },
+    "name": "Minute Maid Apple Juice",
+    "price": 15.58,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.317Z",
+    "updatedAt": "2023-09-22T20:48:40.317Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1529",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/m8qykym0g2eyvcizxo6r.webp",
+      "publicId": "cserver/krusty_krab/uploads/m8qykym0g2eyvcizxo6r"
+    },
+    "name": "Peach Mango Fruit Splash",
+    "price": 7.91,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.386Z",
+    "updatedAt": "2023-09-22T20:48:40.386Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db153d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/pivtwnorote9nkt7fcd2.webp",
+      "publicId": "cserver/krusty_krab/uploads/pivtwnorote9nkt7fcd2"
+    },
+    "name": "Maple   Brown Sugar Muffin",
+    "price": 11.7,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.448Z",
+    "updatedAt": "2023-09-22T20:48:40.448Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db157f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/zrty52kalcxifickkfvx.webp",
+      "publicId": "cserver/krusty_krab/uploads/zrty52kalcxifickkfvx"
+    },
+    "name": "Sesame Bagel with Butter",
+    "price": 6.43,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.536Z",
+    "updatedAt": "2023-09-22T20:48:40.536Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1587",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/bqfzu8htmnkq8mxcpszp.webp",
+      "publicId": "cserver/krusty_krab/uploads/bqfzu8htmnkq8mxcpszp"
+    },
+    "name": "Spicy Buffalo Chicken Poutine  Qu bec",
+    "price": 7.57,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.544Z",
+    "updatedAt": "2023-09-22T20:48:40.544Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15a1",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/tsyklczogdwoicwjpxvj.webp",
+      "publicId": "cserver/krusty_krab/uploads/tsyklczogdwoicwjpxvj"
+    },
+    "name": "Coca Cola Zero",
+    "price": 10.71,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.641Z",
+    "updatedAt": "2023-09-22T20:48:40.641Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15ab",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/btxbmmhor4uthky2oiea.webp",
+      "publicId": "cserver/krusty_krab/uploads/btxbmmhor4uthky2oiea"
+    },
+    "name": "Zesty Lime McWrap   Crispy",
+    "price": 3.11,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.667Z",
+    "updatedAt": "2023-09-22T20:48:40.667Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15b3",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/zzf5efqzs2dkyd401wm7.webp",
+      "publicId": "cserver/krusty_krab/uploads/zzf5efqzs2dkyd401wm7"
+    },
+    "name": "Spicy Buffalo Chicken Snack Wrap with Crispy Chicken",
+    "price": 6.73,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.770Z",
+    "updatedAt": "2023-09-22T20:48:40.770Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db167a",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/yh2jhfhfejl1f5qkzrbm.webp",
+      "publicId": "cserver/krusty_krab/uploads/yh2jhfhfejl1f5qkzrbm"
+    },
+    "name": "Quarter Pounder with Cheese",
+    "price": 7.18,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.960Z",
+    "updatedAt": "2023-09-22T20:48:40.960Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15bd",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/yi47uhho6esvrlkx3nax.webp",
+      "publicId": "cserver/krusty_krab/uploads/yi47uhho6esvrlkx3nax"
+    },
+    "name": "Premium Tea",
+    "price": 11.28,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.824Z",
+    "updatedAt": "2023-09-22T20:48:40.824Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db1471",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ds4ukikx77jouzfxxns3.webp",
+      "publicId": "cserver/krusty_krab/uploads/ds4ukikx77jouzfxxns3"
+    },
+    "name": "Caramel Iced Coffee",
+    "price": 6.35,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:39.979Z",
+    "updatedAt": "2023-09-22T20:48:39.979Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1481",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/dj7keclnuhxetsrbd4uz.webp",
+      "publicId": "cserver/krusty_krab/uploads/dj7keclnuhxetsrbd4uz"
+    },
+    "name": "Baked Apple Pie",
+    "price": 3.46,
+    "category": {
+      "_id": "650dd6c9cd20902cf312be7e"
+    },
+    "createdAt": "2023-09-22T20:48:40.006Z",
+    "updatedAt": "2023-09-22T20:48:40.006Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1495",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ycndcy0lxaglazadvzvi.webp",
+      "publicId": "cserver/krusty_krab/uploads/ycndcy0lxaglazadvzvi"
+    },
+    "name": "Caesar McWrap with Crispy Chicken",
+    "price": 6.26,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.059Z",
+    "updatedAt": "2023-09-22T20:48:40.059Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14a5",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/f5tsxdjdqoyfyiolbzku.webp",
+      "publicId": "cserver/krusty_krab/uploads/f5tsxdjdqoyfyiolbzku"
+    },
+    "name": "Double Glazed Li L Donut",
+    "price": 7.35,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.131Z",
+    "updatedAt": "2023-09-22T20:48:40.131Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14a9",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/e1sccj2axd2ww1via46z.webp",
+      "publicId": "cserver/krusty_krab/uploads/e1sccj2axd2ww1via46z"
+    },
+    "name": "Chicken McGriddles",
+    "price": 10.11,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.136Z",
+    "updatedAt": "2023-09-22T20:48:40.136Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14b9",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/dlrowzcuktjvwdoqtmfh.webp",
+      "publicId": "cserver/krusty_krab/uploads/dlrowzcuktjvwdoqtmfh"
+    },
+    "name": "Americano",
+    "price": 14.21,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.156Z",
+    "updatedAt": "2023-09-22T20:48:40.156Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db151f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/lflgcf86qrpytwcabxbi.webp",
+      "publicId": "cserver/krusty_krab/uploads/lflgcf86qrpytwcabxbi"
+    },
+    "name": "Hotcakes",
+    "price": 15.26,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.296Z",
+    "updatedAt": "2023-09-22T20:48:40.296Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1549",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/mhpd4jlijavofkf6p2tz.webp",
+      "publicId": "cserver/krusty_krab/uploads/mhpd4jlijavofkf6p2tz"
+    },
+    "name": "Ranch McCrispy",
+    "price": 6.71,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.461Z",
+    "updatedAt": "2023-09-22T20:48:40.461Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1557",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/wryn6x1drucsk9yx0tpj.webp",
+      "publicId": "cserver/krusty_krab/uploads/wryn6x1drucsk9yx0tpj"
+    },
+    "name": "Plain Bagel With Regular Cream Cheese Product",
+    "price": 13.53,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.473Z",
+    "updatedAt": "2023-09-22T20:48:40.473Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db155d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/lxtvohqmcdjmz73si8jh.webp",
+      "publicId": "cserver/krusty_krab/uploads/lxtvohqmcdjmz73si8jh"
+    },
+    "name": "Sausage McMuffin",
+    "price": 3.26,
+    "category": {
+      "_id": "650dd6c9cd20902cf312be7e"
+    },
+    "createdAt": "2023-09-22T20:48:40.478Z",
+    "updatedAt": "2023-09-22T20:48:40.478Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1579",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/cwxixkahj5k9c4g5rs97.webp",
+      "publicId": "cserver/krusty_krab/uploads/cwxixkahj5k9c4g5rs97"
+    },
+    "name": "World Famous Fries   Small",
+    "price": 6.29,
+    "category": {
+      "_id": "650dd6c9cd20902cf312be7e"
+    },
+    "createdAt": "2023-09-22T20:48:40.518Z",
+    "updatedAt": "2023-09-22T20:48:40.518Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1499",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/nlgcloahp1ocbgk5cti4.webp",
+      "publicId": "cserver/krusty_krab/uploads/nlgcloahp1ocbgk5cti4"
+    },
+    "name": "Caesar McWrap with Crispy Chicken",
+    "price": 6.26,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.108Z",
+    "updatedAt": "2023-09-22T20:48:40.108Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db1477",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ympzklsuw7biq9qvyvhq.webp",
+      "publicId": "cserver/krusty_krab/uploads/ympzklsuw7biq9qvyvhq"
+    },
+    "name": "Coca Cola",
+    "price": 5.91,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:39.989Z",
+    "updatedAt": "2023-09-22T20:48:39.989Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14b1",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/yrnpttq24qvqblbopdma.webp",
+      "publicId": "cserver/krusty_krab/uploads/yrnpttq24qvqblbopdma"
+    },
+    "name": "Diet Coke",
+    "price": 5.07,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.146Z",
+    "updatedAt": "2023-09-22T20:48:40.146Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14d7",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/pyvcmlvu2q3drihbdznt.webp",
+      "publicId": "cserver/krusty_krab/uploads/pyvcmlvu2q3drihbdznt"
+    },
+    "name": "Hot Chocolate",
+    "price": 4.67,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.205Z",
+    "updatedAt": "2023-09-22T20:48:40.205Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14e1",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/swwgbvjhnqnvu1fg9sbu.webp",
+      "publicId": "cserver/krusty_krab/uploads/swwgbvjhnqnvu1fg9sbu"
+    },
+    "name": "Fruitopia Orange Groove",
+    "price": 10.66,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.220Z",
+    "updatedAt": "2023-09-22T20:48:40.220Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14a3",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/rmd2te21szhhgtwy4r7j.webp",
+      "publicId": "cserver/krusty_krab/uploads/rmd2te21szhhgtwy4r7j"
+    },
+    "name": "Breakfast Burrito",
+    "price": 8.83,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.129Z",
+    "updatedAt": "2023-09-22T20:48:40.129Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1547",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/jqfygwucfuvk7sd0mxt5.webp",
+      "publicId": "cserver/krusty_krab/uploads/jqfygwucfuvk7sd0mxt5"
+    },
+    "name": "Sausage Egg   Cheese McGriddles",
+    "price": 11.84,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.459Z",
+    "updatedAt": "2023-09-22T20:48:40.459Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db155f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/lorfaczcxl1mwshei16m.webp",
+      "publicId": "cserver/krusty_krab/uploads/lorfaczcxl1mwshei16m"
+    },
+    "name": "Spicy Habanero McChicken",
+    "price": 8.22,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.481Z",
+    "updatedAt": "2023-09-22T20:48:40.481Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db156d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/pvtcsugpny3wn0janthq.webp",
+      "publicId": "cserver/krusty_krab/uploads/pvtcsugpny3wn0janthq"
+    },
+    "name": "Spicy Buffalo Chicken Snack Wrap with Grilled Chicken",
+    "price": 3.61,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.499Z",
+    "updatedAt": "2023-09-22T20:48:40.499Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1581",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/j44lwjdoigdyqwuvwsrx.webp",
+      "publicId": "cserver/krusty_krab/uploads/j44lwjdoigdyqwuvwsrx"
+    },
+    "name": "Mighty McGriddles",
+    "price": 5.35,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.538Z",
+    "updatedAt": "2023-09-22T20:48:40.538Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db158d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/faclxhviiq8yuqipnc83.webp",
+      "publicId": "cserver/krusty_krab/uploads/faclxhviiq8yuqipnc83"
+    },
+    "name": "Strawberry Passionfruit Fruit Splash",
+    "price": 12.27,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.550Z",
+    "updatedAt": "2023-09-22T20:48:40.550Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db1465",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/rlu6wvli62qu4cpwbgxr.webp",
+      "publicId": "cserver/krusty_krab/uploads/rlu6wvli62qu4cpwbgxr"
+    },
+    "name": "Blueberry Pomegranate Real Fruit Smoothie",
+    "price": 15.13,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:39.953Z",
+    "updatedAt": "2023-09-22T20:48:39.953Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db145f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/amnlb7ad2wkqenqgwkys.webp",
+      "publicId": "cserver/krusty_krab/uploads/amnlb7ad2wkqenqgwkys"
+    },
+    "name": "Bacon Ranch McCrispy",
+    "price": 11.54,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:39.891Z",
+    "updatedAt": "2023-09-22T20:48:39.891Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db147d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ompqj1mso7fphrrnbjwy.webp",
+      "publicId": "cserver/krusty_krab/uploads/ompqj1mso7fphrrnbjwy"
+    },
+    "name": "Latte   2  milk",
+    "price": 7.5,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.001Z",
+    "updatedAt": "2023-09-22T20:48:40.001Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1493",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/brzmetums7nrq6pxhwki.webp",
+      "publicId": "cserver/krusty_krab/uploads/brzmetums7nrq6pxhwki"
+    },
+    "name": "Big Mac",
+    "price": 7.81,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.056Z",
+    "updatedAt": "2023-09-22T20:48:40.056Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14b5",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/rdhjbsdijhxx1rcajvmn.webp",
+      "publicId": "cserver/krusty_krab/uploads/rdhjbsdijhxx1rcajvmn"
+    },
+    "name": "Double Filet O Fish",
+    "price": 4.8,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.151Z",
+    "updatedAt": "2023-09-22T20:48:40.151Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14c9",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/bvlyklrioctzmjdfdfig.webp",
+      "publicId": "cserver/krusty_krab/uploads/bvlyklrioctzmjdfdfig"
+    },
+    "name": "1  Partly Skimmed Chocolate Milk   250 ml",
+    "price": 3.52,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.175Z",
+    "updatedAt": "2023-09-22T20:48:40.175Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14d1",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/qdmkgj4hb4exonvrrsfe.webp",
+      "publicId": "cserver/krusty_krab/uploads/qdmkgj4hb4exonvrrsfe"
+    },
+    "name": "Double Quarter Pounder with Cheese",
+    "price": 13.47,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.198Z",
+    "updatedAt": "2023-09-22T20:48:40.198Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14f5",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/cyohfnjixbefgn7xapxz.webp",
+      "publicId": "cserver/krusty_krab/uploads/cyohfnjixbefgn7xapxz"
+    },
+    "name": "Hotcakes with Syrup and Butter",
+    "price": 4.9,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.246Z",
+    "updatedAt": "2023-09-22T20:48:40.246Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14ff",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/otr5jrjxnp9xbymht4fb.webp",
+      "publicId": "cserver/krusty_krab/uploads/otr5jrjxnp9xbymht4fb"
+    },
+    "name": "Fruitopia Strawberry Passion Awareness",
+    "price": 7.14,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.253Z",
+    "updatedAt": "2023-09-22T20:48:40.253Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1505",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/znzlqglg1j0sbcidijf1.webp",
+      "publicId": "cserver/krusty_krab/uploads/znzlqglg1j0sbcidijf1"
+    },
+    "name": "Egg BLT Bagel with Plain Bagel",
+    "price": 13.86,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.263Z",
+    "updatedAt": "2023-09-22T20:48:40.263Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db150f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/luntsna85mztpu5ktnvn.webp",
+      "publicId": "cserver/krusty_krab/uploads/luntsna85mztpu5ktnvn"
+    },
+    "name": "French Vanilla Latte   2  milk",
+    "price": 9.86,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.279Z",
+    "updatedAt": "2023-09-22T20:48:40.279Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db152f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/ma9dca8fcngniaiae4sc.webp",
+      "publicId": "cserver/krusty_krab/uploads/ma9dca8fcngniaiae4sc"
+    },
+    "name": "Oreo McFlurry",
+    "price": 7.32,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.402Z",
+    "updatedAt": "2023-09-22T20:48:40.402Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1533",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/tbqwz0mpbz6wlm1rhqka.webp",
+      "publicId": "cserver/krusty_krab/uploads/tbqwz0mpbz6wlm1rhqka"
+    },
+    "name": "Lemon Fruit Splash",
+    "price": 4.9,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.424Z",
+    "updatedAt": "2023-09-22T20:48:40.424Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1545",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/xn3kqoj3axm9ack9myeu.webp",
+      "publicId": "cserver/krusty_krab/uploads/xn3kqoj3axm9ack9myeu"
+    },
+    "name": "Ranch Chicken Snack Wrap with Crispy Chicken",
+    "price": 12.91,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.456Z",
+    "updatedAt": "2023-09-22T20:48:40.456Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db157b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/t5gl75crniqxfe4qxgnv.webp",
+      "publicId": "cserver/krusty_krab/uploads/t5gl75crniqxfe4qxgnv"
+    },
+    "name": "Sesame Egg BLT Bagel",
+    "price": 6.16,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.520Z",
+    "updatedAt": "2023-09-22T20:48:40.520Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15a5",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/t6z09nrstdcjmwncfhka.webp",
+      "publicId": "cserver/krusty_krab/uploads/t6z09nrstdcjmwncfhka"
+    },
+    "name": "Nestea Iced Tea",
+    "price": 8.61,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.644Z",
+    "updatedAt": "2023-09-22T20:48:40.644Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15b7",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/t1cz48ztuv6dv9pyvp9y.webp",
+      "publicId": "cserver/krusty_krab/uploads/t1cz48ztuv6dv9pyvp9y"
+    },
+    "name": "Smarties McFlurry",
+    "price": 15.11,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.776Z",
+    "updatedAt": "2023-09-22T20:48:40.776Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1535",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/lcg1gkamj1ldrzti5bzt.webp",
+      "publicId": "cserver/krusty_krab/uploads/lcg1gkamj1ldrzti5bzt"
+    },
+    "name": "Hash Browns",
+    "price": 14.15,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.426Z",
+    "updatedAt": "2023-09-22T20:48:40.426Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1674",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/ssk5rpiltu6rep1ad1qb.webp",
+      "publicId": "cserver/krusty_krab/uploads/ssk5rpiltu6rep1ad1qb"
+    },
+    "name": "Ranch Chicken Snack Wrap with Grilled Chicken",
+    "price": 9.74,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.939Z",
+    "updatedAt": "2023-09-22T20:48:40.939Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1483",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/gyuaa0ostgb5k5kbm1zm.webp",
+      "publicId": "cserver/krusty_krab/uploads/gyuaa0ostgb5k5kbm1zm"
+    },
+    "name": "4 Chicken McNuggets",
+    "price": 3.93,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.009Z",
+    "updatedAt": "2023-09-22T20:48:40.009Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14e9",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ooivjdifzp2bpgndnbbj.webp",
+      "publicId": "cserver/krusty_krab/uploads/ooivjdifzp2bpgndnbbj"
+    },
+    "name": "Chocolate Glazed Li L Donut",
+    "price": 4.02,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.233Z",
+    "updatedAt": "2023-09-22T20:48:40.233Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1511",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/phdrfspkn3aidhcxmuna.webp",
+      "publicId": "cserver/krusty_krab/uploads/phdrfspkn3aidhcxmuna"
+    },
+    "name": "Cranberry Orange Muffin",
+    "price": 15,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.281Z",
+    "updatedAt": "2023-09-22T20:48:40.281Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1521",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/quyxmmcmhfyj2mupyok.webp",
+      "publicId": "cserver/krusty_krab/uploads/quyxmmcmhfyj2mupyok"
+    },
+    "name": "Egg McMuffin",
+    "price": 15.95,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.315Z",
+    "updatedAt": "2023-09-22T20:48:40.315Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1485",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/sgvid53xlpy18ywz331v.webp",
+      "publicId": "cserver/krusty_krab/uploads/sgvid53xlpy18ywz331v"
+    },
+    "name": "Bacon  N Egg Bagel with Everything Bagel",
+    "price": 8.85,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.011Z",
+    "updatedAt": "2023-09-22T20:48:40.011Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14b3",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/lfpinm7dhim0lyeyy4mk.webp",
+      "publicId": "cserver/krusty_krab/uploads/lfpinm7dhim0lyeyy4mk"
+    },
+    "name": "Maple Caramel Li L Donut",
+    "price": 11.64,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.148Z",
+    "updatedAt": "2023-09-22T20:48:40.148Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14cb",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ph9hwtg1ky62krqjucbm.webp",
+      "publicId": "cserver/krusty_krab/uploads/ph9hwtg1ky62krqjucbm"
+    },
+    "name": "Junior Chicken",
+    "price": 12.06,
+    "category": {
+      "_id": "650dd6c9cd20902cf312be7e"
+    },
+    "createdAt": "2023-09-22T20:48:40.177Z",
+    "updatedAt": "2023-09-22T20:48:40.177Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14e3",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/qtbd7utmfgenqojbbab9.webp",
+      "publicId": "cserver/krusty_krab/uploads/qtbd7utmfgenqojbbab9"
+    },
+    "name": "Mango Pineapple Real Fruit Smoothie",
+    "price": 10.67,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.225Z",
+    "updatedAt": "2023-09-22T20:48:40.225Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14df",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/orjsyifmax9v6x3g77f7.webp",
+      "publicId": "cserver/krusty_krab/uploads/orjsyifmax9v6x3g77f7"
+    },
+    "name": "Hotcakes Happy Meal",
+    "price": 5.18,
+    "category": {
+      "_id": "650dd6d8cd20902cf312be81"
+    },
+    "createdAt": "2023-09-22T20:48:40.217Z",
+    "updatedAt": "2023-09-22T20:48:40.217Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1507",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/bjilctkjf0d1kup4yfah.webp",
+      "publicId": "cserver/krusty_krab/uploads/bjilctkjf0d1kup4yfah"
+    },
+    "name": "McChicken",
+    "price": 11.62,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.266Z",
+    "updatedAt": "2023-09-22T20:48:40.266Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db154d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/yta1ffoqfzy5i5aftxxt.webp",
+      "publicId": "cserver/krusty_krab/uploads/yta1ffoqfzy5i5aftxxt"
+    },
+    "name": "Premium Roast Brewed Coffee",
+    "price": 4.9,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.464Z",
+    "updatedAt": "2023-09-22T20:48:40.464Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db156f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/z63cspudtxlwijbmdizo.webp",
+      "publicId": "cserver/krusty_krab/uploads/z63cspudtxlwijbmdizo"
+    },
+    "name": "Yogurt Tube",
+    "price": 11.88,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.501Z",
+    "updatedAt": "2023-09-22T20:48:40.501Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1583",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/zp6mmkajvftjgy0c9uj7.webp",
+      "publicId": "cserver/krusty_krab/uploads/zp6mmkajvftjgy0c9uj7"
+    },
+    "name": "Vanilla Cone",
+    "price": 9.38,
+    "category": {
+      "_id": "650dd6c9cd20902cf312be7e"
+    },
+    "createdAt": "2023-09-22T20:48:40.540Z",
+    "updatedAt": "2023-09-22T20:48:40.540Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db159d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/qjjroeterwhj8wwkrajp.webp",
+      "publicId": "cserver/krusty_krab/uploads/qjjroeterwhj8wwkrajp"
+    },
+    "name": "Plain Bagel With Butter",
+    "price": 9.11,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.637Z",
+    "updatedAt": "2023-09-22T20:48:40.637Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15a9",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/yllpsozi1twkukag0edw.webp",
+      "publicId": "cserver/krusty_krab/uploads/yllpsozi1twkukag0edw"
+    },
+    "name": "Sprite",
+    "price": 6.02,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:40.649Z",
+    "updatedAt": "2023-09-22T20:48:40.649Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db167c",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/cfgcxq0zpsgrxujrxkcl.webp",
+      "publicId": "cserver/krusty_krab/uploads/cfgcxq0zpsgrxujrxkcl"
+    },
+    "name": "McCrispy",
+    "price": 4.98,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.963Z",
+    "updatedAt": "2023-09-22T20:48:40.963Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1680",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/k1xukpzdtdaeotsibnco.webp",
+      "publicId": "cserver/krusty_krab/uploads/k1xukpzdtdaeotsibnco"
+    },
+    "name": "Strawberry Baked Pie",
+    "price": 8.79,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.988Z",
+    "updatedAt": "2023-09-22T20:48:40.988Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db147f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/cz1x6m8gpd0lfeo2ipd0.webp",
+      "publicId": "cserver/krusty_krab/uploads/cz1x6m8gpd0lfeo2ipd0"
+    },
+    "name": "Cappuccino   2  milk",
+    "price": 10.22,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.004Z",
+    "updatedAt": "2023-09-22T20:48:40.004Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1487",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/oca1hpab6tqivwgwl6pw.webp",
+      "publicId": "cserver/krusty_krab/uploads/oca1hpab6tqivwgwl6pw"
+    },
+    "name": "Egg BLT McMuffin",
+    "price": 15.29,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.014Z",
+    "updatedAt": "2023-09-22T20:48:40.014Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14f3",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/tktxokdjidjlrjatadtm.webp",
+      "publicId": "cserver/krusty_krab/uploads/tktxokdjidjlrjatadtm"
+    },
+    "name": "Latte with Sugar Free Syrup   2  milk",
+    "price": 15.4,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.244Z",
+    "updatedAt": "2023-09-22T20:48:40.244Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1501",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/c2yl2bvovoc9qf21ua1a.webp",
+      "publicId": "cserver/krusty_krab/uploads/c2yl2bvovoc9qf21ua1a"
+    },
+    "name": "Chicken Snack Wrap Happy Meal with Crispy Chicken",
+    "price": 8.7,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.255Z",
+    "updatedAt": "2023-09-22T20:48:40.255Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1541",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/we4snlc9blcj4eba7umg.webp",
+      "publicId": "cserver/krusty_krab/uploads/we4snlc9blcj4eba7umg"
+    },
+    "name": "Mini Fry",
+    "price": 6.53,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.452Z",
+    "updatedAt": "2023-09-22T20:48:40.452Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1565",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/xxigjkuh9x73tit2m12w.webp",
+      "publicId": "cserver/krusty_krab/uploads/xxigjkuh9x73tit2m12w"
+    },
+    "name": "Sweet Chili McWrap   Grilled",
+    "price": 13.8,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.491Z",
+    "updatedAt": "2023-09-22T20:48:40.491Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1577",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/gjxtbely98vk2hquzboo.webp",
+      "publicId": "cserver/krusty_krab/uploads/gjxtbely98vk2hquzboo"
+    },
+    "name": "Sweet Chili McWrap   Crispy",
+    "price": 7.22,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.512Z",
+    "updatedAt": "2023-09-22T20:48:40.512Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db158b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/ms1rd1cnoxesph2szdzw.webp",
+      "publicId": "cserver/krusty_krab/uploads/ms1rd1cnoxesph2szdzw"
+    },
+    "name": "Zesty Lime McWrap   Grilled",
+    "price": 15.64,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.548Z",
+    "updatedAt": "2023-09-22T20:48:40.548Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1593",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/vnv7zqxiatcqklp5beau.webp",
+      "publicId": "cserver/krusty_krab/uploads/vnv7zqxiatcqklp5beau"
+    },
+    "name": "Spicy Bacon Deluxe Grilled Chicken Sandwich",
+    "price": 13.24,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.574Z",
+    "updatedAt": "2023-09-22T20:48:40.574Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1597",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/utvfw0hd0jmrvfkjllny.webp",
+      "publicId": "cserver/krusty_krab/uploads/utvfw0hd0jmrvfkjllny"
+    },
+    "name": "Strawberry Triple Thick Milkshake",
+    "price": 15.65,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.581Z",
+    "updatedAt": "2023-09-22T20:48:40.581Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15a7",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/lgbgntfigcpc7efoualw.webp",
+      "publicId": "cserver/krusty_krab/uploads/lgbgntfigcpc7efoualw"
+    },
+    "name": "Ranch Chicken Snack Wrap with Grilled Chicken",
+    "price": 9.74,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.647Z",
+    "updatedAt": "2023-09-22T20:48:40.647Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15af",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/uir6l17yivlibutufjy2.webp",
+      "publicId": "cserver/krusty_krab/uploads/uir6l17yivlibutufjy2"
+    },
+    "name": "World Famous Fries",
+    "price": 12.93,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.716Z",
+    "updatedAt": "2023-09-22T20:48:40.716Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db1479",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/bbunbvtksohhl8nwya20.webp",
+      "publicId": "cserver/krusty_krab/uploads/bbunbvtksohhl8nwya20"
+    },
+    "name": "Bacon Deluxe Grilled Chicken Sandwich",
+    "price": 7.5,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:39.992Z",
+    "updatedAt": "2023-09-22T20:48:39.992Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db147b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/qvqzcx8ls6hgiqzhejsz.webp",
+      "publicId": "cserver/krusty_krab/uploads/qvqzcx8ls6hgiqzhejsz"
+    },
+    "name": "Everything Bagel With Regular Cream Cheese Product",
+    "price": 14.81,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:39.998Z",
+    "updatedAt": "2023-09-22T20:48:39.998Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14af",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/viqcdbj8tgldvhchf9g0.webp",
+      "publicId": "cserver/krusty_krab/uploads/viqcdbj8tgldvhchf9g0"
+    },
+    "name": "Hamburger",
+    "price": 7.78,
+    "category": {
+      "_id": "650dd6c9cd20902cf312be7e"
+    },
+    "createdAt": "2023-09-22T20:48:40.143Z",
+    "updatedAt": "2023-09-22T20:48:40.143Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14d9",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/whmruxu54odyoqzqfglo.webp",
+      "publicId": "cserver/krusty_krab/uploads/whmruxu54odyoqzqfglo"
+    },
+    "name": "Double Hamburger",
+    "price": 3.41,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.207Z",
+    "updatedAt": "2023-09-22T20:48:40.207Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14f9",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/v9uds4go6nvqt9yuvcpq.webp",
+      "publicId": "cserver/krusty_krab/uploads/v9uds4go6nvqt9yuvcpq"
+    },
+    "name": "Hot Caramel Sundae",
+    "price": 4.87,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.249Z",
+    "updatedAt": "2023-09-22T20:48:40.249Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14a1",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/k6ux7zkulbahobjzts8d.webp",
+      "publicId": "cserver/krusty_krab/uploads/k6ux7zkulbahobjzts8d"
+    },
+    "name": "Caramel Latte   2  milk",
+    "price": 14.33,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.126Z",
+    "updatedAt": "2023-09-22T20:48:40.126Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1527",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/mmqwii3bo2w3bqqdftu4.webp",
+      "publicId": "cserver/krusty_krab/uploads/mmqwii3bo2w3bqqdftu4"
+    },
+    "name": "Quarter Pounder without Cheese",
+    "price": 3.09,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.383Z",
+    "updatedAt": "2023-09-22T20:48:40.383Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1553",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/gnpg0dhvbwc0ttn7cmjb.webp",
+      "publicId": "cserver/krusty_krab/uploads/gnpg0dhvbwc0ttn7cmjb"
+    },
+    "name": "Sprinkle Li L Donut",
+    "price": 3.34,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.470Z",
+    "updatedAt": "2023-09-22T20:48:40.470Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db155b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/whrzczwioxweojtdepgz.webp",
+      "publicId": "cserver/krusty_krab/uploads/whrzczwioxweojtdepgz"
+    },
+    "name": "Sweet Chili McWrap   Grilled",
+    "price": 13.8,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.476Z",
+    "updatedAt": "2023-09-22T20:48:40.476Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1573",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/bga0jaqekcsydwumqoka.webp",
+      "publicId": "cserver/krusty_krab/uploads/bga0jaqekcsydwumqoka"
+    },
+    "name": "Spicy Buffalo Chicken Snack Wrap with Grilled Chicken",
+    "price": 3.61,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.506Z",
+    "updatedAt": "2023-09-22T20:48:40.506Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1575",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/twprfpfdj3nylaprhc9x.webp",
+      "publicId": "cserver/krusty_krab/uploads/twprfpfdj3nylaprhc9x"
+    },
+    "name": "Vanilla Triple Thick Milkshake",
+    "price": 13.1,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.511Z",
+    "updatedAt": "2023-09-22T20:48:40.511Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db157d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/tai3knix88bijazffl3g.webp",
+      "publicId": "cserver/krusty_krab/uploads/tai3knix88bijazffl3g"
+    },
+    "name": "Poutine",
+    "price": 8.05,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:40.534Z",
+    "updatedAt": "2023-09-22T20:48:40.534Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db159b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/umuj0jq9amndtmhgik29.webp",
+      "publicId": "cserver/krusty_krab/uploads/umuj0jq9amndtmhgik29"
+    },
+    "name": "Sausage  N Egg McMuffin",
+    "price": 9.18,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.606Z",
+    "updatedAt": "2023-09-22T20:48:40.606Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db1463",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/vwvoeussiof7qqnrxool.webp",
+      "publicId": "cserver/krusty_krab/uploads/vwvoeussiof7qqnrxool"
+    },
+    "name": "1  Partly Skimmed Milk   250 ml",
+    "price": 10.8,
+    "category": {
+      "_id": "650dd6a8cd20902cf312be78"
+    },
+    "createdAt": "2023-09-22T20:48:39.945Z",
+    "updatedAt": "2023-09-22T20:48:39.945Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda78c59c59a14db1473",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/qzthbq6wo7rnppaaek0j.webp",
+      "publicId": "cserver/krusty_krab/uploads/qzthbq6wo7rnppaaek0j"
+    },
+    "name": "Brownie RMHC Cookie",
+    "price": 4.36,
+    "category": {
+      "_id": "64fca42948d8a466c9262fac"
+    },
+    "createdAt": "2023-09-22T20:48:39.983Z",
+    "updatedAt": "2023-09-22T20:48:39.983Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db148d",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/ssk6mmsxoy6rsjpeafdj.webp",
+      "publicId": "cserver/krusty_krab/uploads/ssk6mmsxoy6rsjpeafdj"
+    },
+    "name": "Baked Apple Pie",
+    "price": 3.46,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.019Z",
+    "updatedAt": "2023-09-22T20:48:40.019Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14ad",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/i2xzse1lsdy5ede2k5hm.webp",
+      "publicId": "cserver/krusty_krab/uploads/i2xzse1lsdy5ede2k5hm"
+    },
+    "name": "Chicken McMuffin",
+    "price": 11.58,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.141Z",
+    "updatedAt": "2023-09-22T20:48:40.141Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14db",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/nfhbquusr5h9mf1ikyv7.webp",
+      "publicId": "cserver/krusty_krab/uploads/nfhbquusr5h9mf1ikyv7"
+    },
+    "name": "Grilled Chicken Sandwich",
+    "price": 5.1,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.209Z",
+    "updatedAt": "2023-09-22T20:48:40.209Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14e7",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/r3reiq3fvou3ouhpltt5.webp",
+      "publicId": "cserver/krusty_krab/uploads/r3reiq3fvou3ouhpltt5"
+    },
+    "name": "Cheeseburger Happy Meal",
+    "price": 3.53,
+    "category": {
+      "_id": "650dd6d8cd20902cf312be81"
+    },
+    "createdAt": "2023-09-22T20:48:40.231Z",
+    "updatedAt": "2023-09-22T20:48:40.231Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db14f1",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/rzik2mqicyhszhedgctb.webp",
+      "publicId": "cserver/krusty_krab/uploads/rzik2mqicyhszhedgctb"
+    },
+    "name": "Banana Chocolate Chunk Muffin",
+    "price": 12.36,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.242Z",
+    "updatedAt": "2023-09-22T20:48:40.242Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1517",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415726/cserver/krusty_krab/uploads/tobe76dmootdgynjcdo4.webp",
+      "publicId": "cserver/krusty_krab/uploads/tobe76dmootdgynjcdo4"
+    },
+    "name": "Chicken Snack Wrap Happy Meal with Crispy Chicken",
+    "price": 8.7,
+    "category": {
+      "_id": "64fca3c248d8a466c9262fa8"
+    },
+    "createdAt": "2023-09-22T20:48:40.288Z",
+    "updatedAt": "2023-09-22T20:48:40.288Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db153b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/yjfb5bgmy5fequ2lggkr.webp",
+      "publicId": "cserver/krusty_krab/uploads/yjfb5bgmy5fequ2lggkr"
+    },
+    "name": "McDouble",
+    "price": 11.32,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.435Z",
+    "updatedAt": "2023-09-22T20:48:40.435Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1543",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/jm9dhg64kltf4qdoclhz.webp",
+      "publicId": "cserver/krusty_krab/uploads/jm9dhg64kltf4qdoclhz"
+    },
+    "name": "McCrispy Bacon Deluxe",
+    "price": 12.18,
+    "category": {
+      "_id": "64fca39b48d8a466c9262fa3"
+    },
+    "createdAt": "2023-09-22T20:48:40.454Z",
+    "updatedAt": "2023-09-22T20:48:40.454Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1555",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/erfojtrmo0o8d655q2sr.webp",
+      "publicId": "cserver/krusty_krab/uploads/erfojtrmo0o8d655q2sr"
+    },
+    "name": "Pumpkin Spice Latte",
+    "price": 6.22,
+    "category": {
+      "_id": "650dd6bbcd20902cf312be7b"
+    },
+    "createdAt": "2023-09-22T20:48:40.471Z",
+    "updatedAt": "2023-09-22T20:48:40.471Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1561",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/he5meawaqxwqwnlbiaub.webp",
+      "publicId": "cserver/krusty_krab/uploads/he5meawaqxwqwnlbiaub"
+    },
+    "name": "Sausage  N Egg Bagel with Plain Bagel",
+    "price": 7.03,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.483Z",
+    "updatedAt": "2023-09-22T20:48:40.483Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db156b",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/h5mfhlzffnx9ydyzjdcw.webp",
+      "publicId": "cserver/krusty_krab/uploads/h5mfhlzffnx9ydyzjdcw"
+    },
+    "name": "Quarter Pounder BLT",
+    "price": 10.03,
+    "category": {
+      "_id": "64fca34948d8a466c9262f9b"
+    },
+    "createdAt": "2023-09-22T20:48:40.497Z",
+    "updatedAt": "2023-09-22T20:48:40.497Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db1585",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/ihmmyggsjfrwzlxyksvi.webp",
+      "publicId": "cserver/krusty_krab/uploads/ihmmyggsjfrwzlxyksvi"
+    },
+    "name": "Mighty McMuffin",
+    "price": 10.5,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.542Z",
+    "updatedAt": "2023-09-22T20:48:40.542Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db158f",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/sp8nas3gnut9nunbmfxr.webp",
+      "publicId": "cserver/krusty_krab/uploads/sp8nas3gnut9nunbmfxr"
+    },
+    "name": "Vanilla Cone",
+    "price": 9.38,
+    "category": {
+      "_id": "64fca44d48d8a466c9262faf"
+    },
+    "createdAt": "2023-09-22T20:48:40.553Z",
+    "updatedAt": "2023-09-22T20:48:40.553Z",
+    "__v": 0
+  },
+  {
+    "_id": "650dfda88c59c59a14db15bf",
+    "image": {
+      "url": "https://res.cloudinary.com/cserver/image/upload/v1695415727/cserver/krusty_krab/uploads/whvow6tw6m111leaelw2.webp",
+      "publicId": "cserver/krusty_krab/uploads/whvow6tw6m111leaelw2"
+    },
+    "name": "Sausage McMuffin",
+    "price": 3.26,
+    "category": {
+      "_id": "64fccdfd7823ad9d0b052a52"
+    },
+    "createdAt": "2023-09-22T20:48:40.826Z",
+    "updatedAt": "2023-09-22T20:48:40.826Z",
+    "__v": 0
+  }
+]

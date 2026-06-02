@@ -15,6 +15,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { RedisCacheModule } from './redis-cache/redis-cache.module';
 import KeyvRedis from '@keyv/redis';
 import { RedisCacheService } from './redis-cache/redis-cache.service';
+import { SeedModule } from './seed/seed.module';
 
 @Global()
 @Module({
@@ -71,6 +72,7 @@ import { RedisCacheService } from './redis-cache/redis-cache.service';
     EmailModule,
     RabbitmqModule,
     RedisCacheModule,
+    SeedModule,
   ],
 })
 export class CoreModule {}

@@ -61,6 +61,41 @@ type User {
   createdAt: DateTime!
 }
 
+type Order {
+  id: Int!
+  user: User!
+  orderItem: [OrderItem!]!
+  paymentMethod: PaymentMethod!
+  taxPrice: Float!
+  shippingPrice: Float!
+  totalPrice: Float!
+  isPaid: Boolean!
+  status: OrderStatus!
+  deliveredAt: DateTime
+}
+
+enum PaymentMethod {
+  CASH
+  CARD
+}
+
+enum OrderStatus {
+  PLACED
+  CONFIRMED
+  PREPARATION
+  DELIVERY
+  COMPLETE
+  CANCELLED
+}
+
+type OrderItem {
+  id: Int!
+  quantity: Int!
+  price: Float!
+  product: Product!
+  order: Order!
+}
+
 type DeleteResponseDto {
   success: Boolean!
   message: String!
@@ -89,41 +124,6 @@ type ResponseCartDto {
   id: Int!
   userId: Float!
   cartItem: [ResponseCartItemDto!]!
-}
-
-type OrderItem {
-  id: Int!
-  quantity: Int!
-  price: Float!
-  product: Product!
-  order: Order!
-}
-
-type Order {
-  id: Int!
-  user: User!
-  orderItem: [OrderItem!]!
-  paymentMethod: PaymentMethod!
-  taxPrice: Float!
-  shippingPrice: Float!
-  totalPrice: Float!
-  isPaid: Boolean!
-  status: OrderStatus!
-  deliveredAt: DateTime
-}
-
-enum PaymentMethod {
-  CASH
-  CARD
-}
-
-enum OrderStatus {
-  PLACED
-  CONFIRMED
-  PREPARATION
-  DELIVERY
-  COMPLETE
-  CANCELLED
 }
 
 type Query {

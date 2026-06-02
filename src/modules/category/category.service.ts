@@ -10,6 +10,12 @@ import { streamToBase64Image } from 'src/utils/file.util';
 import { Image } from '../image/entities/image.entity';
 import { CloudinaryService } from 'src/core/cloudinary/cloudinary.service';
 import { RedisCacheService } from 'src/core/redis-cache/redis-cache.service';
+import {
+  FilterOperator,
+  FilterSuffix,
+  paginate,
+  PaginateQuery,
+} from 'nestjs-paginate';
 
 @Injectable()
 export class CategoryService {
@@ -39,8 +45,20 @@ export class CategoryService {
     return await this.categoryRepository.save(category);
   }
 
-  findAll() {
-    return this.categoryRepository.find();
+  async findAll(query: PaginateQuery) {
+    const result = await paginate(query, this.categoryRepository, {
+      sortableColumns: ['id', 'name'],
+      nullSort: 'last',
+      defaultSortBy: [['id', 'DESC']],
+      searchableColumns: ['name'],
+      // select: ['id', 'name'],
+      filterableColumns: {
+        name: [FilterOperator.EQ, FilterSuffix.NOT],
+      },
+      defaultLimit: 5,
+    });
+
+    return result;
   }
 
   async findOne(id: number) {

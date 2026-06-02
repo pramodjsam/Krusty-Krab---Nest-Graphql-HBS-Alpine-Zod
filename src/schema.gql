@@ -101,6 +101,18 @@ type DeleteResponseDto {
   message: String!
 }
 
+type Pagination {
+  itemsPerPage: Int!
+  totalItems: Int!
+  currentPage: Int!
+  totalPages: Int!
+}
+
+type CategoryPaginated {
+  data: [Category!]!
+  pagination: Pagination!
+}
+
 type PasswordResetResponseDto {
   success: Boolean!
   message: String!
@@ -127,7 +139,7 @@ type ResponseCartDto {
 }
 
 type Query {
-  getCategories: [Category!]!
+  getCategories(page: Int, limit: Int): CategoryPaginated!
   getCategory(id: Int!): Category
   getImage(id: Int!): Image!
   getProducts: [Product!]!

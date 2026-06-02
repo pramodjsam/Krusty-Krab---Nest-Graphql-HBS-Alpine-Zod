@@ -1,9 +1,9 @@
-<section id='adminCategory' class='p-3'>
-	<div class='info d-flex align-items-center justify-content-between'>
+<section id="adminCategory" class="p-3" x-data="categoryAdminPage()">
+	<div class="info d-flex align-items-center justify-content-between">
 		<h1>Categories</h1>
-		<a href='/user/admin/category/add'><button class='btn btn-primary btn-sm py-2'>Add New Category</button></a>
+		<a href="/user/admin/category/add"><button class="btn btn-primary btn-sm py-2">Add New Category</button></a>
 	</div>
-	<table class='table striped mt-5'>
+	<table class="table striped mt-5">
 		<thead>
 			<tr>
 				<th>#</th>
@@ -12,40 +12,69 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>Category</td>
-				<td>
-					<a class='btn btn-warning btn-sm text-black' href='/user/admin/category/edit'>Edit</a>
-					<button class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteModal'>
-						Delete
-					</button>
-				</td>
-			</tr>
+			<template x-for="category in categories" :key="category.id">
+				<tr>
+					<td x-text="category.id"></td>
+					<td x-text="category.name"></td>
+					<td>
+						<a class="btn btn-warning btn-sm text-black" :href="`/user/admin/category/edit/${category.id}`">
+							Edit
+						</a>
+						<button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
+							Delete
+						</button>
+					</td>
+				</tr>
+			</template>
 		</tbody>
 	</table>
+	<div class="d-flex flex-col align-items-center justify-content-center">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+					<button class="page-link text-black" @click="goToPage(currentPage - 1)">Previous</button>
+				</li>
+				<template x-for="page in visiblePages()" :key="page.key">
+					<li
+						class="page-item"
+						:class="{ 'active': page.number === currentPage, 'disabled': page.isEllipsis }"
+					>
+						<button
+							class="page-link"
+							x-text="page.text"
+							@click="!page.isEllipsis && goToPage(page.number)"
+						></button>
+					</li>
+				</template>
+				<li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+					<button class="page-link text-black" @click="goToPage(currentPage + 1)">Next</button>
+				</li>
+			</ul>
+		</nav>
+	</div>
 	<div
-		id='deleteModal'
-		class='modal'
-		tabindex='-1'
-		tabindex='-1'
-		aria-labelledby='deleteModalLabel'
-		aria-hidden='true'
+		id="deleteModal"
+		class="modal"
+		tabindex="-1"
+		tabindex="-1"
+		aria-labelledby="deleteModalLabel"
+		aria-hidden="true"
 	>
-		<div class='modal-dialog'>
-			<div class='modal-content'>
-				<div class='modal-header'>
-					<h5 class='modal-title'>Warning</h5>
-					<button class='btn-close' type='button' data-bs-dismiss='modal' aria-label='Close'></button>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Warning</h5>
+					<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div class='modal-body'>
+				<div class="modal-body">
 					<p>Are you sure you want to delete?</p>
 				</div>
-				<div class='modal-footer'>
-					<button class='btn btn-secondary' type='button' data-bs-dismiss='modal'>Close</button>
-					<button class='btn btn-danger' type='button'>Yes</button>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
+					<button class="btn btn-danger" type="button" click="confirmDelete()">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+<script type="module" src="/js/alpine/admin/category/index.js"></script>

@@ -8,6 +8,7 @@ import { ValidationPipe } from '@nestjs/common';
 import compression from 'compression';
 import path from 'node:path';
 import { engine } from 'express-handlebars';
+import { hbsHelpers } from './utils/hbs-helpers.utils';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -25,12 +26,6 @@ async function bootstrap() {
 
   await app.startAllMicroservices();
 
-  // const viewsPath = path.join(process.cwd(), 'views');
-  // app.useStaticAssets(path.join(process.cwd(), 'public'));
-  // app.setBaseViewsDir(viewsPath);
-  // app.setViewEngine('hbs');
-  // hbs.registerPartials(path.join(viewsPath, 'partials'));
-
   const viewsPath = path.join(process.cwd(), 'views');
   app.engine(
     'hbs',
@@ -39,6 +34,7 @@ async function bootstrap() {
       layoutsDir: path.join(viewsPath, 'layouts'),
       partialsDir: path.join(viewsPath, 'partials'),
       defaultLayout: 'main',
+      helpers: hbsHelpers,
     }),
   );
   app.useStaticAssets(path.join(process.cwd(), 'public'));

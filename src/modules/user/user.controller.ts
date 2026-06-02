@@ -22,38 +22,6 @@ export class UserController {
     };
   }
 
-  @Get('admin/category')
-  @Render('pages/admin/category/index')
-  getAdminCategory() {
-    return {
-      layout: 'admin',
-    };
-  }
-
-  @Get('admin/category/add')
-  @Render('pages/admin/category/form')
-  getAdminCategoryAdd() {
-    return {
-      layout: 'admin',
-      title: 'Add Category',
-      buttonText: 'Add',
-      buttonClass: 'primary',
-      action: '/admin/category/create',
-    };
-  }
-
-  @Get('admin/category/edit')
-  @Render('pages/admin/category/form')
-  getAdminCategoryEdit() {
-    return {
-      layout: 'admin',
-      title: 'Edit Category',
-      buttonText: 'Update',
-      buttonClass: 'warning',
-      action: '/admin/category/update',
-    };
-  }
-
   @Get('admin/product')
   @Render('pages/admin/product/index')
   getAdminProduct() {

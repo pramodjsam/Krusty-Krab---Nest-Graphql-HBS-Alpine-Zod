@@ -11,9 +11,15 @@ import { CreateCategoryDto } from './dto/create-category.dto';
 import { streamToBase64Image } from 'src/utils/file.util';
 import { NotFoundException } from '@nestjs/common';
 import { RedisCacheService } from 'src/core/redis-cache/redis-cache.service';
+import { Paginated, PaginateQuery, paginate } from 'nestjs-paginate';
 
 jest.mock('src/utils/file.util', () => ({
   streamToBase64Image: jest.fn(),
+}));
+
+jest.mock('nestjs-paginate', () => ({
+  ...jest.requireActual('nestjs-paginate'),
+  paginate: jest.fn(),
 }));
 
 describe('CategoryService', () => {
@@ -31,6 +37,7 @@ describe('CategoryService', () => {
   let mockFile: any;
   let createCategoryDto: CreateCategoryDto;
   let mockBase64: string;
+  let mockCategoryResponse: Paginated<Category>;
 
   beforeEach(async () => {
     mockImage = {
@@ -46,6 +53,26 @@ describe('CategoryService', () => {
       products: [],
       createdAt: new Date(),
       updatedAt: new Date(),
+    };
+    mockCategoryResponse = {
+      data: [mockCategory],
+      meta: {
+        itemsPerPage: 5,
+        totalItems: 1,
+        currentPage: 1,
+        totalPages: 1,
+        sortBy: [['id', 'DESC']], // matches your paginate config
+        searchBy: ['name'], // whichever columns are searchable
+        search: '', // empty string if no search applied
+        select: ['id', 'name'], // columns selected, optional but required in TS
+      },
+      links: {
+        first: undefined,
+        previous: undefined,
+        next: undefined,
+        last: undefined,
+        current: '',
+      },
     };
     mockCategoryWithoutImage = {
       id: 1,
@@ -150,13 +177,17 @@ describe('CategoryService', () => {
   describe('findAll()', () => {
     it('should return all categories', async () => {
       // Arrange
-      categoryRepository.find.mockResolvedValue([mockCategory]);
+      const mockPaginatedQuery: PaginateQuery = {
+        page: 1,
+        path: '',
+      };
+      (paginate as jest.Mock).mockResolvedValue(mockCategoryResponse);
 
       //Act
-      const result = await categoryService.findAll();
+      const result = await categoryService.findAll(mockPaginatedQuery);
 
       // Assert
-      expect(result).toEqual([mockCategory]);
+      expect(result).toEqual(mockCategoryResponse);
     });
   });
 

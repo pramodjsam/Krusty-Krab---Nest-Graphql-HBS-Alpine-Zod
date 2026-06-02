@@ -28,7 +28,7 @@ export class TransformDTOInterceptor<T> implements NestInterceptor {
         // structure from nestjs-paginate
         if (data && data.data) {
           return {
-            data: plainToInstance(this.dtoClass, data, {
+            data: plainToInstance(this.dtoClass, data.data, {
               excludeExtraneousValues: true,
             }),
             pagination: {

@@ -10,17 +10,22 @@ import { FileValidationPipe } from 'src/core/pipe/file-validation.pipe';
 import { UseInterceptors } from '@nestjs/common';
 import { GqlCacheInterceptor } from 'src/core/interceptors/gql-cache.interceptor';
 import { CacheTag } from 'src/core/decorators/cache-tag.decorator';
+import { CategoryPaginationArgs } from './dto/category-paginate-args';
+import { toPaginateQuery } from 'src/utils/pagination';
+import { CategoryPaginated } from './dto/category-paginated';
 
 @Resolver(() => Category)
 export class CategoryResolver {
   constructor(private readonly categoryService: CategoryService) {}
 
-  @Query(() => [Category])
+  @Query(() => CategoryPaginated)
   @CacheTag('category:list')
   @UseInterceptors(GqlCacheInterceptor)
   @TransformDTO(Category)
-  getCategories() {
-    return this.categoryService.findAll();
+  getCategories(@Args() args: CategoryPaginationArgs) {
+    const query = toPaginateQuery(args);
+
+    return this.categoryService.findAll(query);
   }
 
   @Query(() => Category, { nullable: true })

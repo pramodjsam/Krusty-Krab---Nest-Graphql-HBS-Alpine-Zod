@@ -26,6 +26,6 @@ export class FileValidationPipe implements PipeTransform {
       }
     }
 
-    return true;
+    return file;
   }
 }

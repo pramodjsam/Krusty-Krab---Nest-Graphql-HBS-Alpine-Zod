@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Expose } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 import { Image } from 'src/modules/image/entities/image.entity';
 import { Product } from 'src/modules/product/entities/product.entity';
 import {
@@ -36,11 +36,15 @@ export class Category {
   @Expose()
   image?: Image;
 
-  @Field()
+  @Field(() => Date)
+  @Type(() => Date)
   @CreateDateColumn()
+  @Expose()
   createdAt: Date;
 
-  @Field()
+  @Field(() => Date)
+  @Type(() => Date)
   @UpdateDateColumn()
+  @Expose()
   updatedAt: Date;
 }

@@ -40,25 +40,23 @@ export class CategoryService {
       category.image = image;
     }
 
-    await this.invalidateCategory();
+    await this.redisCacheService.invalidateCacheForService('category');
 
     return await this.categoryRepository.save(category);
   }
 
   async findAll(query: PaginateQuery) {
-    const result = await paginate(query, this.categoryRepository, {
+    return await paginate(query, this.categoryRepository, {
       sortableColumns: ['id', 'name'],
       nullSort: 'last',
       defaultSortBy: [['id', 'DESC']],
       searchableColumns: ['name'],
-      // select: ['id', 'name'],
       filterableColumns: {
         name: [FilterOperator.EQ, FilterSuffix.NOT],
       },
       defaultLimit: 5,
+      relations: ['image'],
     });
-
-    return result;
   }
 
   async findOne(id: number) {
@@ -102,7 +100,10 @@ export class CategoryService {
       }
     }
 
-    await this.invalidateCategory(category.id);
+    await this.redisCacheService.invalidateCacheForService(
+      'category',
+      category.id,
+    );
 
     return await this.categoryRepository.save(category);
   }
@@ -132,7 +133,7 @@ export class CategoryService {
         await queryRunner.manager.remove(Image, image);
       }
 
-      await this.invalidateCategory(id);
+      await this.redisCacheService.invalidateCacheForService('category', id);
 
       await queryRunner.manager.remove(category);
       await queryRunner.commitTransaction();
@@ -152,13 +153,5 @@ export class CategoryService {
     } finally {
       await queryRunner.release();
     }
-  }
-
-  private async invalidateCategory(id?: number) {
-    if (id !== undefined) {
-      this.redisCacheService.invalidateTag('category:detail', { id });
-    }
-
-    this.redisCacheService.invalidateTag('category:list');
   }
 }

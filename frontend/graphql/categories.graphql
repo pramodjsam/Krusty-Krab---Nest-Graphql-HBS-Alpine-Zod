@@ -1,0 +1,67 @@
+query getCategories(
+  $page: Int
+  $limit: Int
+  $sort: [[String]]
+  $search: String
+) {
+  categories: getCategories(
+    page: $page
+    limit: $limit
+    sort: $sort
+    search: $search
+  ) {
+    data {
+      id
+      name
+      image {
+        url
+      }
+    }
+    pagination {
+      itemsPerPage
+      totalItems
+      currentPage
+      totalPages
+    }
+  }
+}
+
+query getCategory($id: Int!) {
+  category: getCategory(id: $id) {
+    id
+    name
+    image {
+      url
+    }
+  }
+}
+
+mutation deleteCategory($id: Int!) {
+  delete: deleteCategory(id: $id) {
+    success
+    message
+  }
+}
+
+mutation createCategory($createCategory: CreateCategoryDto!, $file: Upload) {
+  category: createCategory(createCategory: $createCategory, file: $file) {
+    id
+  }
+}
+
+mutation updateCategory(
+  $id: Int!
+  $updateCategory: UpdateCategoryDto!
+  $file: Upload
+) {
+  category: updateCategory(
+    id: $id
+    updateCategory: $updateCategory
+    file: $file
+  ) {
+    id
+    name
+    createdAt
+    updatedAt
+  }
+}

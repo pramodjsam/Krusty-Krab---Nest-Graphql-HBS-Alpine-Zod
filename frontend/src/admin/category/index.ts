@@ -1,45 +1,118 @@
+import {
+  Category,
+  DeleteCategoryDocument,
+  DeleteCategoryMutation,
+  DeleteCategoryMutationVariables,
+  GetCategoriesDocument,
+  GetCategoriesQuery,
+  GetCategoriesQueryVariables,
+  Image,
+} from '../../generated/graphql';
 import { graphqlRequest } from '../../shared/graphqlClient';
+import { notyNotification } from '../../shared/notification';
 
-export function categoryAdminPage() {
+type CategoryAdminPage = {
+  categories: (Omit<Partial<Category>, 'image'> & {
+    image?: Partial<Image> | null;
+  })[];
+  loading: boolean;
+  currentPage: number;
+  totalPages: number;
+  selectedId: number | null;
+  sortBy: string;
+  sortOrder: 'DESC' | 'ASC';
+  searchText: string;
+  fetchPage(page?: number, limit?: number): Promise<void>;
+  goToPage(page: number): void;
+  confirmDelete(): Promise<void>;
+  openDeleteModal(id: number): void;
+  visiblePages(): {
+    number: number | null;
+    text: string;
+    key: string;
+    isEllipsis: boolean;
+  }[];
+  sort: (column: string) => void;
+  handleSearchSubmit: () => void;
+  clearSearch: () => void;
+  init(): void;
+};
+
+export function categoryAdminPage(): CategoryAdminPage {
   return {
     categories: [],
+    loading: false,
     currentPage: 1,
     totalPages: 1,
-    selectedId: null as number | null,
-    async fetchPage(page = 1) {
+    selectedId: null,
+    sortBy: 'id',
+    sortOrder: 'DESC',
+    searchText: '',
+    async fetchPage(page = 1, limit = 5) {
+      this.loading = true;
       this.currentPage = page;
-      const query = `
-        query getCategories($page: Int!) {
-            categories:getCategories(page: $page) {
-                data {
-                    id
-                    name
-                }
-                pagination {
-                    itemsPerPage
-                    totalItems
-                    currentPage
-                    totalPages
-                }
-            }
-        }
-    `;
-      const variables = { page };
-      const result = await graphqlRequest(query, variables);
+      const variables = {
+        page,
+        limit,
+        sort: [[this.sortBy, this.sortOrder]],
+        search: this.searchText.trim(),
+      };
+      try {
+        const result = await graphqlRequest<
+          GetCategoriesQuery,
+          GetCategoriesQueryVariables
+        >(GetCategoriesDocument, variables);
 
-      const data = result.categories;
-      this.categories = data.data;
-      this.totalPages = data.pagination.totalPages;
+        const data = result.categories;
+
+        this.categories = data.data;
+        this.totalPages = data.pagination.totalPages;
+      } catch {
+        notyNotification('Something went wrong', 'error');
+      } finally {
+        this.loading = false;
+      }
     },
 
     goToPage(page: number) {
       if (page < 1 || page > this.totalPages) return;
       this.fetchPage(page);
     },
-    confirmDelete() {
-      alert(`Delete Category: ${this.selectedId}`);
+    async confirmDelete() {
+      if (!this.selectedId) return;
 
-      this.selectedId = null;
+      this.loading = true;
+
+      const variables = {
+        id: this.selectedId,
+      };
+
+      try {
+        const res = await graphqlRequest<
+          DeleteCategoryMutation,
+          DeleteCategoryMutationVariables
+        >(DeleteCategoryDocument, variables);
+
+        if (!res.delete?.success) {
+          throw res.delete?.message;
+        }
+
+        if (res.delete?.success) {
+          this.selectedId = null;
+          notyNotification('Category deleted successfully', 'success');
+          await this.fetchPage(this.currentPage);
+
+          document
+            .querySelector<HTMLButtonElement>('#deleteModal .btn-close')
+            ?.click();
+        } else {
+          throw new Error('Something went wrong');
+        }
+      } catch {
+        notyNotification('Something went wrong', 'error');
+      } finally {
+        this.loading = false;
+      }
     },
     openDeleteModal(id: number) {
       this.selectedId = id;
@@ -79,6 +152,25 @@ export function categoryAdminPage() {
       }
 
       return pages;
+    },
+    sort(column: string) {
+      if (this.sortBy === column) {
+        this.sortOrder = this.sortOrder === 'ASC' ? 'DESC' : 'ASC';
+      } else {
+        this.sortBy = column;
+        this.sortOrder = 'ASC';
+      }
+      this.fetchPage(1);
+    },
+    handleSearchSubmit() {
+      const searchText = this.searchText.trim();
+      if (!searchText) return;
+
+      this.fetchPage(1);
+    },
+    clearSearch() {
+      this.searchText = '';
+      this.fetchPage(1);
     },
     init() {
       this.fetchPage(this.currentPage);

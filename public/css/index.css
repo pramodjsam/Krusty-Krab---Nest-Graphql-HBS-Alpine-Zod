@@ -21,3 +21,11 @@
 @import './pages/checkout.css';
 /* Order Confirmation */
 @import './pages/order-confirmation.css';
+/* Admin Category - Index */
+@import './pages/admin/category/index.css';
+/* Admin Category - Form */
+@import './pages/admin/category/form.css';
+
+/* --- COMMON --- */
+/* Loader */
+@import './common/loader.css';

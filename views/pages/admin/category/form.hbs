@@ -1,21 +1,50 @@
-<section id='add-category' class='p-3'>
-	<div class='info'>
+<section id="add-category" class="p-3" x-data="categoryAdminFormPage({{categoryId}})" x-init="init()">
+	{{> common/loader state="loading"}}
+	<div class="info">
 		<h1>{{ title }}</h1>
 	</div>
-	<form class='w-75 mx-auto mt-5' action='{{ action }}'>
-		<div class='row'>
-
-			<div class='col'>
-				<div class='mb-3'>
-					<label class='text-black'>Name</label>
-					<input class='form-control border-secondary' type='text' placeholder='Enter Name' name='name' />
+	<form class="w-75 mx-auto mt-5" @submit.prevent="submit">
+		<div class="row">
+			<div class="col">
+				<div class="mb-3">
+					<label :class="errors.name ? 'text-danger' : 'text-black'">Name</label>
+					<input
+						class="form-control border-secondary"
+						:class="{ 'border border-danger': errors.name }"
+						type="text"
+						placeholder="Enter Name"
+						name="name"
+						x-model="form.name"
+					/>
+				</div>
+				<div class="mb-3">
+					<label class="text-black">Image</label>
+					<input
+						x-ref="imageInput"
+						class="form-control border-secondary"
+						type="file"
+						placeholder="Enter Image"
+						name="image"
+						@change="handleFileChange"
+					/>
+				</div>
+				<div class="admin-category-form__image-container my-3">
+					<template x-if="imagePreview">
+						<div class="admin-category-form__image-wrapper">
+							<img :src="imagePreview" class="admin-category-form__image" />
+							<i
+								class="bi bi-x-circle-fill admin-category-form__image-close"
+								x-show="form.image"
+								@click="handleFormImageClose"
+							></i>
+						</div>
+					</template>
 				</div>
 			</div>
-
 		</div>
 
-		<div class='d-grid mb-3'>
-			<button class='btn btn-block mt-3 btn-{{ buttonClass }}' type='submit'>{{ buttonText }}</button>
+		<div class="d-grid mb-3">
+			<button class="btn btn-block mt-3 btn-{{ buttonClass }}" type="submit">{{ buttonText }}</button>
 		</div>
 	</form>
 </section>

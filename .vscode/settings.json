@@ -1,3 +1,7 @@
 {
-  "js/ts.tsdk.path": "node_modules\\typescript\\lib"
+  "js/ts.tsdk.path": "node_modules\\typescript\\lib",
+  "yaml.schemas": {
+    "https://www.graphql-code-generator.com/config.schema.json": "graphql-codegen.yml"
+  },
+  "yaml.validate": false
 }

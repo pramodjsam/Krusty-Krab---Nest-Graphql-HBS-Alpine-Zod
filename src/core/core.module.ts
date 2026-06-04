@@ -12,14 +12,19 @@ import { UserSubscriber } from 'src/modules/user/user.subscriber';
 import { EmailModule } from './email/email.module';
 import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
 import { CacheModule } from '@nestjs/cache-manager';
-import { RedisCacheModule } from './redis-cache/redis-cache.module';
 import KeyvRedis from '@keyv/redis';
-import { RedisCacheService } from './redis-cache/redis-cache.service';
 import { SeedModule } from './seed/seed.module';
+import { RedisCacheService } from './redis-cache/redis-cache.service';
+import { RedisClientProvider } from './redis-cache/redis-client.provider';
 
 @Global()
 @Module({
-  providers: [CloudinaryProvider, CloudinaryService, RedisCacheService],
+  providers: [
+    CloudinaryProvider,
+    CloudinaryService,
+    RedisClientProvider,
+    RedisCacheService,
+  ],
   exports: [CloudinaryService, RedisCacheService],
   imports: [
     CacheModule.registerAsync({
@@ -71,7 +76,6 @@ import { SeedModule } from './seed/seed.module';
     }),
     EmailModule,
     RabbitmqModule,
-    RedisCacheModule,
     SeedModule,
   ],
 })

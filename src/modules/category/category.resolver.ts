@@ -7,12 +7,14 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 import { DeleteResponseDto } from 'src/core/dto/delete-response.dto';
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
 import { FileValidationPipe } from 'src/core/pipe/file-validation.pipe';
-import { UseInterceptors } from '@nestjs/common';
+import { Inject, UseInterceptors } from '@nestjs/common';
 import { GqlCacheInterceptor } from 'src/core/interceptors/gql-cache.interceptor';
 import { CacheTag } from 'src/core/decorators/cache-tag.decorator';
 import { CategoryPaginationArgs } from './dto/category-paginate-args';
 import { toPaginateQuery } from 'src/utils/pagination';
 import { CategoryPaginated } from './dto/category-paginated';
+import { Cache } from 'cache-manager';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
 @Resolver(() => Category)
 export class CategoryResolver {

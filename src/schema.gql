@@ -139,7 +139,7 @@ type ResponseCartDto {
 }
 
 type Query {
-  getCategories(page: Int, limit: Int): CategoryPaginated!
+  getCategories(page: Int, limit: Int, sort: [[String]], search: String): CategoryPaginated!
   getCategory(id: Int!): Category
   getImage(id: Int!): Image!
   getProducts: [Product!]!

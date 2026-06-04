@@ -1,14 +1,10 @@
-import { Controller, Get, Query, Render } from '@nestjs/common';
-import { CategoryService } from './category.service';
-import { PaginateQuery } from 'nestjs-paginate';
+import { Controller, Get, Param, Render } from '@nestjs/common';
 
 @Controller()
 export class CategoryController {
-  constructor(private readonly categoryService: CategoryService) {}
-
   @Get('user/admin/category')
   @Render('pages/admin/category/index')
-  async getAdminCategory(@Query() query: PaginateQuery) {
+  async getAdminCategory() {
     return {
       layout: 'admin',
     };
@@ -22,19 +18,18 @@ export class CategoryController {
       title: 'Add Category',
       buttonText: 'Add',
       buttonClass: 'primary',
-      action: '/admin/category/create',
     };
   }
 
-  @Get('user/admin/category/edit')
+  @Get('user/admin/category/edit/:id')
   @Render('pages/admin/category/form')
-  getAdminCategoryEdit() {
+  getAdminCategoryEdit(@Param('id') id: number) {
     return {
       layout: 'admin',
       title: 'Edit Category',
       buttonText: 'Update',
       buttonClass: 'warning',
-      action: '/admin/category/update',
+      categoryId: id,
     };
   }
 }

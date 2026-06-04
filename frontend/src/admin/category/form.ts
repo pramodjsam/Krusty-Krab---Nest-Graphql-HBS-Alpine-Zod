@@ -1,12 +1,12 @@
-import { parse, print } from 'graphql';
+import { DocumentNode, print } from 'graphql';
 import {
   CreateCategoryDocument,
   CreateCategoryMutation,
-  CreateCategoryMutationVariables,
   GetCategoryDocument,
   GetCategoryQuery,
   GetCategoryQueryVariables,
   UpdateCategoryDocument,
+  UpdateCategoryMutation,
 } from '../../generated/graphql';
 import { graphqlRequest } from '../../shared/graphqlClient';
 import { notyNotification } from '../../shared/notification';
@@ -61,82 +61,37 @@ export function categoryAdminFormPage(
           return;
         }
 
-        if (this.isEdit && this.categoryId) {
-          if (this.form.image) {
-            const operations = JSON.stringify({
-              query: print(UpdateCategoryDocument),
-              variables: {
-                id: Number(this.categoryId),
-                updateCategory: {
-                  name: this.form.name,
-                },
-                file: null,
-              },
-            });
-            const map = JSON.stringify({
-              '0': ['variables.file'],
-            });
-
-            const formData = new FormData();
-            formData.append('operations', operations);
-            formData.append('map', map);
-            formData.append('0', this.form.image);
-            console.log('WRKING', this.form.image);
-
-            await graphqlRequest(UpdateCategoryDocument, formData);
-          } else {
-            const variables = {
+        const isEdit = this.isEdit;
+        const mutation = isEdit
+          ? UpdateCategoryDocument
+          : CreateCategoryDocument;
+        const variables = isEdit
+          ? {
               id: Number(this.categoryId),
               updateCategory: {
                 name: this.form.name,
               },
-            };
-            await graphqlRequest(UpdateCategoryDocument, variables);
-          }
-        } else {
-          if (this.form.image) {
-            const operations = JSON.stringify({
-              query: print(CreateCategoryDocument),
-              variables: {
-                createCategory: {
-                  name: this.form.name,
-                },
-                file: null,
-              },
-            });
-            const map = JSON.stringify({
-              '0': ['variables.file'],
-            });
-
-            const formData = new FormData();
-            formData.append('operations', operations);
-            formData.append('map', map);
-            formData.append('0', this.form.image);
-
-            const res = await graphqlRequest<CreateCategoryMutation>(
-              CreateCategoryDocument,
-              formData,
-            );
-
-            if (!res.category.id) {
-              throw new Error();
             }
-          } else {
-            const variables = {
+          : {
               createCategory: {
                 name: this.form.name,
               },
             };
+        let response: CreateCategoryMutation | UpdateCategoryMutation;
 
-            const res = await graphqlRequest<
-              CreateCategoryMutation,
-              CreateCategoryMutationVariables
-            >(CreateCategoryDocument, variables);
+        if (this.form.image) {
+          const formData = buildMultipartRequest(
+            this.form.image,
+            variables,
+            mutation,
+          );
+          response = await graphqlRequest(mutation, formData);
+        } else {
+          response = await graphqlRequest(mutation, variables);
+        }
 
-            if (!res.category.id) {
-              throw new Error();
-            }
-          }
+        if (!isEdit && !response?.category?.id) {
+          throw new Error('Create failed');
         }
 
         window.location.href = '/user/admin/category';
@@ -198,7 +153,7 @@ export function categoryAdminFormPage(
           >(GetCategoryDocument, variables);
           if (res.category) {
             this.form.name = res.category.name;
-            this.imagePreview = res.category.image?.url || '';
+            this.imagePreview = res.category.image?.url || '/images/burger.png';
           } else {
             notyNotification('Category not found', 'error');
           }
@@ -212,4 +167,32 @@ export function categoryAdminFormPage(
       }
     },
   };
+}
+
+function buildMultipartRequest<TVariables>(
+  file: File | null,
+  variables: TVariables,
+  mutation: DocumentNode,
+) {
+  const operations = JSON.stringify({
+    query: print(mutation),
+    variables: {
+      ...variables,
+      file: file ? null : undefined,
+    },
+  });
+
+  const map = JSON.stringify({
+    '0': ['variables.file'],
+  });
+
+  const formData = new FormData();
+  formData.append('operations', operations);
+  formData.append('map', map);
+
+  if (file) {
+    formData.append('0', file);
+  }
+
+  return formData;
 }

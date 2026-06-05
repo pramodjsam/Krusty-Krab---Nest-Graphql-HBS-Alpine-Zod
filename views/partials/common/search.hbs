@@ -1,0 +1,13 @@
+<form class="my-3" @submit.prevent="{{onSubmit}}">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="input-group">
+				<input type="text" class="form-control shadow-none" x-model="{{model}}" placeholder="{{placeholder}}" />
+				<button type="submit" class="btn btn-secondary">{{submitText}}</button>
+				{{#if showReset}}
+				<button type="button" class="btn btn-success" @click="{{handleReset}}">{{resetText}}</button>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</form>

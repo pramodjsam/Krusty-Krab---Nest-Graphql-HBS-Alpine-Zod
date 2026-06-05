@@ -1,59 +1,74 @@
-<section id='adminProduct' class='p-3'>
-	<div class='info d-flex align-items-center justify-content-between'>
+<section id="adminProduct" class="p-3" x-data="productAdminPage()">
+	{{> common/loader state="loading"}}
+	<div class="info d-flex align-items-center justify-content-between">
 		<h1>Products</h1>
-		<a href='/user/admin/product/add'><button class='btn btn-primary btn-sm py-2'>Add New Product</button></a>
+		<a href="/user/admin/product/add"><button class="btn btn-primary btn-sm py-2">Add New Product</button></a>
 	</div>
-	<table class='table striped mt-5'>
+	{{> common/search showReset=true resetText="Clear" handleReset="clearSearch" submitText="Search"
+	placeholder="Search..." model="searchText" onSubmit="handleSearchSubmit" }}
+	<table class="table striped mt-5">
+		<colgroup>
+			<col style="width: 10%" />
+			<col style="width: 40%" />
+			<col style="width: 10%" />
+			<col style="width: 20%" />
+			<col style="width: 10%" />
+			<col style="width: 10%" />
+		</colgroup>
 		<thead>
 			<tr>
-				<th>#</th>
-				<th>Name</th>
-				<th>Price</th>
+				<th>
+					<a href="#" class="text-black text-underline" @click.prevent="sort('id')"
+						>#
+						<span x-text="sortBy === 'id' ? (sortOrder === 'ASC' ? '↑' : '↓') : ''"></span>
+					</a>
+				</th>
+				<th>
+					<a href="#" class="text-black text-underline" @click.prevent="sort('name')"
+						>Name
+						<span x-text="sortBy === 'name' ? (sortOrder === 'ASC' ? '↑' : '↓') : ''"></span>
+					</a>
+				</th>
+				<th>
+					<a href="#" class="text-black text-underline" @click.prevent="sort('price')"
+						>Price
+						<span x-text="sortBy === 'price' ? (sortOrder === 'ASC' ? '↑' : '↓') : ''"></span>
+					</a>
+				</th>
 				<th>Category</th>
 				<th>Image</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>Product</td>
-				<td>$12.99</td>
-				<td>Category</td>
-				<td>
-					<img class='logo' src='/images/sidebar/Beef.webp' />
-				</td>
-				<td>
-					<a class='btn btn-warning btn-sm text-black' href='/user/admin/product/edit'>Edit</a>
-					<button class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteModal'>
-						Delete
-					</button>
-				</td>
-			</tr>
+			<template class="admin-list" x-for="product in products" :key="product.id">
+				<tr class="admin-list__row">
+					<td class="align-middle" x-text="product.id"></td>
+					<td class="align-middle" x-text="product.name"></td>
+					<td class="align-middle" x-text="`$${product.price}`"></td>
+					<td class="align-middle" x-text="product.category.name"></td>
+					<td>
+						<img class="admin-category-list__logo" :src="product.image?.url || '/images/burger.png'" />
+					</td>
+					<td class="align-middle">
+						<a class="btn btn-warning btn-sm text-black" :href="`/user/admin/product/edit/${product.id}`"
+							>Edit</a
+						>
+						<button
+							class="btn btn-danger btn-sm"
+							data-bs-toggle="modal"
+							data-bs-target="#deleteModal"
+							@click="openDeleteModal(product.id)"
+						>
+							Delete
+						</button>
+					</td>
+				</tr>
+			</template>
 		</tbody>
 	</table>
-	<div
-		id='deleteModal'
-		class='modal'
-		tabindex='-1'
-		tabindex='-1'
-		aria-labelledby='deleteModalLabel'
-		aria-hidden='true'
-	>
-		<div class='modal-dialog'>
-			<div class='modal-content'>
-				<div class='modal-header'>
-					<h5 class='modal-title'>Warning</h5>
-					<button class='btn-close' type='button' data-bs-dismiss='modal' aria-label='Close'></button>
-				</div>
-				<div class='modal-body'>
-					<p>Are you sure you want to delete?</p>
-				</div>
-				<div class='modal-footer'>
-					<button class='btn btn-secondary' type='button' data-bs-dismiss='modal'>Close</button>
-					<button class='btn btn-danger' type='button'>Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
+
+	{{> common/pagination currentPage=currentPage totalPages=totalPages visiblePages=visiblePages
+	handlePageClick="goToPage" }} {{> common/modal id="deleteModal" title="Warning" message="Are you sure you want to
+	delete?" cancelText="Close" confirmText="Yes" confirmAction="confirmDelete()" }}
 </section>

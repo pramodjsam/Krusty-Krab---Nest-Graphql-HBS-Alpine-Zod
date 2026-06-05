@@ -113,6 +113,11 @@ type CategoryPaginated {
   pagination: Pagination!
 }
 
+type ProductPaginated {
+  data: [Product!]!
+  pagination: Pagination!
+}
+
 type PasswordResetResponseDto {
   success: Boolean!
   message: String!
@@ -142,7 +147,7 @@ type Query {
   getCategories(page: Int, limit: Int, sort: [[String]], search: String): CategoryPaginated!
   getCategory(id: Int!): Category
   getImage(id: Int!): Image!
-  getProducts: [Product!]!
+  getProducts(page: Int, limit: Int, sort: [[String]], search: String): ProductPaginated!
   getProduct(id: Int!): Product!
   getUsers: [User!]!
   getUser(id: Int!): User!

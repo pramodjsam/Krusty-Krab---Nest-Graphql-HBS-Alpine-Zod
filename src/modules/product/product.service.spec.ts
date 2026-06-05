@@ -11,9 +11,15 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { streamToBase64Image } from 'src/utils/file.util';
 import { NotFoundException } from '@nestjs/common';
+import { paginate, Paginated, PaginateQuery } from 'nestjs-paginate';
 
 jest.mock('src/utils/file.util', () => ({
   streamToBase64Image: jest.fn(),
+}));
+
+jest.mock('nestjs-paginate', () => ({
+  ...jest.requireActual('nestjs-paginate'),
+  paginate: jest.fn(),
 }));
 
 describe('ProductService', () => {
@@ -29,6 +35,7 @@ describe('ProductService', () => {
   let mockFile: any;
   let createProductDto: CreateProductDto;
   let mockBase64: string;
+  let mockPaginatedProductResponse: Paginated<Product>;
 
   beforeEach(async () => {
     mockImage = {
@@ -51,6 +58,26 @@ describe('ProductService', () => {
       price: 1200,
       category: mockCategory,
       image: mockImage,
+    };
+    mockPaginatedProductResponse = {
+      data: [mockProduct],
+      meta: {
+        itemsPerPage: 5,
+        totalItems: 1,
+        currentPage: 1,
+        totalPages: 1,
+        sortBy: [['id', 'DESC']], // matches your paginate config
+        searchBy: ['name'], // whichever columns are searchable
+        search: '', // empty string if no search applied
+        select: ['id', 'name'], // columns selected, optional but required in TS
+      },
+      links: {
+        first: undefined,
+        previous: undefined,
+        next: undefined,
+        last: undefined,
+        current: '',
+      },
     };
     mockProductWithoutImage = {
       id: 1,
@@ -144,13 +171,17 @@ describe('ProductService', () => {
   describe('findAll()', () => {
     it('should return all products', async () => {
       // Arrange
-      productRepository.find.mockResolvedValue([mockProduct]);
+      const mockPaginatedQuery: PaginateQuery = {
+        page: 1,
+        path: '',
+      };
+      (paginate as jest.Mock).mockResolvedValue(mockPaginatedProductResponse);
 
       // Act
-      const result = await productService.findAll();
+      const result = await productService.findAll(mockPaginatedQuery);
 
       // Assert
-      expect(result).toEqual([mockProduct]);
+      expect(result).toEqual(mockPaginatedProductResponse);
     });
   });
 

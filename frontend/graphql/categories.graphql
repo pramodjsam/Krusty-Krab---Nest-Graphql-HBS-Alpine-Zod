@@ -26,6 +26,31 @@ query getCategories(
   }
 }
 
+query getCategoriesName(
+  $page: Int
+  $limit: Int
+  $sort: [[String]]
+  $search: String
+) {
+  categories: getCategories(
+    page: $page
+    limit: $limit
+    sort: $sort
+    search: $search
+  ) {
+    data {
+      id
+      name
+    }
+    pagination {
+      itemsPerPage
+      totalItems
+      currentPage
+      totalPages
+    }
+  }
+}
+
 query getCategory($id: Int!) {
   category: getCategory(id: $id) {
     id
@@ -63,5 +88,70 @@ mutation updateCategory(
     name
     createdAt
     updatedAt
+  }
+}
+
+query getProducts($page: Int, $limit: Int, $sort: [[String]], $search: String) {
+  products: getProducts(
+    page: $page
+    limit: $limit
+    sort: $sort
+    search: $search
+  ) {
+    data {
+      id
+      name
+      price
+      image {
+        url
+      }
+      category {
+        name
+      }
+    }
+    pagination {
+      itemsPerPage
+      totalItems
+      currentPage
+      totalPages
+    }
+  }
+}
+
+mutation deleteProduct($id: Int!) {
+  delete: deleteProduct(id: $id) {
+    success
+    message
+  }
+}
+
+mutation updateProduct(
+  $id: Int!
+  $updateProduct: UpdateProductDto!
+  $file: Upload
+) {
+  product: updateProduct(id: $id, updateProduct: $updateProduct, file: $file) {
+    id
+  }
+}
+
+mutation createProduct($createProduct: CreateProductDto!, $file: Upload) {
+  product: createProduct(createProduct: $createProduct, file: $file) {
+    id
+  }
+}
+
+query getProduct($id: Int!) {
+  product: getProduct(id: $id) {
+    id
+    name
+    price
+    category {
+      id
+      name
+    }
+    image {
+      url
+    }
   }
 }

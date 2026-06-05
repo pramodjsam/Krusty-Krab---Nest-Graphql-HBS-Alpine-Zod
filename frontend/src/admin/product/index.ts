@@ -1,20 +1,22 @@
 import {
   Category,
-  DeleteCategoryDocument,
-  DeleteCategoryMutation,
-  DeleteCategoryMutationVariables,
-  GetCategoriesDocument,
-  GetCategoriesQuery,
-  GetCategoriesQueryVariables,
+  DeleteProductDocument,
+  DeleteProductMutation,
+  DeleteProductMutationVariables,
+  GetProductsDocument,
+  GetProductsQuery,
+  GetProductsQueryVariables,
   Image,
+  Product,
 } from '../../generated/graphql';
 import { paginationPages } from '../../shared/common';
 import { graphqlRequest } from '../../shared/graphqlClient';
 import { notyNotification } from '../../shared/notification';
 
-type CategoryAdminPage = {
-  categories: (Omit<Partial<Category>, 'image'> & {
+type ProductAdminPage = {
+  products: (Omit<Partial<Product>, 'image' | 'category'> & {
     image?: Partial<Image> | null;
+    category?: Partial<Category> | null;
   })[];
   loading: boolean;
   currentPage: number;
@@ -39,9 +41,9 @@ type CategoryAdminPage = {
   init(): void;
 };
 
-export function categoryAdminPage(): CategoryAdminPage {
+export function productAdminPage(): ProductAdminPage {
   return {
-    categories: [],
+    products: [],
     loading: false,
     currentPage: 1,
     totalPages: 1,
@@ -60,13 +62,12 @@ export function categoryAdminPage(): CategoryAdminPage {
       };
       try {
         const result = await graphqlRequest<
-          GetCategoriesQuery,
-          GetCategoriesQueryVariables
-        >(GetCategoriesDocument, variables);
+          GetProductsQuery,
+          GetProductsQueryVariables
+        >(GetProductsDocument, variables);
 
-        const data = result.categories;
-
-        this.categories = data.data;
+        const data = result.products;
+        this.products = data.data;
         this.totalPages = data.pagination.totalPages;
       } catch {
         notyNotification('Something went wrong', 'error');
@@ -74,7 +75,6 @@ export function categoryAdminPage(): CategoryAdminPage {
         this.loading = false;
       }
     },
-
     goToPage(page: number) {
       if (page < 1 || page > this.totalPages) return;
       this.fetchPage(page);
@@ -83,16 +83,15 @@ export function categoryAdminPage(): CategoryAdminPage {
       if (!this.selectedId) return;
 
       this.loading = true;
-
       const variables = {
         id: this.selectedId,
       };
 
       try {
         const res = await graphqlRequest<
-          DeleteCategoryMutation,
-          DeleteCategoryMutationVariables
-        >(DeleteCategoryDocument, variables);
+          DeleteProductMutation,
+          DeleteProductMutationVariables
+        >(DeleteProductDocument, variables);
 
         if (!res.delete?.success) {
           throw res.delete?.message;
@@ -100,14 +99,12 @@ export function categoryAdminPage(): CategoryAdminPage {
 
         if (res.delete?.success) {
           this.selectedId = null;
-          notyNotification('Category deleted successfully', 'success');
+          notyNotification('Product deleted successfully', 'success');
           await this.fetchPage(this.currentPage);
 
           document
             .querySelector<HTMLButtonElement>('#deleteModal .btn-close')
             ?.click();
-        } else {
-          throw new Error('Something went wrong');
         }
       } catch {
         notyNotification('Something went wrong', 'error');

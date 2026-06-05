@@ -1,4 +1,3 @@
-import { DocumentNode, print } from 'graphql';
 import {
   CreateCategoryDocument,
   CreateCategoryMutation,
@@ -8,6 +7,7 @@ import {
   UpdateCategoryDocument,
   UpdateCategoryMutation,
 } from '../../generated/graphql';
+import { buildMultipartRequest, validateForm } from '../../shared/common';
 import { graphqlRequest } from '../../shared/graphqlClient';
 import { notyNotification } from '../../shared/notification';
 
@@ -20,9 +20,7 @@ type CategoryAdminFormPage = {
     name: string;
     image: File | null;
   };
-  errors: {
-    name: string;
-  };
+  errors: Record<string, string>;
   $refs: CategoryAdminFormRefs;
   imagePreview: string;
   loading: boolean;
@@ -95,7 +93,7 @@ export function categoryAdminFormPage(
         }
 
         window.location.href = '/user/admin/category';
-      } catch (error) {
+      } catch {
         notyNotification('Failed to create category', 'error');
       } finally {
         this.loading = false;
@@ -122,16 +120,9 @@ export function categoryAdminFormPage(
       this.setDefaultImage();
     },
     validate() {
-      this.errors = {
-        name: '',
-      };
+      const [errors, valid] = validateForm(this.form, ['name']);
 
-      let valid = true;
-
-      if (!this.form.name.trim()) {
-        this.errors.name = 'Name is required';
-        valid = false;
-      }
+      this.errors = errors;
 
       if (!valid) {
         notyNotification('Please fix validation errors', 'error');
@@ -167,32 +158,4 @@ export function categoryAdminFormPage(
       }
     },
   };
-}
-
-function buildMultipartRequest<TVariables>(
-  file: File | null,
-  variables: TVariables,
-  mutation: DocumentNode,
-) {
-  const operations = JSON.stringify({
-    query: print(mutation),
-    variables: {
-      ...variables,
-      file: file ? null : undefined,
-    },
-  });
-
-  const map = JSON.stringify({
-    '0': ['variables.file'],
-  });
-
-  const formData = new FormData();
-  formData.append('operations', operations);
-  formData.append('map', map);
-
-  if (file) {
-    formData.append('0', file);
-  }
-
-  return formData;
 }

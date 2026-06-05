@@ -1,51 +1,74 @@
-<section id='add-category' class='p-3'>
-	<div class='info'>
+<section id="add-category" class="p-3" x-data="productAdminFormPage({{productId}})">
+	{{> common/loader state="loading"}}
+	<div class="info">
 		<h1>{{ title }}</h1>
 	</div>
-	<form class='w-75 mx-auto mt-5' action='{{ action }}'>
-		<div class='row'>
-
-			<div class='col-12'>
-				<div class='mb-3'>
-					<label class='text-black'>Name</label>
-					<input class='form-control border-secondary' type='text' placeholder='Enter Name' name='name' />
-				</div>
-			</div>
-
-			<div class='col-12'>
-				<div class='mb-3'>
-					<label class='text-black'>Price</label>
+	<form class="w-75 mx-auto mt-5" @submit.prevent="submit">
+		<div class="row">
+			<div class="col-12">
+				<div class="mb-3">
+					<label :class="errors.name ? 'text-danger' : 'text-black'">Name*</label>
 					<input
-						class='form-control border-secondary'
-						type='number'
-						placeholder='Enter price'
-						value='price'
+						class="form-control border-secondary"
+						:class="{ 'border border-danger': errors.name }"
+						type="text"
+						placeholder="Enter Name"
+						name="name"
+						x-model="form.name"
 					/>
 				</div>
 			</div>
 
-			<div class='col-12'>
-				<div class='mb-3'>
-					<label class='text-black'>Category</label>
-					<select class='form-control' name='category'>
-						<option>Select an option</option>
-						<option>Category 1</option>
-						<option>Category 2</option>
+			<div class="col-12">
+				<div class="mb-3">
+					<label :class="errors.price ? 'text-danger':'text-black'">Price</label>
+					<input
+						class="form-control border-secondary"
+						:class="{ 'border border-danger': errors.price }"
+						type="number"
+						placeholder="Enter price"
+						name="price"
+						x-model="form.price"
+					/>
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class="mb-3">
+					<label :class="errors.category ? 'text-danger':'text-black'">Category</label>
+					<select
+						class="form-control border-secondary"
+						:class="{ 'border border-danger': errors.category }"
+						name="category"
+						x-model="form.category"
+					>
+						<option value="">Select an option</option>
+						<template x-for="category in categories" :key="category.id">
+							<option :value="String(category.id)" x-text="category.name">Category 1</option>
+						</template>
 					</select>
 				</div>
 			</div>
 
-			<div class='col-12'>
-				<div class='mb-3'>
-					<label class='text-black'>Image</label>
-					<input class='form-control border-secondary' type='file' placeholder='Upload file' value='image' />
+			<div class="col-12">
+				<div class="mb-3">
+					<label class="text-black">Image</label>
+					<input
+						x-ref="imageInput"
+						class="form-control border-secondary"
+						type="file"
+						placeholder="Upload file"
+						name="image"
+						@change="handleFileChange"
+					/>
 				</div>
 			</div>
-
+			{{> common/image-preview imagePreview="imagePreview" image="form.image"
+			handleFormImageClose="handleFormImageClose" }}
 		</div>
 
-		<div class='d-grid mb-3'>
-			<button class='btn btn-block mt-3 btn-{{ buttonClass }}' type='submit'>{{ buttonText }}</button>
+		<div class="d-grid mb-3">
+			<button class="btn btn-block mt-3 btn-{{ buttonClass }}" type="submit">{{ buttonText }}</button>
 		</div>
 	</form>
 </section>

@@ -1,0 +1,12 @@
+<div class="admin-category-form__image-container my-3">
+	<template x-if="imagePreview">
+		<div class="admin-category-form__image-wrapper">
+			<img :src="imagePreview" class="admin-category-form__image" />
+			<i
+				class="bi bi-x-circle-fill admin-category-form__image-close"
+				x-show="{{image}}"
+				@click="{{handleFormImageClose}}"
+			></i>
+		</div>
+	</template>
+</div>

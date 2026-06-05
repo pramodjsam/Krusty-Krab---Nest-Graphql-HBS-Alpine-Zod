@@ -9,6 +9,12 @@ import { FileUpload } from 'graphql-upload';
 import { streamToBase64Image } from 'src/utils/file.util';
 import { ImageService } from '../image/image.service';
 import { Image } from '../image/entities/image.entity';
+import {
+  FilterOperator,
+  FilterSuffix,
+  paginate,
+  PaginateQuery,
+} from 'nestjs-paginate';
 
 @Injectable()
 export class ProductService {
@@ -19,12 +25,18 @@ export class ProductService {
     private readonly imageService: ImageService,
   ) {}
 
-  findAll() {
-    return this.productRepository.find({
-      relations: {
-        category: true,
-        image: true,
+  async findAll(query: PaginateQuery) {
+    return await paginate(query, this.productRepository, {
+      sortableColumns: ['id', 'name', 'price'],
+      nullSort: 'last',
+      defaultSortBy: [['id', 'DESC']],
+      searchableColumns: ['name'],
+      filterableColumns: {
+        name: [FilterOperator.EQ, FilterSuffix.NOT],
+        price: [FilterOperator.EQ, FilterOperator.GTE, FilterOperator.LTE],
       },
+      defaultLimit: 5,
+      relations: ['image', 'category'],
     });
   }
 
@@ -75,6 +87,12 @@ export class ProductService {
     const product = await this.findOne(id);
 
     Object.assign(product, updateProductDto);
+    if (updateProductDto.categoryId) {
+      product.category =
+        product.category.id !== updateProductDto.categoryId
+          ? await this.categoryService.findOne(updateProductDto.categoryId)
+          : product.category;
+    }
 
     if (file) {
       if (product.image) {

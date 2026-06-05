@@ -7,15 +7,22 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { DeleteResponseDto } from 'src/core/dto/delete-response.dto';
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
 import { FileValidationPipe } from 'src/core/pipe/file-validation.pipe';
+import { PaginationArgs } from 'src/core/dto/pagination.args';
+import { toPaginateQuery } from 'src/utils/pagination';
+import { Paginated } from 'src/core/dto/entity-paginate.dto';
+
+const ProductPaginated = Paginated(Product);
 
 @Resolver()
 export class ProductResolver {
   constructor(private readonly productService: ProductService) {}
 
-  @Query(() => [Product])
+  @Query(() => ProductPaginated)
   @TransformDTO(Product)
-  getProducts() {
-    return this.productService.findAll();
+  getProducts(@Args() args: PaginationArgs) {
+    const query = toPaginateQuery(args);
+
+    return this.productService.findAll(query);
   }
 
   @Query(() => Product)

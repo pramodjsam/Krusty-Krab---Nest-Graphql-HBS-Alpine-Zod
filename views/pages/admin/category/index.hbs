@@ -4,17 +4,8 @@
 		<h1>Categories</h1>
 		<a href="/user/admin/category/add"><button class="btn btn-primary btn-sm py-2">Add New Category</button></a>
 	</div>
-	<form class="my-3" @submit.prevent="handleSearchSubmit">
-		<div class="row">
-			<div class="col-md-6">
-				<div class="input-group">
-					<input type="text" class="form-control shadow-none" x-model="searchText" />
-					<button type="submit" class="btn btn-secondary">Search</button>
-					<button type="button" class="btn btn-success" @click="clearSearch">Reset</button>
-				</div>
-			</div>
-		</div>
-	</form>
+	{{> common/search showReset=true resetText="Clear" handleReset="clearSearch" submitText="Search"
+	placeholder="Search..." model="searchText" onSubmit="handleSearchSubmit" }}
 	<table class="table striped">
 		<colgroup>
 			<col style="width: 10%" />
@@ -65,32 +56,7 @@
 			</template>
 		</tbody>
 	</table>
-	<div class="d-flex flex-col align-items-center justify-content-center">
-		<nav aria-label="Page navigation example">
-			<ul class="pagination">
-				<li class="page-item" :class="{ 'disabled': currentPage === 1 }">
-					<button class="page-link text-black" @click="goToPage(currentPage - 1)">Previous</button>
-				</li>
-				<template x-for="page in visiblePages()" :key="page.key">
-					<li
-						class="page-item"
-						:class="{ 'active': page.number === currentPage, 'disabled': page.isEllipsis }"
-					>
-						<button
-							class="page-link"
-							x-text="page.text"
-							:class="{ 'disabled': currentPage === page.number }"
-							@click="!page.isEllipsis && goToPage(page.number)"
-						></button>
-					</li>
-				</template>
-				<li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
-					<button class="page-link text-black" @click="goToPage(currentPage + 1)">Next</button>
-				</li>
-			</ul>
-		</nav>
-	</div>
-
-	{{> common/modal id="deleteModal" title="Warning" message="Are you sure you want to delete?" cancelText="Close"
-	confirmText="Yes" confirmAction="confirmDelete()" }}
+	{{> common/pagination currentPage=currentPage totalPages=totalPages visiblePages=visiblePages
+	handlePageClick="goToPage" }} {{> common/modal id="deleteModal" title="Warning" message="Are you sure you want to
+	delete?" cancelText="Close" confirmText="Yes" confirmAction="confirmDelete()" }}
 </section>

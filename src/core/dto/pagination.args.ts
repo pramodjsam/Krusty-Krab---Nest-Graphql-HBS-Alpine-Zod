@@ -13,7 +13,7 @@ class SortInput {
 }
 
 @ArgsType()
-export class CategoryPaginationArgs {
+export class PaginationArgs {
   @Field(() => Int, { nullable: true })
   @IsOptional()
   page?: number;

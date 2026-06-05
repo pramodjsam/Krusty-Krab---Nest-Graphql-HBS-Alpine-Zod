@@ -12,6 +12,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { streamToBase64Image } from 'src/utils/file.util';
 import { NotFoundException } from '@nestjs/common';
 import { paginate, Paginated, PaginateQuery } from 'nestjs-paginate';
+import { RedisCacheService } from 'src/core/redis-cache/redis-cache.service';
 
 jest.mock('src/utils/file.util', () => ({
   streamToBase64Image: jest.fn(),
@@ -27,6 +28,7 @@ describe('ProductService', () => {
   let productRepository: DeepMocked<Repository<Product>>;
   let categoryService: DeepMocked<CategoryService>;
   let imageService: DeepMocked<ImageService>;
+  let redisCacheService: DeepMocked<RedisCacheService>;
 
   let mockImage: Image;
   let mockCategory: Category;
@@ -112,6 +114,10 @@ describe('ProductService', () => {
           provide: CategoryService,
           useValue: createMock<CategoryService>(),
         },
+        {
+          provide: RedisCacheService,
+          useValue: createMock<RedisCacheService>(),
+        },
       ],
     })
       .useMocker(createMock)
@@ -121,6 +127,7 @@ describe('ProductService', () => {
     productRepository = module.get(getRepositoryToken(Product));
     imageService = module.get(ImageService);
     categoryService = module.get(CategoryService);
+    redisCacheService = module.get(RedisCacheService);
   });
 
   afterEach(() => {

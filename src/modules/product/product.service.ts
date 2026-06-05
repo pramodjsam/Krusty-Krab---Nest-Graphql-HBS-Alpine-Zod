@@ -15,6 +15,7 @@ import {
   paginate,
   PaginateQuery,
 } from 'nestjs-paginate';
+import { RedisCacheService } from 'src/core/redis-cache/redis-cache.service';
 
 @Injectable()
 export class ProductService {
@@ -23,6 +24,7 @@ export class ProductService {
     private readonly productRepository: Repository<Product>,
     private readonly categoryService: CategoryService,
     private readonly imageService: ImageService,
+    private readonly redisCacheService: RedisCacheService,
   ) {}
 
   async findAll(query: PaginateQuery) {
@@ -57,6 +59,8 @@ export class ProductService {
     }
 
     const savedProduct = await this.productRepository.save(product);
+
+    await this.redisCacheService.invalidateCacheForService('product');
 
     return savedProduct;
   }
@@ -109,6 +113,8 @@ export class ProductService {
       }
     }
 
+    await this.redisCacheService.invalidateCacheForService('product', id);
+
     return await this.productRepository.save(product);
   }
 
@@ -120,6 +126,8 @@ export class ProductService {
     }
 
     await this.productRepository.remove(product);
+
+    await this.redisCacheService.invalidateCacheForService('product', id);
 
     return {
       success: true,

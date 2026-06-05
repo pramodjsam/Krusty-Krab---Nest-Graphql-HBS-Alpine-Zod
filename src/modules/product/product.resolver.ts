@@ -10,6 +10,9 @@ import { FileValidationPipe } from 'src/core/pipe/file-validation.pipe';
 import { PaginationArgs } from 'src/core/dto/pagination.args';
 import { toPaginateQuery } from 'src/utils/pagination';
 import { Paginated } from 'src/core/dto/entity-paginate.dto';
+import { CacheTag } from 'src/core/decorators/cache-tag.decorator';
+import { UseInterceptors } from '@nestjs/common';
+import { GqlCacheInterceptor } from 'src/core/interceptors/gql-cache.interceptor';
 
 const ProductPaginated = Paginated(Product);
 
@@ -18,6 +21,8 @@ export class ProductResolver {
   constructor(private readonly productService: ProductService) {}
 
   @Query(() => ProductPaginated)
+  @CacheTag('product:list')
+  @UseInterceptors(GqlCacheInterceptor)
   @TransformDTO(Product)
   getProducts(@Args() args: PaginationArgs) {
     const query = toPaginateQuery(args);
@@ -26,6 +31,8 @@ export class ProductResolver {
   }
 
   @Query(() => Product)
+  @CacheTag('product:detail')
+  @UseInterceptors(GqlCacheInterceptor)
   @TransformDTO(Product)
   getProduct(@Args('id', { type: () => Int }) id: number) {
     return this.productService.findOne(id);

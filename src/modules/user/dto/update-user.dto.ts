@@ -17,5 +17,5 @@ export class UpdateUserDto extends PartialType(
 ) {
   @Field(() => Role, { nullable: true })
   @IsOptional()
-  role: Role;
+  role?: Role;
 }

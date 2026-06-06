@@ -1,12 +1,33 @@
-<section id='adminUser' class='p-3'>
-	<div class='info'>
+<section id="adminUser" class="p-3" x-data="userAdminPage()">
+	{{> common/loader state="loading"}}
+	<div class="info">
 		<h1>Users</h1>
 	</div>
-	<table class='table striped mt-5'>
+	{{> common/search showReset=true resetText="Clear" handleReset="clearSearch" submitText="Search"
+	placeholder="Search..." model="searchText" onSubmit="handleSearchSubmit" }}
+	<table class="table striped mt-5">
+		<colgroup>
+			<col style="width: 10%" />
+			<col style="width: 30%" />
+			<col style="width: 20%" />
+			<col style="width: 10%" />
+			<col style="width: 20%" />
+			<col style="width: 10%" />
+		</colgroup>
 		<thead>
 			<tr>
-				<th>#</th>
-				<th>Name</th>
+				<th>
+					<a href="#" class="text-black text-underline" @click.prevent="sort('id')"
+						>#
+						<span x-text="sortBy === 'id' ? (sortOrder === 'ASC' ? '↑' : '↓') : ''"></span>
+					</a>
+				</th>
+				<th>
+					<a href="#" class="text-black text-underline" @click.prevent="sort('name')"
+						>Name
+						<span x-text="sortBy === 'name' ? (sortOrder === 'ASC' ? '↑' : '↓') : ''"></span>
+					</a>
+				</th>
 				<th>Email</th>
 				<th>Role</th>
 				<th>Created At</th>
@@ -14,43 +35,46 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>John Doe</td>
-				<td>john@email.com</td>
-				<td>USER</td>
-				<td>14 May 2026 15:30 EDT</td>
-				<td>
-					<a class='btn btn-warning btn-sm text-black' href='#'>Edit</a>
-					<button class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteModal'>
-						Delete
-					</button>
-				</td>
-			</tr>
+			<template class="admin-list" x-for="user in users" :key="user.id">
+				<tr>
+					<td class="align-middle" x-text="user.id">1</td>
+					<td class="align-middle" x-text="user.name">John Doe</td>
+					<td class="align-middle" x-text="user.email">john@email.com</td>
+					<td class="align-middle">
+						<select x-model="user.role" class="form-select" :disabled="form.id !== user.id">
+							{{#each role}}
+							<option value="{{this}}">{{this}}</option>
+							{{/each}}
+						</select>
+					</td>
+					<td class="align-middle" x-text="user.createdAt">14 May 2026 15:30 EDT</td>
+					<td class="align-middle">
+						<button
+							class="btn btn-warning btn-sm text-black"
+							x-show="form.id !== user.id"
+							@click="startEdit(user)"
+						>
+							Edit
+						</button>
+						<button class="btn btn-success btn-sm" x-show="form.id === user.id" @click="saveEdit()">
+							Save
+						</button>
+						{{!--
+						<button
+							disabled
+							class="btn btn-danger btn-sm"
+							data-bs-toggle="modal"
+							data-bs-target="#deleteModal"
+						>
+							Delete
+						</button>
+						--}}
+					</td>
+				</tr>
+			</template>
 		</tbody>
 	</table>
-	<div
-		id='deleteModal'
-		class='modal'
-		tabindex='-1'
-		tabindex='-1'
-		aria-labelledby='deleteModalLabel'
-		aria-hidden='true'
-	>
-		<div class='modal-dialog'>
-			<div class='modal-content'>
-				<div class='modal-header'>
-					<h5 class='modal-title'>Warning</h5>
-					<button class='btn-close' type='button' data-bs-dismiss='modal' aria-label='Close'></button>
-				</div>
-				<div class='modal-body'>
-					<p>Are you sure you want to delete?</p>
-				</div>
-				<div class='modal-footer'>
-					<button class='btn btn-secondary' type='button' data-bs-dismiss='modal'>Close</button>
-					<button class='btn btn-danger' type='button'>Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{> common/pagination currentPage=currentPage totalPages=totalPages visiblePages=visiblePages
+	handlePageClick="goToPage" }} {{!-- {{> common/modal id="deleteModal" title="Warning" message="Are you sure you want
+	to delete?" cancelText="Close" confirmText="Yes" confirmAction="confirmDelete()" }} --}}
 </section>

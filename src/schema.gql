@@ -123,6 +123,11 @@ type PasswordResetResponseDto {
   message: String!
 }
 
+type UserPaginated {
+  data: [User!]!
+  pagination: Pagination!
+}
+
 type ResponseAuthDto {
   id: Int!
   name: String!
@@ -149,7 +154,7 @@ type Query {
   getImage(id: Int!): Image!
   getProducts(page: Int, limit: Int, sort: [[String]], search: String): ProductPaginated!
   getProduct(id: Int!): Product!
-  getUsers: [User!]!
+  getUsers(page: Int, limit: Int, sort: [[String]], search: String): UserPaginated!
   getUser(id: Int!): User!
   currentUser: User!
   getAllCarts: [ResponseCartDto!]!
@@ -229,6 +234,13 @@ input UpdateUserDto {
   province: String
   zipCode: String
   phone: String
+  role: Role
+}
+
+enum Role {
+  USER
+  ADMIN
+  EMPLOYEE
 }
 
 input SendResetTokenDto {

@@ -16,6 +16,12 @@ import { EmailMailer } from 'src/core/email/interface/email.interface';
 import { VerifyTokenDto } from './dto/verify-token.dto';
 import { generatePasswordResetToken } from 'src/utils/token.util';
 import { SendResetTokenDto } from './dto/send-reset-token.dto';
+import {
+  FilterOperator,
+  FilterSuffix,
+  paginate,
+  PaginateQuery,
+} from 'nestjs-paginate';
 
 @Injectable()
 export class UserService {
@@ -42,8 +48,19 @@ export class UserService {
     return this.userRepository.save(user);
   }
 
-  findAll() {
-    return this.userRepository.find();
+  async findAll(query: PaginateQuery) {
+    return await paginate(query, this.userRepository, {
+      sortableColumns: ['id', 'name'],
+      nullSort: 'last',
+      defaultSortBy: [['id', 'DESC']],
+      searchableColumns: ['name'],
+      filterableColumns: {
+        name: [FilterOperator.EQ, FilterSuffix.NOT],
+        email: [FilterOperator.EQ, FilterSuffix.NOT],
+        role: [FilterOperator.EQ, FilterSuffix.NOT],
+      },
+      defaultLimit: 5,
+    });
   }
 
   async findOne(id: number) {

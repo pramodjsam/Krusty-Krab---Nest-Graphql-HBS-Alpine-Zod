@@ -1,4 +1,5 @@
 import { Controller, Get, Render } from '@nestjs/common';
+import { Role } from 'src/core/constants/index';
 
 @Controller('user')
 export class UserController {
@@ -35,6 +36,7 @@ export class UserController {
   getAdminUser() {
     return {
       layout: 'admin',
+      role: Role,
     };
   }
 }

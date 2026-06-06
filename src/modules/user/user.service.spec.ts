@@ -12,6 +12,12 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { SendResetTokenDto } from './dto/send-reset-token.dto';
 import { VerifyTokenDto } from './dto/verify-token.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { paginate, Paginated, PaginateQuery } from 'nestjs-paginate';
+
+jest.mock('nestjs-paginate', () => ({
+  ...jest.requireActual('nestjs-paginate'),
+  paginate: jest.fn(),
+}));
 
 describe('User Service', () => {
   let userService: UserService;
@@ -20,6 +26,7 @@ describe('User Service', () => {
 
   let mockUser: User;
   let mockUserWithResetToken: User;
+  let mockPaginatedUserResponse: Paginated<User>;
 
   beforeEach(async () => {
     mockUser = {
@@ -32,7 +39,6 @@ describe('User Service', () => {
       passwordChangedAt: new Date(),
       createdAt: new Date(),
     };
-
     mockUserWithResetToken = {
       id: 1,
       name: 'John',
@@ -44,6 +50,26 @@ describe('User Service', () => {
       resetToken: 1234,
       resetTokenExpiry: new Date(Date.now() + 5 * 60 * 1000),
       createdAt: new Date(),
+    };
+    mockPaginatedUserResponse = {
+      data: [mockUser],
+      meta: {
+        itemsPerPage: 5,
+        totalItems: 1,
+        currentPage: 1,
+        totalPages: 1,
+        sortBy: [['id', 'DESC']], // matches your paginate config
+        searchBy: ['name'], // whichever columns are searchable
+        search: '', // empty string if no search applied
+        select: ['id', 'name'], // columns selected, optional but required in TS
+      },
+      links: {
+        first: undefined,
+        previous: undefined,
+        next: undefined,
+        last: undefined,
+        current: '',
+      },
     };
 
     const module: TestingModule = await Test.createTestingModule({
@@ -112,13 +138,18 @@ describe('User Service', () => {
   describe('findAll()', () => {
     it('should return all users', async () => {
       // Arrange
-      userRepository.find.mockResolvedValue([mockUser]);
+      const mockPaginatedQuery: PaginateQuery = {
+        page: 1,
+        path: '',
+      };
+
+      (paginate as jest.Mock).mockResolvedValue(mockPaginatedUserResponse);
 
       // Act
-      const result = await userService.findAll();
+      const result = await userService.findAll(mockPaginatedQuery);
 
       // Assert
-      expect(result).toEqual([mockUser]);
+      expect(result).toEqual(mockPaginatedUserResponse);
     });
   });
 

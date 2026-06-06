@@ -13,15 +13,22 @@ import { PasswordResetResponseDto } from './dto/password-reset-response.dto';
 import { SendResetTokenDto } from './dto/send-reset-token.dto';
 import { VerifyTokenDto } from './dto/verify-token.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { PaginationArgs } from 'src/core/dto/pagination.args';
+import { toPaginateQuery } from 'src/utils/pagination';
+import { Paginated } from 'src/core/dto/entity-paginate.dto';
+
+const UserPaginated = Paginated(User);
 
 @Resolver(() => User)
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
-  @Query(() => [User])
+  @Query(() => UserPaginated)
   @TransformDTO(User)
-  getUsers() {
-    return this.userService.findAll();
+  getUsers(@Args() args: PaginationArgs) {
+    const query = toPaginateQuery(args);
+
+    return this.userService.findAll(query);
   }
 
   @Query(() => User)

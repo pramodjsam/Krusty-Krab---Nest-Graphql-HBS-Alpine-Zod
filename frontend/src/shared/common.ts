@@ -109,3 +109,18 @@ export function validateForm(
 
   return [errors, valid];
 }
+
+export function formatToIntlDate(isoDateString: string) {
+  const date = new Date(isoDateString);
+
+  const formattedDate = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'short',
+  }).format(date);
+
+  return formattedDate;
+}

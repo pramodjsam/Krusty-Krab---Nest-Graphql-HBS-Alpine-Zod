@@ -155,3 +155,27 @@ query getProduct($id: Int!) {
     }
   }
 }
+
+query getUsers($page: Int, $limit: Int, $sort: [[String]], $search: String) {
+  users: getUsers(page: $page, limit: $limit, sort: $sort, search: $search) {
+    data {
+      id
+      name
+      email
+      role
+      createdAt
+    }
+    pagination {
+      itemsPerPage
+      totalItems
+      currentPage
+      totalPages
+    }
+  }
+}
+
+mutation updateUser($id: Int!, $updateUser: UpdateUserDto!) {
+  user: updateUser(id: $id, updateUser: $updateUser) {
+    id
+  }
+}

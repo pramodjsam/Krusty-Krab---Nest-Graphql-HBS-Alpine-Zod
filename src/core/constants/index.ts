@@ -17,6 +17,9 @@ export enum PaymentMethod {
 registerEnumType(PaymentMethod, {
   name: 'PaymentMethod',
 });
+registerEnumType(Role, {
+  name: 'Role',
+});
 
 export const TWO_MB = 2097152;
 

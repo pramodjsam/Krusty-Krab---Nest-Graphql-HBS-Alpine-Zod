@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Expose } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 import { Role } from 'src/core/constants';
 import { Cart } from 'src/modules/cart/entity/cart.entity';
 import {
@@ -86,6 +86,8 @@ export class User {
   cart?: Cart | null;
 
   @Field(() => Date)
+  @Type(() => Date)
   @CreateDateColumn()
+  @Expose()
   createdAt: Date;
 }

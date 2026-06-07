@@ -54,6 +54,11 @@
 					</td>
 				</tr>
 			</template>
+			<template x-if="categories.length === 0">
+				<tr>
+					<td colspan="6" class="text-center text-muted py-3">No Category Found</td>
+				</tr>
+			</template>
 		</tbody>
 	</table>
 	{{> common/pagination currentPage=currentPage totalPages=totalPages visiblePages=visiblePages

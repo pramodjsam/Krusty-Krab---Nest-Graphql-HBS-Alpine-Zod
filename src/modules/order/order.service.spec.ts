@@ -16,6 +16,12 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { NotFoundException } from '@nestjs/common';
 import { UpdateOrderDto } from './dto/update-order.dto';
+import { paginate, Paginated, PaginateQuery } from 'nestjs-paginate';
+
+jest.mock('nestjs-paginate', () => ({
+  ...jest.requireActual('nestjs-paginate'),
+  paginate: jest.fn(),
+}));
 
 describe('OrderService', () => {
   let orderService: OrderService;
@@ -32,6 +38,7 @@ describe('OrderService', () => {
   let mockUserPayload: UserPayload;
   let mockOrder: Order;
   let mockOrderItem: OrderItem;
+  let mockPaginatedOrderResponse: Paginated<Order>;
 
   beforeEach(async () => {
     mockUser = {
@@ -105,6 +112,26 @@ describe('OrderService', () => {
       status: OrderStatus.PLACED,
       deliveredAt: null,
     };
+    mockPaginatedOrderResponse = {
+      data: [mockOrder],
+      meta: {
+        itemsPerPage: 5,
+        totalItems: 1,
+        currentPage: 1,
+        totalPages: 1,
+        sortBy: [['id', 'DESC']], // matches your paginate config
+        searchBy: ['user'], // whichever columns are searchable
+        search: '', // empty string if no search applied
+        select: ['id', 'user'], // columns selected, optional but required in TS
+      },
+      links: {
+        first: undefined,
+        previous: undefined,
+        next: undefined,
+        last: undefined,
+        current: '',
+      },
+    };
     mockOrderItem.order = mockOrder;
 
     const module: TestingModule = await Test.createTestingModule({
@@ -173,13 +200,17 @@ describe('OrderService', () => {
   describe('findAll()', () => {
     it('should return all orders', async () => {
       // Arrange
-      orderRepository.find.mockResolvedValue([mockOrder]);
+      const mockPaginatedQuery: PaginateQuery = {
+        page: 1,
+        path: '',
+      };
+      (paginate as jest.Mock).mockResolvedValue(mockPaginatedOrderResponse);
 
       // Act
-      const result = await orderService.findAll();
+      const result = await orderService.findAll(mockPaginatedQuery);
 
       // Assert
-      expect(result).toEqual([mockOrder]);
+      expect(result).toEqual(mockPaginatedOrderResponse);
     });
   });
 

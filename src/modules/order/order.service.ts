@@ -11,6 +11,12 @@ import { UserService } from '../user/user.service';
 import { UserPayload } from '../user/interfaces/user-payload.interface';
 import { OrderItem } from './entities/order-item.entity';
 import { UpdateOrderDto } from './dto/update-order.dto';
+import {
+  FilterOperator,
+  FilterSuffix,
+  paginate,
+  PaginateQuery,
+} from 'nestjs-paginate';
 
 @Injectable()
 export class OrderService {
@@ -74,14 +80,23 @@ export class OrderService {
     }
   }
 
-  findAll() {
-    return this.orderRepository.find({
-      relations: {
-        user: true,
-        orderItem: {
-          product: true,
-        },
+  async findAll(query: PaginateQuery) {
+    return await paginate(query, this.orderRepository, {
+      sortableColumns: ['id', 'user', 'totalPrice'],
+      nullSort: 'last',
+      defaultSortBy: [['id', 'DESC']],
+      searchableColumns: ['user'],
+      filterableColumns: {
+        user: [FilterOperator.EQ, FilterSuffix.NOT],
+        totalPrice: [
+          FilterOperator.GTE,
+          FilterOperator.LTE,
+          FilterOperator.EQ,
+          FilterOperator.BTW,
+        ],
       },
+      defaultLimit: 5,
+      relations: ['user', 'orderItem', 'orderItem.product'],
     });
   }
 

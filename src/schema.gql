@@ -148,6 +148,11 @@ type ResponseCartDto {
   cartItem: [ResponseCartItemDto!]!
 }
 
+type OrderPaginated {
+  data: [Order!]!
+  pagination: Pagination!
+}
+
 type Query {
   getCategories(page: Int, limit: Int, sort: [[String]], search: String): CategoryPaginated!
   getCategory(id: Int!): Category
@@ -160,7 +165,7 @@ type Query {
   getAllCarts: [ResponseCartDto!]!
   getCart(id: Int!): ResponseCartDto!
   getCartItem(id: Int!): ResponseCartItemDto!
-  getAllOrders: [Order!]!
+  getAllOrders(page: Int, limit: Int, sort: [[String]], search: String): OrderPaginated!
   getOrder(id: Int!): Order!
 }
 

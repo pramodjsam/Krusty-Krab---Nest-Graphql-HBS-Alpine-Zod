@@ -3,15 +3,6 @@ import { IsOptional } from 'class-validator';
 
 type SortOrder = 'ASC' | 'DESC';
 
-@InputType()
-class SortInput {
-  @Field()
-  key: string;
-
-  @Field()
-  order: 'ASC' | 'DESC';
-}
-
 @ArgsType()
 export class PaginationArgs {
   @Field(() => Int, { nullable: true })

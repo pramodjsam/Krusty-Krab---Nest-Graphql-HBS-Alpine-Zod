@@ -23,14 +23,6 @@ export class UserController {
     };
   }
 
-  @Get('admin/order')
-  @Render('pages/admin/order')
-  getAdminOrder() {
-    return {
-      layout: 'admin',
-    };
-  }
-
   @Get('admin/user')
   @Render('pages/admin/user')
   getAdminUser() {

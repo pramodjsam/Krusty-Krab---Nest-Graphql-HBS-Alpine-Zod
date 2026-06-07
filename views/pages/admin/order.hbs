@@ -1,8 +1,18 @@
-<section id='adminOrder' class='p-3'>
-	<div class='info'>
+<section id="adminOrder" class="p-3" x-data="orderAdminPage()">
+	{{> common/loader state="loading"}}
+	<div class="info">
 		<h1>Orders</h1>
 	</div>
-	<table class='table striped mt-5'>
+	{{> common/search showReset=true resetText="Clear" handleReset="clearSearch" submitText="Search"
+	placeholder="Search..." model="searchText" onSubmit="handleSearchSubmit" }}
+	<table class="table striped mt-5">
+		<col style="width: 10%" />
+		<col style="width: 20%" />
+		<col style="width: 20%" />
+		<col style="width: 10%" />
+		<col style="width: 10%" />
+		<col style="width: 20%" />
+		<col style="width: 10%" />
 		<thead>
 			<tr>
 				<th>#</th>
@@ -15,31 +25,46 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>John Doe</td>
-				<td>Card</td>
-				<td>$12.99</td>
-				<td>
-					<select disabled>
-						<option>Yes</option>
-						<option>No</option>
-					</select>
-				</td>
-				<td>
-					<select disabled>
-						<option>Placed</option>
-						<option>Confirmed</option>
-						<option>Preparation</option>
-						<option>Delivery</option>
-						<option>Complete</option>
-						<option>Cancelled</option>
-					</select>
-				</td>
-				<td>
-					<a class='btn btn-warning btn-sm text-black' href='#'>Edit</a>
-				</td>
-			</tr>
+			<template class="admin-list" x-for="order in orders" :key="order.id">
+				<tr>
+					<td class="align-middle" x-text="order.id">1</td>
+					<td class="align-middle" x-text="order.user.name">John Doe</td>
+					<td class="align-middle" x-text="order.paymentMethod">Card</td>
+					<td class="align-middle" x-text="order.totalPrice">$12.99</td>
+					<td class="align-middle">
+						<select class="form-select" x-model="order.isPaid" :disabled="form.id !== order.id">
+							<option value="true">Yes</option>
+							<option value="false">No</option>
+						</select>
+					</td>
+					<td class="align-middle">
+						<select class="form-select" x-model="order.status" :disabled="form.id !== order.id">
+							{{#each orderStatus}}
+							<option value="{{this}}">{{this}}</option>
+							{{/each}}
+						</select>
+					</td>
+					<td class="align-middle">
+						<button
+							class="btn btn-warning btn-sm text-black"
+							x-show="form.id !== order.id"
+							@click="startEdit(order)"
+						>
+							Edit
+						</button>
+						<button class="btn btn-success btn-sm" x-show="form.id === order.id" @click="saveEdit()">
+							Save
+						</button>
+					</td>
+				</tr>
+			</template>
+			<template x-if="orders.length === 0">
+				<tr>
+					<td colspan="7" class="text-center text-muted py-3">No Orders Found</td>
+				</tr>
+			</template>
 		</tbody>
 	</table>
+	{{> common/pagination currentPage=currentPage totalPages=totalPages visiblePages=visiblePages
+	handlePageClick="goToPage" }}
 </section>

@@ -179,3 +179,35 @@ mutation updateUser($id: Int!, $updateUser: UpdateUserDto!) {
     id
   }
 }
+
+query getOrders($page: Int, $limit: Int, $sort: [[String]], $search: String) {
+  orders: getAllOrders(
+    page: $page
+    limit: $limit
+    sort: $sort
+    search: $search
+  ) {
+    data {
+      id
+      user {
+        name
+      }
+      paymentMethod
+      totalPrice
+      isPaid
+      status
+    }
+    pagination {
+      itemsPerPage
+      totalItems
+      currentPage
+      totalPages
+    }
+  }
+}
+
+mutation updateOrder($id: Int!, $updateOrder: UpdateOrderDto!) {
+  order: updateOrder(id: $id, updateOrder: $updateOrder) {
+    id
+  }
+}

@@ -70,14 +70,18 @@ export function userAdminPage(): UserAdminPage {
           GetUsersQueryVariables
         >(GetUsersDocument, variables);
 
-        const data = result.users;
-        this.users = data.data.map((user) => {
-          return {
-            ...user,
-            createdAt: formatToIntlDate(String(user.createdAt)),
-          };
-        });
-        this.totalPages = data.pagination.totalPages;
+        if (result.data) {
+          const data = result.data.users;
+          this.users = data.data.map((user) => {
+            return {
+              ...user,
+              createdAt: formatToIntlDate(String(user.createdAt)),
+            };
+          });
+          this.totalPages = data.pagination.totalPages;
+        } else {
+          throw new Error(result.error.message);
+        }
       } catch {
         notyNotification('Something went wrong', 'error');
       } finally {
@@ -143,11 +147,11 @@ export function userAdminPage(): UserAdminPage {
           UpdateUserMutationVariables
         >(UpdateUserDocument, variables);
 
-        if (res.user.id) {
+        if (res.data) {
           notyNotification('Update success', 'success');
           this.form.id = null;
         } else {
-          throw new Error('Update failed');
+          throw new Error(res.error.message);
         }
       } catch {
         notyNotification('Update failed', 'error');

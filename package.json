@@ -49,6 +49,7 @@
     "class-validator": "^0.15.1",
     "cloudinary": "^2.10.0",
     "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
     "express-handlebars": "^9.0.1",
     "graphql": "^16.14.0",
     "graphql-upload": "^13.0.0",

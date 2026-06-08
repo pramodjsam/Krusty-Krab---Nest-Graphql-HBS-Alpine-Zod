@@ -96,6 +96,11 @@ type OrderItem {
   order: Order!
 }
 
+type GenericResponseDto {
+  success: Boolean!
+  message: String!
+}
+
 type DeleteResponseDto {
   success: Boolean!
   message: String!
@@ -133,6 +138,13 @@ type ResponseAuthDto {
   name: String!
   email: String!
   accessToken: String!
+  role: Role!
+}
+
+enum Role {
+  USER
+  ADMIN
+  EMPLOYEE
 }
 
 type ResponseCartItemDto {
@@ -187,6 +199,7 @@ type Mutation {
   resetPassword(resetPassword: ResetPasswordDto!): PasswordResetResponseDto!
   signUp(signUpAuth: SignUpAuthDto!): ResponseAuthDto!
   signIn(signInAuth: SignInAuthDto!): ResponseAuthDto!
+  logout: GenericResponseDto!
   createCart(createCart: CreateCartDto!): ResponseCartDto!
   incrementCartItemQuantity(id: Int!): ResponseCartItemDto!
   decrementCartItemQuantity(id: Int!): ResponseCartItemDto!
@@ -240,12 +253,6 @@ input UpdateUserDto {
   zipCode: String
   phone: String
   role: Role
-}
-
-enum Role {
-  USER
-  ADMIN
-  EMPLOYEE
 }
 
 input SendResetTokenDto {

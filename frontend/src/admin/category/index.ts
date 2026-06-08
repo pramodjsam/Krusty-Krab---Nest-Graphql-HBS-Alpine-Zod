@@ -64,10 +64,14 @@ export function categoryAdminPage(): CategoryAdminPage {
           GetCategoriesQueryVariables
         >(GetCategoriesDocument, variables);
 
-        const data = result.categories;
+        if (result.data) {
+          const data = result.data.categories;
 
-        this.categories = data.data;
-        this.totalPages = data.pagination.totalPages;
+          this.categories = data.data;
+          this.totalPages = data.pagination.totalPages;
+        } else {
+          throw new Error(result.error.message);
+        }
       } catch {
         notyNotification('Something went wrong', 'error');
       } finally {
@@ -94,11 +98,7 @@ export function categoryAdminPage(): CategoryAdminPage {
           DeleteCategoryMutationVariables
         >(DeleteCategoryDocument, variables);
 
-        if (!res.delete?.success) {
-          throw res.delete?.message;
-        }
-
-        if (res.delete?.success) {
+        if (res.data) {
           this.selectedId = null;
           notyNotification('Category deleted successfully', 'success');
           await this.fetchPage(this.currentPage);
@@ -107,7 +107,7 @@ export function categoryAdminPage(): CategoryAdminPage {
             .querySelector<HTMLButtonElement>('#deleteModal .btn-close')
             ?.click();
         } else {
-          throw new Error('Something went wrong');
+          throw new Error(res.error.message);
         }
       } catch {
         notyNotification('Something went wrong', 'error');

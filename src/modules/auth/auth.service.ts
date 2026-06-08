@@ -37,6 +37,12 @@ export class AuthService {
     }
 
     const accessToken = await generateToken(user, this.jwtService);
-    return new ResponseAuthDto(user.id, user.name, email, accessToken);
+    return new ResponseAuthDto(
+      user.id,
+      user.name,
+      email,
+      user.role,
+      accessToken,
+    );
   }
 }

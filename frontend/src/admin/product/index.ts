@@ -66,9 +66,13 @@ export function productAdminPage(): ProductAdminPage {
           GetProductsQueryVariables
         >(GetProductsDocument, variables);
 
-        const data = result.products;
-        this.products = data.data;
-        this.totalPages = data.pagination.totalPages;
+        if (result.data) {
+          const data = result.data.products;
+          this.products = data.data;
+          this.totalPages = data?.pagination.totalPages;
+        } else {
+          throw new Error(result.error.message);
+        }
       } catch {
         notyNotification('Something went wrong', 'error');
       } finally {
@@ -93,11 +97,7 @@ export function productAdminPage(): ProductAdminPage {
           DeleteProductMutationVariables
         >(DeleteProductDocument, variables);
 
-        if (!res.delete?.success) {
-          throw res.delete?.message;
-        }
-
-        if (res.delete?.success) {
+        if (res.data) {
           this.selectedId = null;
           notyNotification('Product deleted successfully', 'success');
           await this.fetchPage(this.currentPage);
@@ -105,6 +105,9 @@ export function productAdminPage(): ProductAdminPage {
           document
             .querySelector<HTMLButtonElement>('#deleteModal .btn-close')
             ?.click();
+        }
+        if (res.error) {
+          throw new Error(res.error.message);
         }
       } catch {
         notyNotification('Something went wrong', 'error');

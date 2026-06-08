@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
 import { graphqlUploadExpress } from 'graphql-upload';
 import helmet from 'helmet';
@@ -49,6 +50,8 @@ async function bootstrap() {
         process.env.NODE_ENV === 'production' ? undefined : false,
     }),
   );
+
+  app.use(cookieParser());
 
   app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 1 }));
 

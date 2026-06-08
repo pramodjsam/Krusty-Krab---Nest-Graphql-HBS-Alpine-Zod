@@ -212,3 +212,27 @@ mutation updateOrder($id: Int!, $updateOrder: UpdateOrderDto!) {
     id
   }
 }
+
+mutation signIn($signIn: SignInAuthDto!) {
+  auth: signIn(signInAuth: $signIn) {
+    id
+    name
+    email
+    role
+  }
+}
+
+mutation logout {
+  auth: logout {
+    success
+    message
+  }
+}
+
+query currentUser {
+  user: currentUser {
+    id
+    name
+    email
+  }
+}

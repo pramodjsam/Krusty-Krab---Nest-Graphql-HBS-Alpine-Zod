@@ -1,14 +1,12 @@
 import {
   CreateCategoryDocument,
-  CreateCategoryMutation,
   GetCategoryDocument,
   GetCategoryQuery,
   GetCategoryQueryVariables,
   UpdateCategoryDocument,
-  UpdateCategoryMutation,
 } from '../../generated/graphql';
 import { buildMultipartRequest, validateForm } from '../../shared/common';
-import { graphqlRequest } from '../../shared/graphqlClient';
+import { graphqlRequest, GraphQLResult } from '../../shared/graphqlClient';
 import { notyNotification } from '../../shared/notification';
 
 interface CategoryAdminFormRefs {
@@ -75,7 +73,7 @@ export function categoryAdminFormPage(
                 name: this.form.name,
               },
             };
-        let response: CreateCategoryMutation | UpdateCategoryMutation;
+        let response: GraphQLResult<unknown>;
 
         if (this.form.image) {
           const formData = buildMultipartRequest(
@@ -88,7 +86,7 @@ export function categoryAdminFormPage(
           response = await graphqlRequest(mutation, variables);
         }
 
-        if (!isEdit && !response?.category?.id) {
+        if (!isEdit && response.error) {
           throw new Error('Create failed');
         }
 
@@ -142,9 +140,11 @@ export function categoryAdminFormPage(
             GetCategoryQuery,
             GetCategoryQueryVariables
           >(GetCategoryDocument, variables);
-          if (res.category) {
-            this.form.name = res.category.name;
-            this.imagePreview = res.category.image?.url || '/images/burger.png';
+
+          if (res.data?.category) {
+            this.form.name = res.data.category.name;
+            this.imagePreview =
+              res.data.category.image?.url || '/images/burger.png';
           } else {
             notyNotification('Category not found', 'error');
           }

@@ -1,37 +1,39 @@
-<section id='login'>
-	<div class='container mt-5'>
-		<div class='row'>
-			<div class='col'>
-				<h2 class='text-center'>Sign In</h2>
-				<form class='w-75 mx-auto mt-3'>
-					<div class='mb-3'>
-						<label class='form-label text-black'>Email Address</label>
+<section id="login" x-data="authPage()">
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col">
+				<h2 class="text-center">Sign In</h2>
+				<form class="w-75 mx-auto mt-3" @submit.prevent="login()">
+					<div class="mb-3">
+						<label class="form-label text-black">Email Address</label>
 						<input
-							class='form-control border-secondary'
-							type='email'
-							placeholder='Enter email'
-							name='email'
+							class="form-control border-secondary"
+							type="email"
+							placeholder="Enter email"
+							name="email"
+							x-model="form.email"
 						/>
 					</div>
 
-					<div class='mb-3'>
-						<label class='form-label text-black'>Password</label>
+					<div class="mb-3">
+						<label class="form-label text-black">Password</label>
 						<input
-							class='form-control border-secondary'
-							type='password'
-							placeholder='Enter password'
-							name='password'
+							class="form-control border-secondary"
+							type="password"
+							placeholder="Enter password"
+							name="password"
+							x-model="form.password"
 						/>
 					</div>
-					<div class='form-text text-muted'>
-						<a href='/auth/forgot-password'>Forgot Password?</a>
+					<div class="form-text text-muted">
+						<a href="/auth/forgot-password">Forgot Password?</a>
 					</div>
-					<div class='d-grid mb-3'>
-						<button class='btn btn-block mt-3 btn-danger' type='submit'>Sign In</button>
+					<div class="d-grid mb-3">
+						<button class="btn btn-block mt-3 btn-danger" type="submit">Sign In</button>
 					</div>
-					<div class='text-muted form-text'>
+					<div class="text-muted form-text">
 						New to Krusty Krab?
-						<a href='/auth/register'>Create an account</a>
+						<a href="/auth/register">Create an account</a>
 					</div>
 				</form>
 			</div>

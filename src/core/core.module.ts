@@ -57,7 +57,7 @@ import { RedisClientProvider } from './redis-cache/redis-client.provider';
       graphiql: true,
       playground: false,
       resolvers: { Upload: GraphQLUpload },
-      context: ({ req }) => ({ req }),
+      context: ({ req, res }) => ({ req, res }),
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],

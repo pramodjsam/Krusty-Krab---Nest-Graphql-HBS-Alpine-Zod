@@ -1,7 +1,6 @@
 import {
   Category,
   CreateProductDocument,
-  CreateProductMutation,
   GetCategoriesNameDocument,
   GetCategoriesNameQuery,
   GetCategoriesNameQueryVariables,
@@ -9,10 +8,9 @@ import {
   GetProductQuery,
   GetProductQueryVariables,
   UpdateProductDocument,
-  UpdateProductMutation,
 } from '../../generated/graphql';
 import { buildMultipartRequest, validateForm } from '../../shared/common';
-import { graphqlRequest } from '../../shared/graphqlClient';
+import { graphqlRequest, GraphQLResult } from '../../shared/graphqlClient';
 import { notyNotification } from '../../shared/notification';
 
 interface ProductAdminFormRefs {
@@ -90,7 +88,7 @@ export function productAdminFormPage(productId?: number): ProductAdminFormPage {
               },
             };
 
-        let response: CreateProductMutation | UpdateProductMutation;
+        let response: GraphQLResult<unknown>;
 
         if (this.form.image) {
           const formData = buildMultipartRequest(
@@ -104,7 +102,7 @@ export function productAdminFormPage(productId?: number): ProductAdminFormPage {
           response = await graphqlRequest(mutation, variables);
         }
 
-        if (!response?.product?.id) {
+        if (response.error) {
           throw new Error('Failed: Submit');
         }
 
@@ -161,8 +159,13 @@ export function productAdminFormPage(productId?: number): ProductAdminFormPage {
           GetCategoriesNameQuery,
           GetCategoriesNameQueryVariables
         >(GetCategoriesNameDocument, variables);
-        const data = result.categories;
-        this.categories = data.data;
+
+        if (result.data) {
+          const data = result.data.categories;
+          this.categories = data.data;
+        } else {
+          throw new Error(result.error.message);
+        }
       } catch {
         notyNotification('Something went wrong', 'error');
       } finally {
@@ -181,13 +184,14 @@ export function productAdminFormPage(productId?: number): ProductAdminFormPage {
           GetProductQueryVariables
         >(GetProductDocument, variables);
 
-        if (res.product) {
-          this.form.name = res.product.name;
-          this.form.price = res.product.price;
-          this.form.category = String(res.product.category.id);
-          this.imagePreview = res.product.image?.url || '/images/burger.png';
+        if (res.data) {
+          this.form.name = res.data.product.name;
+          this.form.price = res.data.product.price;
+          this.form.category = String(res.data.product.category.id);
+          this.imagePreview =
+            res.data.product.image?.url || '/images/burger.png';
         } else {
-          throw new Error('Failed to load product');
+          throw new Error(res.error.message);
         }
       } catch {
         notyNotification('Failed to load category', 'error');

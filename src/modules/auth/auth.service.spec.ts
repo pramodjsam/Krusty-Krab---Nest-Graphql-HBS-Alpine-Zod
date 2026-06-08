@@ -44,6 +44,7 @@ describe('AuthService', () => {
       id: 1,
       name: 'John',
       email: 'john@test.com',
+      role: Role.EMPLOYEE,
       accessToken: 'mocked-jwt-token',
     };
 

@@ -1,17 +1,25 @@
 import { DocumentNode, print } from 'graphql';
 
+export type GraphQLResult<T> =
+  | { data: T; error: null }
+  | { data: null; error: { code: string; message: string } };
+
 export async function graphqlRequest<TResult, TVariables = undefined>(
   query: DocumentNode,
   variables: TVariables | FormData,
   options?: {
     auth?: boolean;
   },
-): Promise<TResult> {
+): Promise<GraphQLResult<TResult>> {
   let body: BodyInit;
 
   const isFormData = variables instanceof FormData;
 
   const headers: Record<string, string> = {};
+  let fetchOptions: RequestInit = {
+    method: 'POST',
+    headers,
+  };
 
   if (isFormData) {
     body = variables;
@@ -28,17 +36,32 @@ export async function graphqlRequest<TResult, TVariables = undefined>(
 
   if (options?.auth) {
     // TODO: CHANGE AFTER AUTH SETUP
-    headers['Authorization'] =
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJqYW5lQGVtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzgwNzg5ODQ1LCJleHAiOjE3ODA4NzYyNDV9.RYLimHzpUaKZ8AS0qgu1wNHUKqMXl6_7f33mzVU0ZcE'; // TODO: Change after auth setup
+    // headers['Authorization'] =
+    //   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJqYW5lQGVtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzgwNzg5ODQ1LCJleHAiOjE3ODA4NzYyNDV9.RYLimHzpUaKZ8AS0qgu1wNHUKqMXl6_7f33mzVU0ZcE'; // TODO: Change after auth setup
+
+    fetchOptions.credentials = 'include';
   }
 
-  const res = await fetch('/graphql', {
-    method: 'POST',
-    headers,
-    body,
-  });
+  fetchOptions.body = body;
+
+  const res = await fetch('/graphql', fetchOptions);
 
   const json = await res.json();
 
-  return json.data;
+  if (json.errors?.length) {
+    const err = json.errors[0];
+
+    return {
+      data: null,
+      error: {
+        code: err.extensions?.code ?? 'UNKNOWN',
+        message: err.message,
+      },
+    };
+  }
+
+  return {
+    data: json.data,
+    error: null,
+  };
 }

@@ -69,11 +69,14 @@ export function orderAdminPage(): OrderAdminPage {
           GetOrdersQuery,
           GetOrdersQueryVariables
         >(GetOrdersDocument, variables, { auth: true });
-        3;
 
-        const data = result.orders;
-        this.orders = data.data;
-        this.totalPages = data.pagination.totalPages;
+        if (result.data) {
+          const data = result.data.orders;
+          this.orders = data.data;
+          this.totalPages = data?.pagination.totalPages;
+        } else {
+          throw new Error(result.error.message);
+        }
       } catch {
         notyNotification('Something went wrong', 'error');
       } finally {
@@ -138,11 +141,11 @@ export function orderAdminPage(): OrderAdminPage {
           auth: true,
         });
 
-        if (res.order.id) {
+        if (res.data) {
           notyNotification('Update success', 'success');
           this.form.id = null;
         } else {
-          throw new Error('Update failed');
+          throw new Error(res.error.message);
         }
       } catch {
         notyNotification('Update failed', 'error');

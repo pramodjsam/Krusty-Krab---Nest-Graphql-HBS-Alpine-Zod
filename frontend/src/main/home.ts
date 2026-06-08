@@ -8,7 +8,9 @@ import {
   GetProductsQuery,
   GetProductsQueryVariables,
   Image,
+  LogoutDocument,
   Product,
+  User,
 } from '../generated/graphql';
 import { graphqlRequest } from '../shared/graphqlClient';
 import { notyNotification } from '../shared/notification';
@@ -19,6 +21,7 @@ interface HomePageFormRefs {
 
 type HomePage = {
   loading: boolean;
+  user: Partial<User> | null;
   categories: (Omit<Partial<Category>, 'image'> & {
     image: Partial<Image> | null;
   })[];
@@ -38,17 +41,20 @@ type HomePage = {
   fetchCategoriesAndProducts(): Promise<void>;
   fetchCategories(): Promise<void>;
   fetchProducts(): Promise<void>;
+  fetchCurrentUser(): Promise<void>;
   handleCategorySelection(categoryId: number): Promise<void>;
   handleAddToCart(product: Product): void;
   handleRemoveFromCart(product: Product): void;
   isItemExistInCart(product: Product): boolean;
   getCartCount(): number;
+  logout(): Promise<void>;
   init(): Promise<void>;
 };
 
 export function homePage(): HomePage {
   return {
     loading: false,
+    user: null,
     categories: [],
     products: [],
     selectedCategory: 0,
@@ -71,8 +77,8 @@ export function homePage(): HomePage {
           GetCategoriesQueryVariables
         >(GetCategoriesDocument, variables);
 
-        const data = categoryRes.categories;
-        this.categories = data.data;
+        const data = categoryRes.data?.categories;
+        this.categories = data?.data || [];
       } catch (error) {
         notyNotification('Something went wrong', 'error');
       } finally {
@@ -91,14 +97,36 @@ export function homePage(): HomePage {
           GetProductsQueryVariables
         >(GetProductsDocument, variables);
 
-        const data = productsRes.products;
-        this.products = data.data;
+        const data = productsRes.data?.products;
+        this.products = data?.data || [];
         this.filteredProducts = this.products;
       } catch (error) {
         notyNotification('Something went wrong', 'error');
       } finally {
         this.loading = false;
       }
+    },
+    async fetchCurrentUser() {
+      const user = Alpine.store('user').user;
+      this.user = user;
+
+      // this.loading = true;
+
+      // try {
+      //   const res = await graphqlRequest<
+      //     CurrentUserQuery,
+      //     CurrentUserQueryVariables
+      //   >(CurrentUserDocument, {});
+
+      //   if (res.data) {
+      //     this.user = res.data?.user;
+      //   } else {
+      //   }
+      // } catch (error) {
+      //   notyNotification('Failed to fetch', 'error');
+      // } finally {
+      //   this.loading = false;
+      // }
     },
     async handleCategorySelection(categoryId: number) {
       if (categoryId) {
@@ -130,8 +158,30 @@ export function homePage(): HomePage {
     getCartCount() {
       return Alpine.store('cart').count();
     },
+    async logout() {
+      this.loading = true;
+
+      try {
+        const res = await graphqlRequest(LogoutDocument, {});
+
+        if (res.error) {
+          notyNotification(res.error.message);
+        }
+
+        Alpine.store('user').clear();
+        window.location.href = '/';
+      } catch {
+        notyNotification('Failed to logout', 'error');
+      } finally {
+        this.loading = false;
+      }
+    },
     async init() {
       await this.fetchCategoriesAndProducts();
+
+      Alpine.nextTick(async () => {
+        await this.fetchCurrentUser();
+      });
     },
   };
 }

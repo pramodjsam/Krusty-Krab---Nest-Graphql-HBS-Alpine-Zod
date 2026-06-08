@@ -9,8 +9,9 @@ import { userAdminPage } from './admin/user';
 import 'noty/lib/noty.css';
 import 'noty/lib/themes/mint.css';
 import { orderAdminPage } from './admin/order';
-import { homePage } from './home';
 import { registerStores } from './store';
+import { homePage } from './main/home';
+import { authPage } from './main/auth';
 
 Alpine.plugin(persist);
 
@@ -24,6 +25,7 @@ Alpine.data('productAdminFormPage', productAdminFormPage);
 Alpine.data('userAdminPage', userAdminPage);
 Alpine.data('orderAdminPage', orderAdminPage);
 Alpine.data('homePage', homePage);
+Alpine.data('authPage', authPage);
 
 (window as any).showNotification = notyNotification;
 

@@ -1,5 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Expose } from 'class-transformer';
+import { Role } from 'src/core/constants/index';
 
 @ObjectType()
 export class ResponseAuthDto {
@@ -19,10 +20,21 @@ export class ResponseAuthDto {
   @Expose()
   accessToken: string;
 
-  constructor(id: number, name: string, email: string, accessToken: string) {
+  @Field(() => Role)
+  @Expose()
+  role: Role;
+
+  constructor(
+    id: number,
+    name: string,
+    email: string,
+    role: Role,
+    accessToken: string,
+  ) {
     this.id = id;
     this.name = name;
     this.email = email;
     this.accessToken = accessToken;
+    this.role = role;
   }
 }

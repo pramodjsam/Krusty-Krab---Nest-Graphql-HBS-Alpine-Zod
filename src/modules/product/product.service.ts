@@ -39,6 +39,7 @@ export class ProductService {
       },
       defaultLimit: 5,
       relations: ['image', 'category'],
+      maxLimit: 300,
     });
   }
 

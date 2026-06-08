@@ -31,7 +31,7 @@ import { RedisClientProvider } from './redis-cache/redis-client.provider';
       isGlobal: true,
       useFactory: async () => ({
         stores: [
-          new KeyvRedis('redis://127.0.0.1:6379'), //TODO: move to env variables
+          new KeyvRedis('redis://127.0.0.1:6380'), //TODO: move to env variables
         ],
         ttl: 600000,
       }),

@@ -216,6 +216,9 @@ footer ul li a {
   border-radius: 50%;
   font-size: 1rem;
 }
+.addToCart--button:hover {
+  border: 1px solid black;
+}
 /* Login */
 section {
   min-height: calc(100vh - 74px - 180px);

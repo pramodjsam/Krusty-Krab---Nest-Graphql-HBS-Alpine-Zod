@@ -106,6 +106,7 @@ query getProducts($page: Int, $limit: Int, $sort: [[String]], $search: String) {
         url
       }
       category {
+        id
         name
       }
     }

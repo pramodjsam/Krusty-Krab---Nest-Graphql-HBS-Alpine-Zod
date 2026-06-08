@@ -124,3 +124,11 @@ export function formatToIntlDate(isoDateString: string) {
 
   return formattedDate;
 }
+
+export function truncateString(content: string, maxLength: number) {
+  if (content.length > maxLength) {
+    return content.substring(0, maxLength - 3) + '...';
+  } else {
+    return content;
+  }
+}

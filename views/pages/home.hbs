@@ -1,249 +1,106 @@
-<div>
-	{{!-- Hero --}}
-	<main id='hero'>
-		<div class='container-fluid'>
-			<div class='hero px-5 bg-warning row'>
-				<div class='col-12 col-md-6 ps-5'>
+<div x-data="homePage()">
+	{{> common/loader state="loading"}} {{!-- Hero --}}
+	<main id="hero">
+		<div class="container-fluid">
+			<div class="hero px-5 bg-warning row">
+				<div class="col-12 col-md-6 ps-5">
 					<h1>Bite into Flavorful Delights</h1>
-					<h4 class='mt-4'>
+					<h4 class="mt-4">
 						Savor Every Moment with Our Irresistible Burgers - Where Taste and Creativity Collide!
 					</h4>
 				</div>
-				<div class='col-12 col-md-6'>
-					<img class='hero__img' src='/images/burger-hero.png' alt='hero' />
+				<div class="col-12 col-md-6">
+					<img class="hero__img hero__img--spin" src="/images/burger-hero.png" alt="hero" />
 				</div>
 			</div>
 		</div>
 	</main>
-	{{!-- End of Hero --}}
-	{{!-- Menu --}}
-	<section id='menu' class='my-4'>
-		<div class='container-fluid'>
-			<div class='row mx-3'>
-				<h2 class='text-center mb-5'>Menu</h2>
-				<div class='col-12 col-md-3 menu__sidebar border-top border-left border-bottom'>
-					<ul class='list-group'>
+	{{!-- End of Hero --}} {{!-- Menu --}}
+	<section id="menu" class="my-4">
+		<div class="container-fluid">
+			<div class="row mx-3">
+				<h2 class="text-center mb-5">Menu</h2>
+				<div class="col-12 col-md-3 menu__sidebar border-top border-left border-bottom">
+					<ul class="list-group">
 						<li
-							class='list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item'
+							class="list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item"
+							:class="{ 'act': selectedCategory === 0 }"
+							@click="handleCategorySelection(0)"
 						>
-							<img class='menu__sidebar--img me-4' src='/images/sidebar/All_Menu.webp' alt='all menu' />
+							<img class="menu__sidebar--img me-4" src="/images/sidebar/All_Menu.webp" alt="all menu" />
 							All Menu
 						</li>
-
-						<li
-							class='list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item'
-						>
-							<img class='menu__sidebar--img me-4' src='/images/sidebar/McPicks.webp' alt='McPicks' />
-							McPicks
-						</li>
-						<li
-							class='list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item'
-						>
-							<img
-								class='menu__sidebar--img me-4'
-								src='/images/sidebar/Desserts___Shakes.webp'
-								alt='Desserts and Shakes'
-							/>
-							Desserts & Shakes
-						</li>
-						<li
-							class='list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item'
-						>
-							<img class='menu__sidebar--img me-4' src='/images/sidebar/Beef.webp' alt='Beef' />
-							Beef
-						</li>
-						<li
-							class='list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item'
-						>
-							<img class='menu__sidebar--img me-4' src='/images/sidebar/McCaf.webp' alt='McCafe' />
-							McCafe
-						</li>
-						<li
-							class='list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item'
-						>
-							<img
-								class='menu__sidebar--img me-4'
-								src='/images/sidebar/Sandwiches___Wraps.webp'
-								alt='Sandwiches and Wraps'
-							/>
-							Sandwiches & Wraps
-						</li>
-						<li
-							class='list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item'
-						>
-							<img
-								class='menu__sidebar--img me-4'
-								src='/images/sidebar/Snacks___Sides.webp'
-								alt='Snacks and Sides'
-							/>
-							Snacks & Sides
-						</li>
-						<li
-							class='list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item'
-						>
-							<img class='menu__sidebar--img me-4' src='/images/sidebar/Breakfast.webp' alt='Breakfast' />
-							Breakfast
-						</li>
-						<li
-							class='list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item'
-						>
-							<img
-								class='menu__sidebar--img me-4'
-								src='/images/sidebar/Happy_Meal.webp'
-								alt='Happy Meal'
-							/>
-							Happy Meal
-						</li>
-						<li
-							class='list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item'
-						>
-							<img class='menu__sidebar--img me-4' src='/images/sidebar/Beverages.webp' alt='Beverages' />
-							Beverages
-						</li>
-						<li
-							class='list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item'
-						>
-							<img class='menu__sidebar--img me-4' src='/images/sidebar/Chicken.webp' alt='Chicken' />
-							Chicken
-						</li>
+						<template x-for="category in categories" :key="category.id">
+							<li
+								class="list-group-item py-3 d-flex align-items-center justify-content-start menu__sidebar--item"
+								:class="{'act': selectedCategory === category.id}"
+								@click="handleCategorySelection(category.id)"
+							>
+								<img
+									class="menu__sidebar--img me-4"
+									:src="category.image?.url || '/images/burger.png'"
+									:alt="category.name"
+								/>
+								<span x-text="category.name"></span>
+							</li>
+						</template>
 					</ul>
 				</div>
-				<div class='col-12 col-md-9 menu__right border-top border-bottom'>
-					<div class='row'>
-						{{!-- Item --}}
-						<div class='col-6 col-md-4 col-lg-3 my-3'>
-							<div class='card mx-auto menu__item' style='width: 11rem;'>
-								<img class='card-img-top card__img' src='/images/sidebar/Chicken.webp' />
-								<div class='card-body'>
-									<h5 class='card-title menu__item--body-title'>Chicken Wrap</h5>
-									<div class='d-flex align-items-center justify-content-between mt-2'>
-										<p class='mt-3 fw-bold'>$12.99</p>
-										<button class='btn button-outline-red btn-sm round-2 addToCart--button'>
-											<span>Add to cart</span>
-										</button>
+				<div class="col-12 col-md-9 menu__right border-top border-bottom" x-ref="menuRight">
+					<div class="row">
+						<template x-for="product in filteredProducts" :key="product.id">
+							{{!-- Item --}}
+							<div class="col-6 col-md-4 col-lg-3 my-3">
+								<div class="card mx-auto menu__item h-100 d-flex flex-column" style="width: 11rem">
+									<img
+										class="card-img-top card__img"
+										:src="product.image.url || '/images/burger.png'"
+									/>
+									<div class="card-body d-flex flex-column flex-grow-1">
+										<h5
+											class="card-title menu__item--body-title"
+											x-text="product.name"
+											data-bs-toggle="popover"
+											data-bs-trigger="hover focus"
+											:data-bs-content="product.name"
+											data-bs-placement="top"
+										>
+											Chicken Wrap
+										</h5>
+										<div class="mt-auto d-flex align-items-center justify-content-between mt-2">
+											<p class="mt-3 fw-bold" x-text="`$${product.price}`">$12.99</p>
+											<template x-if="!isItemExistInCart(product)">
+												<button
+													class="btn button-outline-red btn-sm round-2 addToCart--button"
+													@click="handleAddToCart(product)"
+												>
+													<span>Add to cart</span>
+												</button>
+											</template>
+											<template x-if="isItemExistInCart(product)">
+												<button
+													class="btn button-red btn-sm round-2 addToCart--button"
+													@click="handleRemoveFromCart(product)"
+												>
+													<span>Remove</span>
+												</button>
+											</template>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						{{!-- Item --}}
-						{{!-- Item --}}
-						<div class='col-6 col-md-4 col-lg-3  my-3'>
-							<div class='card mx-auto menu__item' style='width: 11rem;'>
-								<img class='card-img-top card__img' src='/images/sidebar/Chicken.webp' />
-								<div class='card-body'>
-									<h5 class='card-title menu__item--body-title'>Chicken Wrap</h5>
-									<div class='d-flex align-items-center justify-content-between mt-2'>
-										<p class='mt-3 fw-bold'>$12.99</p>
-										<button class='btn button-outline-red btn-sm round-2 addToCart--button'>
-											<span>Add to cart</span>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						{{!-- Item --}}
-						{{!-- Item --}}
-						<div class='col-6 col-md-4 col-lg-3  my-3'>
-							<div class='card mx-auto menu__item' style='width: 11rem;'>
-								<img class='card-img-top card__img' src='/images/sidebar/Chicken.webp' />
-								<div class='card-body'>
-									<h5 class='card-title menu__item--body-title'>Chicken Wrap</h5>
-									<div class='d-flex align-items-center justify-content-between mt-2'>
-										<p class='mt-3 fw-bold'>$12.99</p>
-										<button class='btn button-outline-red btn-sm round-2 addToCart--button'>
-											<span>Add to cart</span>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						{{!-- Item --}}
-						{{!-- Item --}}
-						<div class='col-6 col-md-4 col-lg-3  my-3'>
-							<div class='card mx-auto menu__item' style='width: 11rem;'>
-								<img class='card-img-top card__img' src='/images/sidebar/Chicken.webp' />
-								<div class='card-body'>
-									<h5 class='card-title menu__item--body-title'>Chicken Wrap</h5>
-									<div class='d-flex align-items-center justify-content-between mt-2'>
-										<p class='mt-3 fw-bold'>$12.99</p>
-										<button class='btn button-outline-red btn-sm round-2 addToCart--button'>
-											<span>Add to cart</span>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						{{!-- Item --}}
-						{{!-- Item --}}
-						<div class='col-6 col-md-4 col-lg-3  my-3'>
-							<div class='card mx-auto menu__item' style='width: 11rem;'>
-								<img class='card-img-top card__img' src='/images/sidebar/Chicken.webp' />
-								<div class='card-body'>
-									<h5 class='card-title menu__item--body-title'>Chicken Wrap</h5>
-									<div class='d-flex align-items-center justify-content-between mt-2'>
-										<p class='mt-3 fw-bold'>$12.99</p>
-										<button class='btn button-outline-red btn-sm round-2 addToCart--button'>
-											<span>Add to cart</span>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						{{!-- Item --}}
-						{{!-- Item --}}
-						<div class='col-6 col-md-4 col-lg-3  my-3'>
-							<div class='card mx-auto menu__item' style='width: 11rem;'>
-								<img class='card-img-top card__img' src='/images/sidebar/Chicken.webp' />
-								<div class='card-body'>
-									<h5 class='card-title menu__item--body-title'>Chicken Wrap</h5>
-									<div class='d-flex align-items-center justify-content-between mt-2'>
-										<p class='mt-3 fw-bold'>$12.99</p>
-										<button class='btn button-outline-red btn-sm round-2 addToCart--button'>
-											<span>Add to cart</span>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						{{!-- Item --}}
-						{{!-- Item --}}
-						<div class='col-6 col-md-4 col-lg-3  my-3'>
-							<div class='card mx-auto menu__item' style='width: 11rem;'>
-								<img class='card-img-top card__img' src='/images/sidebar/Chicken.webp' />
-								<div class='card-body'>
-									<h5 class='card-title menu__item--body-title'>Chicken Wrap</h5>
-									<div class='d-flex align-items-center justify-content-between mt-2'>
-										<p class='mt-3 fw-bold'>$12.99</p>
-										<button class='btn button-outline-red btn-sm round-2 addToCart--button'>
-											<span>Add to cart</span>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						{{!-- Item --}}
-						{{!-- Item --}}
-						<div class='col-6 col-md-4 col-lg-3  my-3'>
-							<div class='card mx-auto menu__item' style='width: 11rem;'>
-								<img class='card-img-top card__img' src='/images/sidebar/Chicken.webp' />
-								<div class='card-body'>
-									<h5 class='card-title menu__item--body-title'>Chicken Wrap</h5>
-									<div class='d-flex align-items-center justify-content-between mt-2'>
-										<p class='mt-3 fw-bold'>$12.99</p>
-										<button class='btn button-outline-red btn-sm round-2 addToCart--button'>
-											<span>Add to cart</span>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						{{!-- Item --}}
+							{{!-- Item --}}
+						</template>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</section>
 	{{!-- End of Menu --}}
-	<a href='/cart'><span class='main__cart'><i class='bi bi-basket-fill fs-3'></i> <p>0</p></span></a>
+	<a href="/cart"
+		><span class="main__cart"
+			><i class="bi bi-basket-fill fs-3"></i>
+			<p x-text="getCartCount()">0</p></span
+		></a
+	>
 </div>

@@ -229,6 +229,15 @@ mutation logout {
   }
 }
 
+mutation signUp($signUp: SignUpAuthDto!) {
+  auth: signUp(signUpAuth: $signUp) {
+    id
+    name
+    email
+    role
+  }
+}
+
 query currentUser {
   user: currentUser {
     id

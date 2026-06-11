@@ -28,35 +28,37 @@
 				<li class="nav-item" x-show="!loading && user === null" x-cloak>
 					<a class="nav-link" href="/auth/login">Login</a>
 				</li>
-				<li class="nav-item dropdown" x-show="!loading && user !== null">
-					<a
-						class="nav-link dropdown-toggle"
-						href="#"
-						role="button"
-						data-bs-toggle="dropdown"
-						aria-expanded="false"
-						x-text="user.name"
-					>
-						John Doe
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a class="dropdown-item" href="/user/profile">Profile</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="/user/order">Order</a>
-						</li>
-						<li x-show="user.role === 'ADMIN'">
-							<a class="dropdown-item" href="/user/admin">Admin</a>
-						</li>
-						<li>
-							<hr class="dropdown-divider" />
-						</li>
-						<li>
-							<a class="dropdown-item" href="#" @click="logout()">Logout</a>
-						</li>
-					</ul>
-				</li>
+				<template x-if="!loading && user">
+					<li class="nav-item dropdown">
+						<a
+							class="nav-link dropdown-toggle"
+							href="#"
+							role="button"
+							data-bs-toggle="dropdown"
+							aria-expanded="false"
+							x-text="user.name"
+						>
+							John Doe
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="/user/profile">Profile</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="/user/order">Order</a>
+							</li>
+							<li x-show="user.role === 'ADMIN'">
+								<a class="dropdown-item" href="/user/admin">Admin</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<a class="dropdown-item" href="#" @click="logout()">Logout</a>
+							</li>
+						</ul>
+					</li>
+				</template>
 
 				<li class="nav-item ms-3">
 					<a class="text-decoration-none" href="/cart">

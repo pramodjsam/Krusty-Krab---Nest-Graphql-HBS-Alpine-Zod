@@ -179,9 +179,7 @@ export function homePage(): HomePage {
     async init() {
       await this.fetchCategoriesAndProducts();
 
-      Alpine.nextTick(async () => {
-        await this.fetchCurrentUser();
-      });
+      await this.fetchCurrentUser();
     },
   };
 }

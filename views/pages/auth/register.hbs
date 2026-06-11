@@ -1,125 +1,163 @@
-<section id='register'>
-	<div class='container mt-5'>
-		<div class='row'>
-			<div class='col'>
-				<h2 class='text-center'>Register</h2>
-				<form class='w-75 mx-auto mt-4'>
-					<div class='row'>
-						<div class='col col-md-6'>
-							<div class='mb-3'>
-								<label class='form-label text-black'>Name</label>
+<section id="register" x-data="registerPage()">
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col">
+				<h2 class="text-center">Register</h2>
+				<form class="w-75 mx-auto mt-4" @submit.prevent="register()">
+					<div class="row">
+						<div class="col col-md-6">
+							<div class="mb-3">
+								<label class="form-label" :class="errors['name'] ? 'text-danger': 'text-black'"
+									>Name</label
+								>
 								<input
-									class='form-control border-secondary'
-									type='text'
-									placeholder='Enter name'
-									name='name'
+									class="form-control border-secondary"
+									:class="{'border border-danger': errors['name']}"
+									type="text"
+									placeholder="Enter name"
+									name="name"
+									x-model="form.name"
 								/>
 							</div>
 						</div>
 
-						<div class='col col-md-6'>
-							<div class='mb-3'>
-								<label class='form-label text-black'>Email Address</label>
+						<div class="col col-md-6">
+							<div class="mb-3">
+								<label class="form-label" :class="errors['email'] ? 'text-danger': 'text-black'"
+									>Email Address</label
+								>
 								<input
-									class='form-control border-secondary'
-									type='email'
-									placeholder='Enter email'
-									name='email'
+									class="form-control border-secondary"
+									type="email"
+									placeholder="Enter email"
+									name="email"
+									x-model="form.email"
+									:class="{'border border-danger': errors['email']}"
 								/>
 							</div>
 						</div>
 
-						<div class='col col-md-6'>
-							<div class='mb-3'>
-								<label class='form-label text-black'>Phone</label>
+						<div class="col col-md-6">
+							<div class="mb-3">
+								<label class="form-label" :class="errors['phone'] ? 'text-danger': 'text-black'"
+									>Phone</label
+								>
 								<input
-									class='form-control border-secondary'
-									type='text'
-									placeholder='Enter phone'
-									name='phone'
+									class="form-control border-secondary"
+									type="text"
+									placeholder="Enter phone"
+									name="phone"
+									x-model="form.phone"
+									:class="{'border border-danger': errors['phone']}"
 								/>
 							</div>
 						</div>
 
-						<div class='col col-md-6'>
-							<div class='mb-3'>
-								<label class='form-label text-black'>Address</label>
+						<div class="col col-md-6">
+							<div class="mb-3">
+								<label class="form-label" :class="errors['address'] ? 'text-danger': 'text-black'"
+									>Address</label
+								>
 								<input
-									class='form-control border-secondary'
-									type='text'
-									placeholder='Enter address'
-									name='address'
+									class="form-control border-secondary"
+									type="text"
+									placeholder="Enter address"
+									name="address"
+									x-model="form.address"
+									:class="{'border border-danger': errors['address']}"
 								/>
 							</div>
 						</div>
 
-						<div class='col col-md-6'>
-							<div class='mb-3'>
-								<label class='form-label text-black'>City</label>
+						<div class="col col-md-6">
+							<div class="mb-3">
+								<label class="form-label" :class="errors['city'] ? 'text-danger': 'text-black'"
+									>City</label
+								>
 								<input
-									class='form-control border-secondary'
-									type='text'
-									placeholder='Enter city'
-									name='city'
+									class="form-control border-secondary"
+									type="text"
+									placeholder="Enter city"
+									name="city"
+									x-model="form.city"
+									:class="{'border border-danger': errors['city']}"
 								/>
 							</div>
 						</div>
 
-						<div class='col col-md-6'>
-							<div class='mb-3'>
-								<label class='form-label text-black'>Province</label>
+						<div class="col col-md-6">
+							<div class="mb-3">
+								<label class="form-label" :class="errors['province'] ? 'text-danger': 'text-black'"
+									>Province</label
+								>
 								<input
-									class='form-control border-secondary'
-									type='text'
-									placeholder='Enter province'
-									name='province'
+									class="form-control border-secondary"
+									type="text"
+									placeholder="Enter province"
+									name="province"
+									x-model="form.province"
+									:class="{'border border-danger': errors['province']}"
 								/>
 							</div>
 						</div>
 
-						<div class='col-12'>
-							<div class='mb-3'>
-								<label class='form-label text-black'>Zip Code</label>
+						<div class="col-12">
+							<div class="mb-3">
+								<label class="form-label" :class="errors['zipCode'] ? 'text-danger': 'text-black'"
+									>Zip Code</label
+								>
 								<input
-									class='form-control border-secondary'
-									type='text'
-									placeholder='Enter zip code'
-									name='zipcode'
+									class="form-control border-secondary"
+									type="text"
+									placeholder="Enter zip code"
+									name="zipcode"
+									x-model="form.zipCode"
+									:class="{'border border-danger': errors['zipCode']}"
 								/>
 							</div>
 						</div>
 
-						<div class='col col-md-6'>
-							<div class='mb-3'>
-								<label class='form-label text-black'>Password</label>
+						<div class="col col-md-6">
+							<div class="mb-3">
+								<label class="form-label" :class="errors['password'] ? 'text-danger': 'text-black'"
+									>Password</label
+								>
 								<input
-									class='form-control border-secondary'
-									type='password'
-									placeholder='Enter password'
-									name='password'
+									class="form-control border-secondary"
+									type="password"
+									placeholder="Enter password"
+									name="password"
+									x-model="form.password"
+									:class="{'border border-danger': errors['password']}"
 								/>
 							</div>
 						</div>
 
-						<div class='col col-md-6'>
-							<div class='mb-3'>
-								<label class='form-label text-black'>Confirm Password</label>
+						<div class="col col-md-6">
+							<div class="mb-3">
+								<label
+									class="form-label"
+									:class="errors['confirmPassword'] ? 'text-danger': 'text-black'"
+									>Confirm Password</label
+								>
 								<input
-									class='form-control border-secondary'
-									type='password'
-									placeholder='Enter confirmPassword'
-									name='confirmPassword'
+									class="form-control border-secondary"
+									type="password"
+									placeholder="Enter confirmPassword"
+									name="confirmPassword"
+									x-model="form.confirmPassword"
+									:class="{'border border-danger': errors['confirmPassword']}"
 								/>
 							</div>
 						</div>
 					</div>
 
-					<div class='d-grid mb-3'>
-						<button class='btn btn-block mt-3 btn-danger' type='submit'>Register</button>
+					<div class="d-grid mb-3">
+						<button class="btn btn-block mt-3 btn-danger" type="submit">Register</button>
 					</div>
-					<div class='form-text text-muted'>
+					<div class="form-text text-muted">
 						Already have an account?
-						<a href='/auth/login'>Sign In</a>
+						<a href="/auth/login">Sign In</a>
 					</div>
 				</form>
 			</div>

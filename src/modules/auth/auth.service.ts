@@ -19,12 +19,13 @@ export class AuthService {
 
     const accessToken = await generateToken(user, this.jwtService);
 
-    return {
-      id: user.id,
-      name: user.name,
-      email: user.email,
+    return new ResponseAuthDto(
+      user.id,
+      user.name,
+      user.email,
+      user.role,
       accessToken,
-    };
+    );
   }
 
   async signIn(signInAuthDto: SignInAuthDto) {

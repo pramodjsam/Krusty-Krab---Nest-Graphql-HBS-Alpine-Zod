@@ -5,32 +5,46 @@ import {
 } from '@/generated/graphql';
 import { graphqlRequest } from '@/shared/graphqlClient';
 import { notyNotification } from '@/shared/notification';
+import { loginSchema } from '@/types';
 import Alpine from 'alpinejs';
 
-type AuthPage = {
+type LoginPage = {
   loading: boolean;
   form: {
     email: string;
     password: string;
   };
+  errors: Record<string, string>;
   login(email: string, password: string): Promise<void>;
-  logout(): Promise<void>;
-  register(
-    name: string,
-    email: string,
-    password: string,
-    confirmPassword: string,
-  ): Promise<void>;
 };
 
-export function authPage(): AuthPage {
+export function loginPage(): LoginPage {
   return {
     loading: false,
     form: {
       email: '',
       password: '',
     },
+    errors: {},
     async login() {
+      const result = loginSchema.safeParse(this.form);
+
+      if (result.error) {
+        const fieldErrors: Record<string, string> = {};
+
+        result.error.issues.forEach((issue) => {
+          const field = issue.path[0] as string;
+
+          if (!fieldErrors[field]) {
+            fieldErrors[field] = issue.message;
+          }
+        });
+
+        this.errors = fieldErrors;
+        notyNotification('Please fix the errors', 'error');
+        return;
+      }
+
       this.loading = true;
       const variables = {
         signIn: {
@@ -58,12 +72,5 @@ export function authPage(): AuthPage {
         this.loading = false;
       }
     },
-    async logout() {},
-    async register(
-      name: string,
-      email: string,
-      password: string,
-      confirmPassword: string,
-    ) {},
   };
 }

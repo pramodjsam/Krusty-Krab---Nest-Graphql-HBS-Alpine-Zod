@@ -1,36 +1,51 @@
-<section id="order">
+<section id="order" x-data="orderPage()">
+	{{> common/loader state="loading"}}
 	<div class="container mt-3">
 		<h2 class="my-5 text-center">Order Details</h2>
+		{{> common/search showReset=true resetText="Clear" handleReset="clearSearch" submitText="Search"
+		placeholder="Search..." model="searchText" onSubmit="handleSearchSubmit" }}
 		<div class="row">
 			<div class="col">
 				<table class="table">
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Name</th>
-							<th>Order#</th>
+							<th>
+								<a href="#" class="text-black text-underline" @click.prevent="sort('id')"
+									>Order#
+									<span x-text="sortBy === 'id' ? (sortOrder === 'ASC' ? '↑' : '↓') : ''"></span>
+								</a>
+							</th>
 							<th>Created At</th>
 							<th>Status</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Product 1</td>
-							<td>Order 1</td>
-							<td>14 May 2020 15:30 EDT</td>
-							<td>Confirmed</td>
-							<td>
-								<button class="me-2 btn-sm btn btn-danger">PDF</button>
-								<a class="text-decoration-none text-black" href="/user/order/123456">
-									<button class="btn btn-sm btn-warning">Details</button>
-								</a>
-							</td>
-						</tr>
+						<template x-for="(order, index) in orders" :key="order.id">
+							<tr>
+								<td x-text="index + 1">1</td>
+								<td x-text="order.id">Order 1</td>
+								<td x-text="order.createdAt">14 May 2020 15:30 EDT</td>
+								<td x-text="order.status">Confirmed</td>
+								<td>
+									<button class="me-2 btn-sm btn btn-danger">PDF</button>
+									<a class="text-decoration-none text-black" :href="`/user/order/${order.id}`">
+										<button class="btn btn-sm btn-warning">Details</button>
+									</a>
+								</td>
+							</tr>
+						</template>
+						<template x-if="orders.length === 0">
+							<tr>
+								<td colspan="5" class="text-center text-muted py-3">No Orders Found</td>
+							</tr>
+						</template>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
+	{{> common/pagination currentPage=currentPage totalPages=totalPages visiblePages=visiblePages
+	handlePageClick="goToPage" }}
 </section>

@@ -1,62 +1,81 @@
-<section id='orderDetails' class='status mt-5'>
-	<div class='container status-box'>
-		<div class='row'>
-			<div class='col d-flex align-items-center flex-column justify-content-center'>
-				<h2>Track Delivery Status</h2>
-				<ul class='ms-5'>
-					<li class='status_line  text-sm md:text-xl pb-16 ms-5 step-completed' data-status='order_placed'>
-						<span>Order Placed</span>
-					</li>
+<section id="orderDetails" class="status mt-5" x-data="orderDetailsPage({{id}})">
+	{{> common/loader state="loading"}}
+	<template x-if="!loading">
+		<div class="container status-box">
+			<div class="row">
+				<div class="col d-flex align-items-center flex-column justify-content-center">
+					<h2>Track Delivery Status</h2>
+					<ul class="ms-5">
+						<template x-for="(step, index) in statuses" :key="step.value">
+							<li
+								class="status_line text-sm md:text-xl pb-16 ms-5"
+								:class="getStatusClass(index, step.icon)"
+							>
+								<span x-text="step.label">Order Placed</span>
+							</li>
+						</template>
 
-					<li class='status_line  text-sm md:text-xl pb-16 ms-5 current' data-status='order_placed'>
-						<span>Order Confirmed</span>
-					</li>
+						{{!--
+						<li class="status_line text-sm md:text-xl pb-16 ms-5 step-completed">
+							<span>Order Placed</span>
+						</li>
 
-					<li class='status_line  text-sm md:text-xl pb-16 ms-5' data-status='order_placed'>
-						<span>Preparation</span>
-					</li>
+						<li class="status_line text-sm md:text-xl pb-16 ms-5 current">
+							<span>Order Confirmed</span>
+						</li>
 
-					<li class='status_line  text-sm md:text-xl pb-16 ms-5' data-status='order_placed'>
-						<span>Out for Delivery</span>
-					</li>
+						<li class="status_line text-sm md:text-xl pb-16 ms-5">
+							<span>Preparation</span>
+						</li>
 
-					<li class='status_line  text-sm md:text-xl pb-16 ms-5' data-status='order_placed'>
-						<span>Completed</span>
-					</li>
-				</ul>
-			</div>
+						<li class="status_line text-sm md:text-xl pb-16 ms-5">
+							<span>Out for Delivery</span>
+						</li>
 
-			<div class='col orderDetails__right'>
-				<div class='orderDetails__right--shipping'>
-					<h3 class='mb-3'>Shipping Address</h3>
-					<p>John Doe</p>
-					<p>650 Franklin Blvd</p>
-					<p>Cambridge, Ontario - N1R 7Z1</p>
+						<li class="status_line text-sm md:text-xl pb-16 ms-5">
+							<span>Completed</span>
+						</li>
+						--}}
+					</ul>
 				</div>
-				<div class='mt-5'>
-					<h3 class='mb-3'>Order Details - 1</h3>
-					<table class='table table-striped'>
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Name</th>
-								<th>Category</th>
-								<th>Quantity</th>
-								<th>Total Price</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Product 1</td>
-								<td>Electronics</td>
-								<td>1</td>
-								<td>$58.99</td>
-							</tr>
-						</tbody>
-					</table>
+
+				<div class="col orderDetails__right">
+					<div class="orderDetails__right--shipping">
+						<h3 class="mb-3">Shipping Address</h3>
+						<p x-text="order.user.name">John Doe</p>
+						<p x-text="order.address">650 Franklin Blvd</p>
+						<p>
+							<span x-text="order.city">Cambridge</span>, <span x-text="order.province">Ontario</span> -
+							<span x-text="order.zipCode">N1R 7Z1</span>
+						</p>
+					</div>
+					<div class="mt-5">
+						<h3 class="mb-3">Order Details - 1</h3>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Category</th>
+									<th>Quantity</th>
+									<th>Total Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<template x-for="item in order.orderItem" :key="item.id">
+									<tr>
+										<td x-text="item.id">1</td>
+										<td x-text="item.product.name">Product 1</td>
+										<td x-text="item.product.category.name">Electronics</td>
+										<td x-text="item.quantity">1</td>
+										<td x-text="item.price">$58.99</td>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</template>
 </section>

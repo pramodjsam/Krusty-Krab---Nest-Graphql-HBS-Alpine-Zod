@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Param, Render } from '@nestjs/common';
 import { OrderStatus } from 'src/core/constants/index';
 
 @Controller()
@@ -9,6 +9,18 @@ export class OrderController {
     return {
       layout: 'admin',
       orderStatus: OrderStatus,
+    };
+  }
+
+  @Get('user/order')
+  @Render('pages/user/order')
+  getOrder() {}
+
+  @Get('user/order/:id')
+  @Render('pages/user/order-details')
+  getOrderDetails(@Param('id') id: number) {
+    return {
+      id,
     };
   }
 }

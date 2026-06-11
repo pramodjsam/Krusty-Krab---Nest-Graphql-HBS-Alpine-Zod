@@ -17,6 +17,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { NotFoundException } from '@nestjs/common';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { paginate, Paginated, PaginateQuery } from 'nestjs-paginate';
+import { CreateOrderDto } from './dto/create-order.dto';
 
 jest.mock('nestjs-paginate', () => ({
   ...jest.requireActual('nestjs-paginate'),
@@ -111,6 +112,11 @@ describe('OrderService', () => {
       isPaid: false,
       status: OrderStatus.PLACED,
       deliveredAt: null,
+      createdAt: new Date(),
+      address: '',
+      city: '',
+      province: '',
+      zipCode: '',
     };
     mockPaginatedOrderResponse = {
       data: [mockOrder],
@@ -171,6 +177,12 @@ describe('OrderService', () => {
   describe('create()', () => {
     it('should create new order', async () => {
       // Arrange
+      const mockCreateOrderDto: CreateOrderDto = {
+        address: '',
+        city: '',
+        province: '',
+        zipCode: '',
+      };
       userService.findByEmail.mockResolvedValue(mockUserWithCart);
       cartService.findOne.mockResolvedValue(mockCart);
       orderRepository.create.mockReturnValue(mockOrder);
@@ -178,7 +190,10 @@ describe('OrderService', () => {
       jest.spyOn(orderService, 'findOne').mockResolvedValue(mockOrder);
 
       // Act
-      const result = await orderService.create(mockUserPayload);
+      const result = await orderService.create(
+        mockUserPayload,
+        mockCreateOrderDto,
+      );
 
       // Assert
       expect(cartService.remove).toHaveBeenCalled();
@@ -187,13 +202,19 @@ describe('OrderService', () => {
 
     it('should throw error if user with cart is not found', async () => {
       // Arrange
+      const mockCreateOrderDto: CreateOrderDto = {
+        address: '',
+        city: '',
+        province: '',
+        zipCode: '',
+      };
       userService.findByEmail.mockResolvedValue(mockUser);
       cartService.findOne.mockResolvedValue(mockCart);
 
       // Assert
-      await expect(orderService.create(mockUserPayload)).rejects.toThrow(
-        NotFoundException,
-      );
+      await expect(
+        orderService.create(mockUserPayload, mockCreateOrderDto),
+      ).rejects.toThrow(NotFoundException);
     });
   });
 
@@ -232,6 +253,26 @@ describe('OrderService', () => {
 
       // Assert
       await expect(orderService.findOne(99)).rejects.toThrow(NotFoundException);
+    });
+  });
+
+  describe('findUserOrder', () => {
+    it('should find user order', async () => {
+      // Arrange
+      const mockPaginatedQuery: PaginateQuery = {
+        page: 1,
+        path: '',
+      };
+      (paginate as jest.Mock).mockResolvedValue(mockPaginatedOrderResponse);
+
+      // Act
+      const result = await orderService.findUserOrders(
+        mockUser.id,
+        mockPaginatedQuery,
+      );
+
+      // Assert
+      expect(result).toEqual(mockPaginatedOrderResponse);
     });
   });
 

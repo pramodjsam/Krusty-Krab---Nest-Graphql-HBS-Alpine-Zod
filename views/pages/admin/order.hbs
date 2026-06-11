@@ -15,7 +15,12 @@
 		<col style="width: 10%" />
 		<thead>
 			<tr>
-				<th>#</th>
+				<th>
+					<a href="#" class="text-black text-underline" @click.prevent="sort('id')"
+						>#
+						<span x-text="sortBy === 'id' ? (sortOrder === 'ASC' ? '↑' : '↓') : ''"></span>
+					</a>
+				</th>
 				<th>User</th>
 				<th>Payment Method</th>
 				<th>Total Price</th>

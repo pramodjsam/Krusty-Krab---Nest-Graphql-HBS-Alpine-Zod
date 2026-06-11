@@ -51,6 +51,9 @@ type HomePage = {
   init(): Promise<void>;
 };
 
+// TODO: same function also added in header component.
+// Running on other pages than home page
+// Separate out header and home page function
 export function homePage(): HomePage {
   return {
     loading: false,

@@ -47,23 +47,23 @@ section.status {
   margin-top: 10px;
 }
 
-.status-box ul li:nth-child(1) span:before {
+.icon-placed span:before {
   content: '\f46c';
 }
 
-.status-box ul li:nth-child(2) span:before {
+.icon-confirmed span:before {
   content: '\f560';
 }
 
-.status-box ul li:nth-child(3) span:before {
+.icon-preparation span:before {
   content: '\f818';
 }
 
-.status-box ul li:nth-child(4) span:before {
+.icon-delivery span:before {
   content: '\f0d1';
 }
 
-.status-box ul li:nth-child(5) span:before {
+.icon-completed span:before {
   content: '\f582';
 }
 

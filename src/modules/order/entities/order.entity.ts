@@ -2,6 +2,7 @@ import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
 import { User } from 'src/modules/user/entities/user.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
@@ -9,7 +10,7 @@ import {
 } from 'typeorm';
 import { OrderItem } from './order-item.entity';
 import { OrderStatus, PaymentMethod } from 'src/core/constants';
-import { Expose } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 
 @ObjectType()
 @Entity()
@@ -85,6 +86,26 @@ export class Order {
   @Expose()
   status: OrderStatus;
 
+  @Field()
+  @Column()
+  @Expose()
+  address: string;
+
+  @Field()
+  @Column()
+  @Expose()
+  city: string;
+
+  @Field()
+  @Column()
+  @Expose()
+  province: string;
+
+  @Field()
+  @Column()
+  @Expose()
+  zipCode: string;
+
   @Field(() => Date, { nullable: true })
   @Column({
     type: 'timestamp with time zone',
@@ -92,4 +113,9 @@ export class Order {
   })
   @Expose()
   deliveredAt?: Date | null;
+
+  @Field(() => Date)
+  @CreateDateColumn()
+  @Expose()
+  createdAt: Date;
 }

@@ -17,6 +17,7 @@ import {
   paginate,
   PaginateQuery,
 } from 'nestjs-paginate';
+import { CreateOrderDto } from './dto/create-order.dto';
 
 @Injectable()
 export class OrderService {
@@ -27,8 +28,9 @@ export class OrderService {
     private readonly userService: UserService,
   ) {}
 
-  async create(currentUser: UserPayload) {
+  async create(currentUser: UserPayload, createOrder: CreateOrderDto) {
     try {
+      const { address, city, province, zipCode } = createOrder;
       const user = await this.userService.findByEmail(currentUser.email);
 
       if (user.cart) {
@@ -63,6 +65,10 @@ export class OrderService {
           taxPrice,
           shippingPrice,
           totalPrice,
+          address,
+          city,
+          province,
+          zipCode,
         });
         const savedOrder = await this.orderRepository.save(order);
 
@@ -108,7 +114,9 @@ export class OrderService {
       relations: {
         user: true,
         orderItem: {
-          product: true,
+          product: {
+            category: true,
+          },
         },
       },
     });
@@ -118,6 +126,25 @@ export class OrderService {
     }
 
     return order;
+  }
+
+  async findUserOrders(userId: number, query: PaginateQuery) {
+    return await paginate(query, this.orderRepository, {
+      where: {
+        user: {
+          id: userId,
+        },
+      },
+      sortableColumns: ['id'],
+      nullSort: 'last',
+      defaultSortBy: [['id', 'DESC']],
+      searchableColumns: ['id'],
+      filterableColumns: {
+        id: [FilterOperator.EQ, FilterSuffix.NOT],
+      },
+      defaultLimit: 5,
+      relations: ['user', 'orderItem', 'orderItem.product'],
+    });
   }
 
   async updateOrder(id: number, updateOrderDto: UpdateOrderDto) {

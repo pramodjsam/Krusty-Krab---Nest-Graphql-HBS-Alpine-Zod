@@ -10,6 +10,7 @@ import { UpdateOrderDto } from './dto/update-order.dto';
 import { PaginationArgs } from 'src/core/dto/pagination.args';
 import { Paginated } from 'src/core/dto/entity-paginate.dto';
 import { toPaginateQuery } from 'src/utils/pagination';
+import { CreateOrderDto } from './dto/create-order.dto';
 
 const OrderPaginated = Paginated(Order);
 
@@ -20,8 +21,12 @@ export class OrderResolver {
 
   @Mutation(() => Order)
   @TransformDTO(Order)
-  createOrder(@CurrentUser() user: UserPayload) {
-    return this.orderService.create(user);
+  createOrder(
+    @CurrentUser() user: UserPayload,
+    @Args('createOrder', { type: () => CreateOrderDto })
+    createOrder: CreateOrderDto,
+  ) {
+    return this.orderService.create(user, createOrder);
   }
 
   @Query(() => OrderPaginated)
@@ -36,6 +41,17 @@ export class OrderResolver {
   @TransformDTO(Order)
   getOrder(@Args('id', { type: () => Int }) id: number) {
     return this.orderService.findOne(id);
+  }
+
+  @Query(() => OrderPaginated)
+  @TransformDTO(Order)
+  getUserOrders(
+    @CurrentUser() user: UserPayload,
+    @Args() args: PaginationArgs,
+  ) {
+    const query = toPaginateQuery(args);
+
+    return this.orderService.findUserOrders(user.id, query);
   }
 
   @Mutation(() => Order)

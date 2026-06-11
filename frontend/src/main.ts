@@ -14,6 +14,8 @@ import { homePage } from './main/home';
 import { loginPage } from './main/auth/login';
 import { registerPage } from './main/auth/register';
 import { profilePage } from './main/user/profile';
+import { orderPage } from './main/user/order';
+import { orderDetailsPage } from './main/user/order-details';
 
 Alpine.plugin(persist);
 
@@ -30,6 +32,8 @@ Alpine.data('homePage', homePage);
 Alpine.data('loginPage', loginPage);
 Alpine.data('registerPage', registerPage);
 Alpine.data('profilePage', profilePage);
+Alpine.data('orderPage', orderPage);
+Alpine.data('orderDetailsPage', orderDetailsPage);
 
 (window as any).showNotification = notyNotification;
 

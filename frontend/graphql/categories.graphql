@@ -207,6 +207,31 @@ query getOrders($page: Int, $limit: Int, $sort: [[String]], $search: String) {
   }
 }
 
+query getOrder($id: Int!) {
+  order: getOrder(id: $id) {
+    id
+    status
+    address
+    city
+    province
+    zipCode
+    user {
+      name
+    }
+    orderItem {
+      id
+      price
+      quantity
+      product {
+        name
+        category {
+          name
+        }
+      }
+    }
+  }
+}
+
 mutation updateOrder($id: Int!, $updateOrder: UpdateOrderDto!) {
   order: updateOrder(id: $id, updateOrder: $updateOrder) {
     id
@@ -248,5 +273,26 @@ query currentUser {
     city
     province
     zipCode
+  }
+}
+
+query userOrders($page: Int, $limit: Int, $sort: [[String]], $search: String) {
+  orders: getUserOrders(
+    page: $page
+    limit: $limit
+    sort: $sort
+    search: $search
+  ) {
+    data {
+      id
+      createdAt
+      status
+    }
+    pagination {
+      itemsPerPage
+      totalItems
+      currentPage
+      totalPages
+    }
   }
 }

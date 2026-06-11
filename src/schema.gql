@@ -71,7 +71,12 @@ type Order {
   totalPrice: Float!
   isPaid: Boolean!
   status: OrderStatus!
+  address: String!
+  city: String!
+  province: String!
+  zipCode: String!
   deliveredAt: DateTime
+  createdAt: DateTime!
 }
 
 enum PaymentMethod {
@@ -179,6 +184,7 @@ type Query {
   getCartItem(id: Int!): ResponseCartItemDto!
   getAllOrders(page: Int, limit: Int, sort: [[String]], search: String): OrderPaginated!
   getOrder(id: Int!): Order!
+  getUserOrders(page: Int, limit: Int, sort: [[String]], search: String): OrderPaginated!
 }
 
 type Mutation {
@@ -207,7 +213,7 @@ type Mutation {
   updateCartItem(id: Int!, updateCart: UpdateCartItemDto!): ResponseCartItemDto!
   deleteCart(id: Int!): DeleteResponseDto!
   deleteCartItem(id: Int!): DeleteResponseDto!
-  createOrder: Order!
+  createOrder(createOrder: CreateOrderDto!): Order!
   updateOrder(id: Int!, updateOrder: UpdateOrderDto!): Order!
 }
 
@@ -294,6 +300,13 @@ input CreateCartDto {
 
 input UpdateCartItemDto {
   quantity: Float!
+}
+
+input CreateOrderDto {
+  address: String!
+  city: String!
+  province: String!
+  zipCode: String!
 }
 
 input UpdateOrderDto {

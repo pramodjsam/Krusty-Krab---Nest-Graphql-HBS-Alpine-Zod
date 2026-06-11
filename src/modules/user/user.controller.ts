@@ -7,14 +7,6 @@ export class UserController {
   @Render('pages/user/profile')
   getProfile() {}
 
-  @Get('order')
-  @Render('pages/user/order')
-  getOrder() {}
-
-  @Get('order/:id')
-  @Render('pages/user/order-details')
-  getOrderDetails() {}
-
   @Get('admin')
   @Render('pages/admin/index')
   getAdmin() {

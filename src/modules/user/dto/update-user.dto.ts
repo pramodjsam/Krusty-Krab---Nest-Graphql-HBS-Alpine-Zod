@@ -7,7 +7,6 @@ import { CreateUserDto } from './create-user.dto';
 export class UpdateUserDto extends PartialType(
   PickType(CreateUserDto, [
     'name',
-    'email',
     'address',
     'city',
     'province',

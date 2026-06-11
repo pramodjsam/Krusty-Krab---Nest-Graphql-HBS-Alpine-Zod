@@ -13,6 +13,7 @@ import { registerStores } from './store';
 import { homePage } from './main/home';
 import { loginPage } from './main/auth/login';
 import { registerPage } from './main/auth/register';
+import { profilePage } from './main/user/profile';
 
 Alpine.plugin(persist);
 
@@ -28,6 +29,7 @@ Alpine.data('orderAdminPage', orderAdminPage);
 Alpine.data('homePage', homePage);
 Alpine.data('loginPage', loginPage);
 Alpine.data('registerPage', registerPage);
+Alpine.data('profilePage', profilePage);
 
 (window as any).showNotification = notyNotification;
 

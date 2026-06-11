@@ -243,5 +243,10 @@ query currentUser {
     id
     name
     email
+    role
+    address
+    city
+    province
+    zipCode
   }
 }

@@ -56,6 +56,17 @@ export class UserResolver {
     return this.userService.update(id, updateUserDto);
   }
 
+  @Mutation(() => User)
+  @TransformDTO(User)
+  @UseGuards(AuthGuard)
+  updateCurrentUser(
+    @CurrentUser() user: UserPayload,
+    @Args('updateUser', { type: () => UpdateUserDto })
+    updateUserDto: UpdateUserDto,
+  ) {
+    return this.userService.update(user.id, updateUserDto);
+  }
+
   @Mutation(() => DeleteResponseDto)
   @TransformDTO(DeleteResponseDto)
   deleteUser(@Args('id', { type: () => Int }) id: number) {

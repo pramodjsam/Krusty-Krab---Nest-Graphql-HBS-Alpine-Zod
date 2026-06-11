@@ -193,6 +193,7 @@ type Mutation {
   deleteProduct(id: Int!): DeleteResponseDto!
   createUser(createUser: CreateUserDto!): User!
   updateUser(id: Int!, updateUser: UpdateUserDto!): User!
+  updateCurrentUser(updateUser: UpdateUserDto!): User!
   deleteUser(id: Int!): DeleteResponseDto!
   forgotPassword(sendResetToken: SendResetTokenDto!): PasswordResetResponseDto!
   verifyToken(verifyToken: VerifyTokenDto!): PasswordResetResponseDto!
@@ -246,7 +247,6 @@ input CreateUserDto {
 
 input UpdateUserDto {
   name: String
-  email: String
   address: String
   city: String
   province: String

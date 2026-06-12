@@ -1,12 +1,12 @@
+import {
+  addToCart,
+  decreaseCartQuantity,
+  increaseCartQuantity,
+  removeFromCart,
+} from '@/shared/cart';
 import Alpine from 'alpinejs';
 import {
   Category,
-  CreateCartDocument,
-  CreateCartMutation,
-  CreateCartMutationVariables,
-  DecrementUserCartItemDocument,
-  DecrementUserCartItemMutation,
-  DecrementUserCartItemMutationVariables,
   GetCategoriesDocument,
   GetCategoriesQuery,
   GetCategoriesQueryVariables,
@@ -14,9 +14,6 @@ import {
   GetProductsQuery,
   GetProductsQueryVariables,
   Image,
-  IncrementUserCartItemDocument,
-  IncrementUserCartItemMutation,
-  IncrementUserCartItemMutationVariables,
   LogoutDocument,
   Product,
   User,
@@ -144,97 +141,14 @@ export function homePage(): HomePage {
         el.scrollTop = 0;
       });
     },
-    async handleAddToCart(product) {
-      try {
-        Alpine.store('cart').add(product);
-
-        const variables = {
-          createCart: {
-            quantity: 1,
-            productId: product.id,
-          },
-        };
-
-        const result = await graphqlRequest<
-          CreateCartMutation,
-          CreateCartMutationVariables
-        >(CreateCartDocument, variables);
-
-        if (result.data) {
-          notyNotification('Item added to cart', 'success');
-        } else {
-          throw new Error(result.error.message);
-        }
-      } catch (error) {
-        Alpine.store('cart').remove(product);
-        notyNotification('Failed to add item to cart', 'error');
-      }
+    async handleAddToCart(product: Product) {
+      await addToCart(product);
     },
     async handleIncreaseQuantity(product: Product) {
-      const cartStore = Alpine.store('cart');
-      const currentQty = this.getProductQuantity(product);
-
-      if (currentQty >= 10) return;
-
-      cartStore.update(product.id, currentQty + 1);
-
-      try {
-        const variables = {
-          productId: product.id,
-        };
-
-        await graphqlRequest<
-          IncrementUserCartItemMutation,
-          IncrementUserCartItemMutationVariables
-        >(IncrementUserCartItemDocument, variables);
-
-        notyNotification('Item added to cart successfully', 'success');
-      } catch {
-        cartStore.update(product.id, currentQty);
-        notyNotification('Failed to update cart', 'error');
-      }
+      await increaseCartQuantity(product);
     },
     async handleDecreaseQuantity(product: Product) {
-      const cartStore = Alpine.store('cart');
-      const currentQty = this.getProductQuantity(product);
-
-      if (currentQty > 1) {
-        try {
-          cartStore.update(product.id, currentQty - 1);
-
-          const variables = {
-            productId: product.id,
-          };
-
-          await graphqlRequest<
-            DecrementUserCartItemMutation,
-            DecrementUserCartItemMutationVariables
-          >(DecrementUserCartItemDocument, variables);
-
-          notyNotification('Cart update successfully', 'success');
-        } catch (error) {
-          cartStore.update(product.id, currentQty);
-          notyNotification('Failed to update cart', 'error');
-        }
-      } else {
-        try {
-          cartStore.remove(product);
-
-          const variables = {
-            productId: product.id,
-          };
-
-          await graphqlRequest<
-            DecrementUserCartItemMutation,
-            DecrementUserCartItemMutationVariables
-          >(DecrementUserCartItemDocument, variables);
-
-          notyNotification('Cart update successfully', 'success');
-        } catch (error) {
-          cartStore.add(product);
-          notyNotification('Failed to update cart', 'error');
-        }
-      }
+      await decreaseCartQuantity(product);
     },
     getProductQuantity(product: Product) {
       const item = Alpine.store('cart').get(product.id);
@@ -242,7 +156,7 @@ export function homePage(): HomePage {
       return item?.quantity || 0;
     },
     async handleRemoveFromCart(product) {
-      Alpine.store('cart').remove(product);
+      await removeFromCart(product);
     },
     isItemExistInCart(product: Product) {
       return Alpine.store('cart').exists(product);

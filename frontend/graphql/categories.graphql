@@ -296,3 +296,65 @@ query userOrders($page: Int, $limit: Int, $sort: [[String]], $search: String) {
     }
   }
 }
+
+mutation syncCart($syncCartInput: SyncCartInput!) {
+  cart: syncCart(syncCartInput: $syncCartInput) {
+    id
+    cartItem {
+      id
+      quantity
+      productId
+    }
+  }
+}
+
+mutation updateCart($id: Int!, $updateCart: UpdateCartItemDto!) {
+  cart: updateCartItem(id: $id, updateCart: $updateCart) {
+    id
+    quantity
+    productId
+    cartId
+  }
+}
+
+mutation updateUserCart($updateUserCart: UpdateUserCartDto!) {
+  cart: updateUserCart(updateUserCart: $updateUserCart) {
+    id
+  }
+}
+
+mutation removeUserCart($productId: Int!) {
+  cart: removeUserCart(productId: $productId) {
+    success
+    message
+  }
+}
+
+mutation incrementUserCartItem($productId: Int!) {
+  cart: incrementUserCartItem(productId: $productId) {
+    id
+    cartItem {
+      id
+      quantity
+      productId
+    }
+  }
+}
+
+mutation decrementUserCartItem($productId: Int!) {
+  cart: decrementUserCartItem(productId: $productId) {
+    id
+    cartItem {
+      id
+      quantity
+      productId
+    }
+  }
+}
+
+mutation createCart($createCart: CreateCartDto!) {
+  cart: createCart(createCart: $createCart) {
+    id
+    userId
+  }
+}

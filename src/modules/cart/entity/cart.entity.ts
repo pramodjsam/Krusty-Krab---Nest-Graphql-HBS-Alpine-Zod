@@ -6,12 +6,14 @@ import {
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  Unique,
 } from 'typeorm';
 import { CartItem } from './cart-item.entity';
 import { Expose } from 'class-transformer';
 
 @ObjectType()
 @Entity()
+@Unique(['user'])
 export class Cart {
   @Field(() => Int)
   @PrimaryGeneratedColumn()
@@ -19,7 +21,9 @@ export class Cart {
   id: number;
 
   @Field(() => User)
-  @OneToOne(() => User)
+  @OneToOne(() => User, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   @Expose()
   user: User;

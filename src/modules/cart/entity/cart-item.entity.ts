@@ -25,15 +25,21 @@ export class CartItem {
   @Expose()
   quantity: number;
 
+  @Column()
+  productId: number;
+
   @Field(() => Product)
   @ManyToOne(() => Product, { eager: true })
-  @JoinColumn()
+  @JoinColumn({ name: 'productId' })
   @Expose()
   product: Product;
 
+  @Column()
+  cartId: number;
+
   @Field(() => Cart)
   @ManyToOne(() => Cart, (cart) => cart.cartItem, { onDelete: 'CASCADE' })
-  @JoinColumn()
+  @JoinColumn({ name: 'cartId' })
   @Expose()
   cart: Cart;
 }

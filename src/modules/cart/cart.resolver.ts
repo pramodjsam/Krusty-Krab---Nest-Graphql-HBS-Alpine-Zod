@@ -11,6 +11,8 @@ import { CurrentUser } from 'src/core/decorators/current-user.decorator';
 import { ResponseCartItemDto } from './dto/response-cart-item.dto';
 import { UpdateCartItemDto } from './dto/update-cart-item.dto';
 import { DeleteResponseDto } from 'src/core/dto/delete-response.dto';
+import { SyncCartInput } from './dto/sync-cart.input';
+import { UpdateUserCartDto } from './dto/update-user-cart.dto';
 
 @Resolver(() => Cart)
 @UseGuards(AuthGuard)
@@ -31,6 +33,12 @@ export class CartResolver {
   @TransformDTO(ResponseCartDto)
   getAllCarts() {
     return this.cartService.findAll();
+  }
+
+  @Query(() => ResponseCartDto)
+  @TransformDTO(ResponseCartDto)
+  getUserCart(@CurrentUser() user: UserPayload) {
+    return this.cartService.findUserCart(user.id);
   }
 
   @Query(() => ResponseCartDto)
@@ -77,5 +85,51 @@ export class CartResolver {
   @TransformDTO(DeleteResponseDto)
   deleteCartItem(@Args('id', { type: () => Int }) id: number) {
     return this.cartService.removeCartItem(id);
+  }
+
+  @Mutation(() => ResponseCartDto)
+  @TransformDTO(ResponseCartDto)
+  syncCart(
+    @CurrentUser() user: UserPayload,
+    @Args('syncCartInput', { type: () => SyncCartInput })
+    syncCart: SyncCartInput,
+  ) {
+    return this.cartService.syncCart(user.id, syncCart.items);
+  }
+
+  @Mutation(() => ResponseCartDto)
+  @TransformDTO(ResponseCartDto)
+  updateUserCart(
+    @CurrentUser() user: UserPayload,
+    @Args('updateUserCart') updateUserCart: UpdateUserCartDto,
+  ) {
+    return this.cartService.updateUserCartItem(user, updateUserCart);
+  }
+
+  @Mutation(() => DeleteResponseDto)
+  @TransformDTO(DeleteResponseDto)
+  removeUserCart(
+    @CurrentUser() user: UserPayload,
+    @Args('productId', { type: () => Int }) productId: number,
+  ) {
+    return this.cartService.removeUserCartItem(user, productId);
+  }
+
+  @Mutation(() => ResponseCartDto)
+  @TransformDTO(ResponseCartDto)
+  incrementUserCartItem(
+    @CurrentUser() user: UserPayload,
+    @Args('productId', { type: () => Int }) productId: number,
+  ) {
+    return this.cartService.incrementCartItemByProduct(user, productId);
+  }
+
+  @Mutation(() => ResponseCartDto)
+  @TransformDTO(ResponseCartDto)
+  decrementUserCartItem(
+    @CurrentUser() user: UserPayload,
+    @Args('productId', { type: () => Int }) productId: number,
+  ) {
+    return this.cartService.decrementCartItemByProduct(user, productId);
   }
 }

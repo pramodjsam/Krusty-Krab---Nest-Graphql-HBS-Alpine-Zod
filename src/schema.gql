@@ -180,6 +180,7 @@ type Query {
   getUser(id: Int!): User!
   currentUser: User!
   getAllCarts: [ResponseCartDto!]!
+  getUserCart: ResponseCartDto!
   getCart(id: Int!): ResponseCartDto!
   getCartItem(id: Int!): ResponseCartItemDto!
   getAllOrders(page: Int, limit: Int, sort: [[String]], search: String): OrderPaginated!
@@ -213,6 +214,11 @@ type Mutation {
   updateCartItem(id: Int!, updateCart: UpdateCartItemDto!): ResponseCartItemDto!
   deleteCart(id: Int!): DeleteResponseDto!
   deleteCartItem(id: Int!): DeleteResponseDto!
+  syncCart(syncCartInput: SyncCartInput!): ResponseCartDto!
+  updateUserCart(updateUserCart: UpdateUserCartDto!): ResponseCartDto!
+  removeUserCart(productId: Int!): DeleteResponseDto!
+  incrementUserCartItem(productId: Int!): ResponseCartDto!
+  decrementUserCartItem(productId: Int!): ResponseCartDto!
   createOrder(createOrder: CreateOrderDto!): Order!
   updateOrder(id: Int!, updateOrder: UpdateOrderDto!): Order!
 }
@@ -300,6 +306,20 @@ input CreateCartDto {
 
 input UpdateCartItemDto {
   quantity: Float!
+}
+
+input SyncCartInput {
+  items: [SyncCartItemInput!]!
+}
+
+input SyncCartItemInput {
+  productId: Int!
+  quantity: Int!
+}
+
+input UpdateUserCartDto {
+  quantity: Float!
+  productId: Float!
 }
 
 input CreateOrderDto {

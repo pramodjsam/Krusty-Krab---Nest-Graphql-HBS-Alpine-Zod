@@ -77,6 +77,8 @@ describe('OrderService', () => {
       product: mockProduct,
       quantity: 1,
       cart: mockCart,
+      cartId: 1,
+      productId: 1,
     };
     mockCart = {
       id: 1,

@@ -78,12 +78,35 @@
 												</button>
 											</template>
 											<template x-if="isItemExistInCart(product)">
+												<div class="d-flex align-items-center">
+													<button
+														class="btn btn-outline-danger btn-sm me-2"
+														@click="handleDecreaseQuantity(product)"
+													>
+														<template x-if="getProductQuantity(product) > 1">
+															<span>-</span>
+														</template>
+														<template x-if="getProductQuantity(product) === 1">
+															<i class="bi bi-trash"></i>
+														</template>
+													</button>
+													<span x-text="getProductQuantity(product)"></span>
+													<button
+														class="btn btn-outline-success btn-sm ms-2"
+														@click="handleIncreaseQuantity(product)"
+														:disabled="getProductQuantity(product) >= 10"
+													>
+														+
+													</button>
+												</div>
+												{{!--
 												<button
 													class="btn button-red btn-sm round-2 addToCart--button"
 													@click="handleRemoveFromCart(product)"
 												>
 													<span>Remove</span>
 												</button>
+												--}}
 											</template>
 										</div>
 									</div>

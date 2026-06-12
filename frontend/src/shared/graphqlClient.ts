@@ -35,10 +35,6 @@ export async function graphqlRequest<TResult, TVariables = undefined>(
   }
 
   if (options?.auth) {
-    // TODO: CHANGE AFTER AUTH SETUP
-    // headers['Authorization'] =
-    //   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJqYW5lQGVtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzgwNzg5ODQ1LCJleHAiOjE3ODA4NzYyNDV9.RYLimHzpUaKZ8AS0qgu1wNHUKqMXl6_7f33mzVU0ZcE'; // TODO: Change after auth setup
-
     fetchOptions.credentials = 'include';
   }
 

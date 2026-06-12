@@ -30,7 +30,10 @@ export class UserSubscriber
   }
 
   async beforeUpdate(event: UpdateEvent<User>) {
-    if (event.entity?.password) {
+    if (
+      event.entity?.password &&
+      event.entity.password !== event.databaseEntity.password
+    ) {
       event.entity.password = await bcrypt.hash(
         String(event.entity.password),
         10,

@@ -1,6 +1,12 @@
 import Alpine from 'alpinejs';
 import {
   Category,
+  CreateCartDocument,
+  CreateCartMutation,
+  CreateCartMutationVariables,
+  DecrementUserCartItemDocument,
+  DecrementUserCartItemMutation,
+  DecrementUserCartItemMutationVariables,
   GetCategoriesDocument,
   GetCategoriesQuery,
   GetCategoriesQueryVariables,
@@ -8,6 +14,9 @@ import {
   GetProductsQuery,
   GetProductsQueryVariables,
   Image,
+  IncrementUserCartItemDocument,
+  IncrementUserCartItemMutation,
+  IncrementUserCartItemMutationVariables,
   LogoutDocument,
   Product,
   User,
@@ -34,17 +43,21 @@ type HomePage = {
     category: Partial<Category> | null;
     image: Partial<Image> | null;
   })[];
-  cart: (Partial<Product> & {
+  cart: {
     quantity: number;
-  })[];
+    productId: number;
+  }[];
   $refs: HomePageFormRefs;
   fetchCategoriesAndProducts(): Promise<void>;
   fetchCategories(): Promise<void>;
   fetchProducts(): Promise<void>;
   fetchCurrentUser(): Promise<void>;
   handleCategorySelection(categoryId: number): Promise<void>;
-  handleAddToCart(product: Product): void;
-  handleRemoveFromCart(product: Product): void;
+  handleAddToCart(product: Product): Promise<void>;
+  handleIncreaseQuantity(product: Product): Promise<void>;
+  handleDecreaseQuantity(product: Product): Promise<void>;
+  getProductQuantity(product: Product): number;
+  handleRemoveFromCart(product: Product): Promise<void>;
   isItemExistInCart(product: Product): boolean;
   getCartCount(): number;
   logout(): Promise<void>;
@@ -112,24 +125,6 @@ export function homePage(): HomePage {
     async fetchCurrentUser() {
       const user = Alpine.store('user').user;
       this.user = user;
-
-      // this.loading = true;
-
-      // try {
-      //   const res = await graphqlRequest<
-      //     CurrentUserQuery,
-      //     CurrentUserQueryVariables
-      //   >(CurrentUserDocument, {});
-
-      //   if (res.data) {
-      //     this.user = res.data?.user;
-      //   } else {
-      //   }
-      // } catch (error) {
-      //   notyNotification('Failed to fetch', 'error');
-      // } finally {
-      //   this.loading = false;
-      // }
     },
     async handleCategorySelection(categoryId: number) {
       if (categoryId) {
@@ -149,10 +144,104 @@ export function homePage(): HomePage {
         el.scrollTop = 0;
       });
     },
-    handleAddToCart(product) {
-      Alpine.store('cart').add(product);
+    async handleAddToCart(product) {
+      try {
+        Alpine.store('cart').add(product);
+
+        const variables = {
+          createCart: {
+            quantity: 1,
+            productId: product.id,
+          },
+        };
+
+        const result = await graphqlRequest<
+          CreateCartMutation,
+          CreateCartMutationVariables
+        >(CreateCartDocument, variables);
+
+        if (result.data) {
+          notyNotification('Item added to cart', 'success');
+        } else {
+          throw new Error(result.error.message);
+        }
+      } catch (error) {
+        Alpine.store('cart').remove(product);
+        notyNotification('Failed to add item to cart', 'error');
+      }
     },
-    handleRemoveFromCart(product) {
+    async handleIncreaseQuantity(product: Product) {
+      const cartStore = Alpine.store('cart');
+      const currentQty = this.getProductQuantity(product);
+
+      if (currentQty >= 10) return;
+
+      cartStore.update(product.id, currentQty + 1);
+
+      try {
+        const variables = {
+          productId: product.id,
+        };
+
+        await graphqlRequest<
+          IncrementUserCartItemMutation,
+          IncrementUserCartItemMutationVariables
+        >(IncrementUserCartItemDocument, variables);
+
+        notyNotification('Item added to cart successfully', 'success');
+      } catch {
+        cartStore.update(product.id, currentQty);
+        notyNotification('Failed to update cart', 'error');
+      }
+    },
+    async handleDecreaseQuantity(product: Product) {
+      const cartStore = Alpine.store('cart');
+      const currentQty = this.getProductQuantity(product);
+
+      if (currentQty > 1) {
+        try {
+          cartStore.update(product.id, currentQty - 1);
+
+          const variables = {
+            productId: product.id,
+          };
+
+          await graphqlRequest<
+            DecrementUserCartItemMutation,
+            DecrementUserCartItemMutationVariables
+          >(DecrementUserCartItemDocument, variables);
+
+          notyNotification('Cart update successfully', 'success');
+        } catch (error) {
+          cartStore.update(product.id, currentQty);
+          notyNotification('Failed to update cart', 'error');
+        }
+      } else {
+        try {
+          cartStore.remove(product);
+
+          const variables = {
+            productId: product.id,
+          };
+
+          await graphqlRequest<
+            DecrementUserCartItemMutation,
+            DecrementUserCartItemMutationVariables
+          >(DecrementUserCartItemDocument, variables);
+
+          notyNotification('Cart update successfully', 'success');
+        } catch (error) {
+          cartStore.add(product);
+          notyNotification('Failed to update cart', 'error');
+        }
+      }
+    },
+    getProductQuantity(product: Product) {
+      const item = Alpine.store('cart').get(product.id);
+
+      return item?.quantity || 0;
+    },
+    async handleRemoveFromCart(product) {
       Alpine.store('cart').remove(product);
     },
     isItemExistInCart(product: Product) {

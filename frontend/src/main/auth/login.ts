@@ -2,6 +2,9 @@ import {
   SignInDocument,
   SignInMutation,
   SignInMutationVariables,
+  SyncCartDocument,
+  SyncCartMutation,
+  SyncCartMutationVariables,
 } from '@/generated/graphql';
 import { graphqlRequest } from '@/shared/graphqlClient';
 import { notyNotification } from '@/shared/notification';
@@ -16,6 +19,7 @@ type LoginPage = {
   };
   errors: Record<string, string>;
   login(email: string, password: string): Promise<void>;
+  syncCart(): Promise<void>;
 };
 
 export function loginPage(): LoginPage {
@@ -60,7 +64,11 @@ export function loginPage(): LoginPage {
         >(SignInDocument, variables, { auth: true });
 
         if (res.data) {
-          Alpine.store('user').add(res.data.auth);
+          const user = res.data.auth;
+          Alpine.store('user').add(user);
+
+          this.syncCart();
+
           notyNotification('Login successful', 'success');
           window.location.href = '/';
         } else {
@@ -70,6 +78,31 @@ export function loginPage(): LoginPage {
         notyNotification('Login failed', 'error');
       } finally {
         this.loading = false;
+      }
+    },
+    async syncCart() {
+      const localCartItems = Alpine.store('cart').items;
+
+      const variables = {
+        syncCartInput: {
+          items: localCartItems.map((item) => ({
+            productId: Number(item.productId),
+            quantity: item.quantity,
+          })),
+        },
+      };
+      const syncResult = await graphqlRequest<
+        SyncCartMutation,
+        SyncCartMutationVariables
+      >(SyncCartDocument, variables, { auth: true });
+
+      if (syncResult.data) {
+        Alpine.store('cart').items = syncResult.data.cart.cartItem.map(
+          (item) => ({
+            quantity: item.quantity,
+            productId: item.productId,
+          }),
+        );
       }
     },
   };

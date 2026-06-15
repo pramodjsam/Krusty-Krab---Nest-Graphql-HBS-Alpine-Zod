@@ -1,8 +1,10 @@
 import {
   BadRequestException,
+  Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import Stripe from 'stripe';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Cart } from './entity/cart.entity';
 import { Repository } from 'typeorm';
@@ -14,6 +16,7 @@ import { ProductService } from '../product/product.service';
 import { UpdateCartItemDto } from './dto/update-cart-item.dto';
 import { SyncCartItemInput } from './dto/sync-cart.input';
 import { UpdateUserCartDto } from './dto/update-user-cart.dto';
+import { STRIPE_CLIENT } from 'src/core/constants/index';
 
 @Injectable()
 export class CartService {
@@ -24,6 +27,8 @@ export class CartService {
     private readonly cartItemRepository: Repository<CartItem>,
     private readonly userService: UserService,
     private readonly productService: ProductService,
+    @Inject(STRIPE_CLIENT)
+    private readonly stripeClient: InstanceType<typeof Stripe>,
   ) {}
 
   async create(createCartDto: CreateCartDto, currentUser: UserPayload) {
@@ -106,7 +111,9 @@ export class CartService {
       },
       relations: {
         cartItem: {
-          product: true,
+          product: {
+            image: true,
+          },
         },
         user: true,
       },
@@ -339,5 +346,35 @@ export class CartService {
       productId,
       quantity: cartItem.quantity - 1,
     });
+  }
+
+  async createCheckoutSession(user: UserPayload) {
+    const cart = await this.findUserCart(user.id);
+
+    if (!cart || !cart?.cartItem) {
+      throw new NotFoundException('Cart not found');
+    }
+
+    const total = cart.cartItem.reduce(
+      (sum, item) => sum + item.product.price * item.quantity,
+      0,
+    );
+    const tax = total * 0.13;
+    const deliveryFee = cart?.cartItem?.length > 0 ? 5 : 0;
+    const netTotal = Math.round((total + tax + deliveryFee) * 100);
+
+    const paymentIntent = await this.stripeClient.paymentIntents.create({
+      amount: netTotal,
+      currency: 'cad',
+      excluded_payment_method_types: ['klarna'],
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+
+    return {
+      clientSecret: paymentIntent.client_secret,
+      netTotalToStripe: netTotal / 100,
+    };
   }
 }

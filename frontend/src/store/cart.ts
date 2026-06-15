@@ -1,7 +1,7 @@
 import { Product } from '@/generated/graphql';
 import Alpine from 'alpinejs';
 
-type CartItem = {
+export type CartItem = {
   quantity: number;
   productId: number;
 };
@@ -10,6 +10,7 @@ export type CartStore = {
   items: CartItem[];
   add(product: Product): void;
   remove(product: Product): void;
+  clear(): void;
   update(productId: number, quantity: number): void;
   get(productId: number): CartItem | undefined;
   exists(product: Product): boolean;
@@ -43,6 +44,9 @@ export function cartStore(): CartStore {
           this.items.splice(index, 1);
         }
       }
+    },
+    clear() {
+      this.items = [];
     },
     update(productId: number, quantity: number) {
       const item = this.items.find((i) => i.productId === productId);

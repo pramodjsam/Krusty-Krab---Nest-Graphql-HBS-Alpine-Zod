@@ -57,7 +57,7 @@ export function orderPage(): OrderPage {
 
         if (result.data) {
           this.orders = result.data.orders.data;
-          this.totalPages = result.data.orders.pagination.totalItems;
+          this.totalPages = result.data.orders.pagination.totalPages;
         } else {
           throw new Error(result.error.message);
         }

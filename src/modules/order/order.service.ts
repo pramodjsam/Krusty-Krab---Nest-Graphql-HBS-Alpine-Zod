@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -153,5 +154,19 @@ export class OrderService {
     Object.assign(order, updateOrderDto);
 
     return await this.orderRepository.save(order);
+  }
+
+  async deleteIfUnpaid(orderId: number) {
+    const order = await this.orderRepository.findOne({
+      where: {
+        id: orderId,
+      },
+    });
+
+    if (!order) return;
+
+    if (order.isPaid) return;
+
+    await this.orderRepository.remove(order);
   }
 }

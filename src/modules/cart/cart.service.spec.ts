@@ -1,4 +1,5 @@
 import { createMock, DeepMocked } from '@golevelup/ts-jest';
+import Stripe from 'stripe';
 import { CartService } from './cart.service';
 import { Repository } from 'typeorm';
 import { Cart } from './entity/cart.entity';
@@ -9,7 +10,7 @@ import { UserPayload } from '../user/interfaces/user-payload.interface';
 import { Category } from '../category/entities/category.entity';
 import { Product } from '../product/entities/product.entity';
 import { User } from '../user/entities/user.entity';
-import { Role } from 'src/core/constants';
+import { Role, STRIPE_CLIENT } from 'src/core/constants';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { CreateCartDto } from './dto/create-cart.dto';
@@ -24,6 +25,7 @@ describe('CartService', () => {
   let cartItemRepository: DeepMocked<Repository<CartItem>>;
   let userService: DeepMocked<UserService>;
   let productService: DeepMocked<ProductService>;
+  let stripeClient: DeepMocked<InstanceType<typeof Stripe>>;
 
   let mockCart: Cart;
   let mockCartItem: CartItem;
@@ -108,6 +110,10 @@ describe('CartService', () => {
           provide: ProductService,
           useValue: createMock<ProductService>(),
         },
+        {
+          provide: STRIPE_CLIENT,
+          useValue: createMock<InstanceType<typeof Stripe>>,
+        },
       ],
     })
       .useMocker(createMock)
@@ -118,6 +124,7 @@ describe('CartService', () => {
     cartItemRepository = module.get(getRepositoryToken(CartItem));
     userService = module.get(UserService);
     productService = module.get(ProductService);
+    stripeClient = module.get(STRIPE_CLIENT);
   });
 
   afterEach(() => {

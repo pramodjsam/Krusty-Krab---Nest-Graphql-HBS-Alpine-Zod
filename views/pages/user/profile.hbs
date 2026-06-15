@@ -11,6 +11,7 @@
 								<label class="text-black">Name</label>
 								<input
 									class="form-control border-secondary"
+									:class="{'border border-danger': errors['name']}"
 									type="text"
 									placeholder="Enter Name"
 									name="name"
@@ -24,11 +25,26 @@
 								<label class="text-black">Email Address</label>
 								<input
 									class="form-control border-secondary"
+									:class="{'border border-danger': errors['email']}"
 									disabled
 									type="email"
 									placeholder="Enter Email"
 									name="email"
 									x-model="form.email"
+								/>
+							</div>
+						</div>
+
+						<div class="col col-md-12">
+							<div class="mb-3">
+								<label class="text-black">Phone</label>
+								<input
+									class="form-control border-secondary"
+									:class="{'border border-danger': errors['phone']}"
+									type="text"
+									placeholder="eg. 1234567890 (10 digit)"
+									name="phone"
+									x-model="form.phone"
 								/>
 							</div>
 						</div>

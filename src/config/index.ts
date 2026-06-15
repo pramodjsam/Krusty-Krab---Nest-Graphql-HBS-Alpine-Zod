@@ -22,4 +22,8 @@ export default () => ({
     authUser: process.env.EMAIL_AUTH_USER,
     authPass: process.env.EMAIL_AUTH_PASS,
   },
+  stripe: {
+    publicKey: process.env.STRIPE_PUBLIC_KEY,
+    secretKey: process.env.STRIPE_SECRET_KEY,
+  },
 });

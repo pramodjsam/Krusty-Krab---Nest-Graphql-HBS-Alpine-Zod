@@ -35,8 +35,8 @@ export class CartResolver {
     return this.cartService.findAll();
   }
 
-  @Query(() => ResponseCartDto)
-  @TransformDTO(ResponseCartDto)
+  @Query(() => Cart, { nullable: true })
+  @TransformDTO(Cart)
   getUserCart(@CurrentUser() user: UserPayload) {
     return this.cartService.findUserCart(user.id);
   }

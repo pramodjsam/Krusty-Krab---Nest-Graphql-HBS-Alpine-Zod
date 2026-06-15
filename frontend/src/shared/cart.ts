@@ -12,6 +12,9 @@ import {
   RemoveUserCartDocument,
   RemoveUserCartMutation,
   RemoveUserCartMutationVariables,
+  UpdateUserCartDocument,
+  UpdateUserCartMutation,
+  UpdateUserCartMutationVariables,
 } from '@/generated/graphql';
 import Alpine from 'alpinejs';
 import { graphqlRequest } from './graphqlClient';
@@ -128,8 +131,11 @@ export async function removeFromCart(product: Product) {
 
     if (result.error) {
       throw new Error(result.error.message);
+    } else {
+      notyNotification('Cart update successfully', 'success');
     }
   } catch (error) {
+    notyNotification('Failed to update cart', 'error');
     cartStore.add(product);
   }
 }
@@ -138,4 +144,33 @@ export function getCartItems() {
   const cartStore = Alpine.store('cart');
 
   return cartStore.items;
+}
+
+export async function updateCartItem(product: Product, quantity: number) {
+  const cartStore = Alpine.store('cart');
+  const currentQty = cartStore.get(product.id)?.quantity ?? 1;
+
+  try {
+    cartStore.update(product.id, quantity);
+
+    const variables = {
+      updateUserCart: {
+        quantity: Number(quantity),
+        productId: product.id,
+      },
+    };
+    const result = await graphqlRequest<
+      UpdateUserCartMutation,
+      UpdateUserCartMutationVariables
+    >(UpdateUserCartDocument, variables);
+
+    if (result.data) {
+      notyNotification('Cart updated successfully', 'success');
+    } else {
+      throw new Error(result.error.message);
+    }
+  } catch (error) {
+    cartStore.update(product.id, currentQty);
+    notyNotification('Failed to update cart', 'error');
+  }
 }

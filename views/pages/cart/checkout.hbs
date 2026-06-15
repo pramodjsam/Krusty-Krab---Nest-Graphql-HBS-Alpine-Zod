@@ -1,51 +1,76 @@
-<section id='checkout'>
-	<div class='container-fluid'>
-		<div class='row'>
-
-			<div class='col d-flex flex-column checkout-left'>
-				<div class='checkout-left--back'>
-					<a class='text-decoration-none backlink d-flex align-items-center' href='/cart'>
-						<i class='bi bi-arrow-left fs-2 me-2'></i>
+<section id="checkout" x-data="checkoutPage()" x-init="mountStripeCheckout('{{stripePublicKey}}')">
+	{{> common/loader state="loading"}}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col d-flex flex-column checkout-left">
+				<div class="checkout-left--back d-flex justify-content-between align-self-stretch">
+					<a class="text-decoration-none backlink d-flex align-items-center" href="/cart">
+						<i class="bi bi-arrow-left fs-2 me-2"></i>
 						<span>Go Back</span>
 					</a>
+					<div class="d-flex align-items-center">
+						<p class="m-0">
+							<span class="fw-bold">Shipping Address -</span> <span x-text="fullAddress"></span>
+						</p>
+					</div>
 				</div>
-				<div class='checkout-left--info'>
-					<h1>Total: $12.99</h1>
-					<div class='checkout-left--cart'>
-						{{!-- List Item --}}
-						<div class='checkout-left--cart-list'>
-							<div class='d-flex align-items-center'>
-								<img src='/images/sidebar/Beef.webp' alt='big mac' />
-								<div class='d-flex align-items-center justify-content-center flex-column ms-4'>
-									<h6 class='p-0 m-0'>Big Mac</h6>
-									<p class='p-0 m-0'>Qty: 1</p>
+				<template x-if="!loading">
+					<div class="checkout-left--info">
+						<h1>Total: $<span x-text="total.toFixed(2)">12.99</span></h1>
+						<div class="checkout-left--cart">
+							{{!-- List Item --}}
+							<template x-for="cartItem in cartItems" :key="cartItem.id">
+								<div class="checkout-left--cart-list">
+									<div class="d-flex align-items-center">
+										<img :src="cartItem.product.image.url || '/images/burger.png'" alt="big mac" />
+										<div class="d-flex align-items-center justify-content-center flex-column ms-4">
+											<h6 class="p-0 m-0" x-text="cartItem.product.name">Big Mac</h6>
+											<p class="p-0 m-0">Qty: <span x-text="cartItem.quantity">1</span></p>
+										</div>
+									</div>
+									<h6 x-text="`$${cartItem.product.price}`">$12.99</h6>
 								</div>
-							</div>
-							<h6>$12.99</h6>
+							</template>
+							{{!-- End of List Item --}}
 						</div>
-						{{!-- End of List Item --}}
-					</div>
 
-					<div class='checkout-left--summary text-end'>
-						<p class='m-0 p-0'><b>Total:</b> <span>$12.99</span></p>
-						<p class='m-0 p-0'><b>Delivery:</b> <span>$5.00</span></p>
-						<p class='m-0 p-0'><b>Tax:</b> <span>13%</span></p>
-						<p class='m-0 p-0'><b>Net Total:</b> <span>$17.99</span></p>
+						<div class="checkout-left--summary text-end">
+							<p class="m-0 p-0"><b>Total:</b> <span x-text="`$${total.toFixed(2)}`">$12.99</span></p>
+							<p class="m-0 p-0">
+								<b>Delivery:</b> <span x-text="`$${deliveryFee.toFixed(2)}`">$5.00</span>
+							</p>
+							<p class="m-0 p-0"><b>Tax:</b> <span x-text="`$${tax.toFixed(2)}`">13%</span></p>
+							<p class="m-0 p-0">
+								<b>Net Total:</b> <span x-text="`$${netTotal.toFixed(2)}`">$17.99</span>
+							</p>
+						</div>
 					</div>
-				</div>
-				<div class='checkout-left-footer'>
+				</template>
+				<div class="checkout-left-footer">
 					Powered by
-					<i class='bi bi-stripe fs-5'></i>
+					<i class="bi bi-stripe fs-5"></i>
 				</div>
 			</div>
 
-			<div class='col vh-100 d-flex flex-column align-items-center justify-content-center'>
-				<h3>Secure payment gateway</h3>
+			<div class="col vh-100 d-flex flex-column">
+				<h3 class="text-center my-5">Secure payment gateway</h3>
 
-				{{!-- TODO: STRIPE CHECKOUT --}}
-				<a href='/cart/order-confirmation'>
-					<button id='submit' class='btn btn-primary btn-large btn-block'>Pay Now</button>
-				</a>
+				<div class="row justify-content-center">
+					<div class="col-md-8 mx-auto">
+						<div id="payment-element"></div>
+
+						<div class="d-grid mt-3">
+							<button :disabled="!stripeReady" class="btn btn-block btn-primary" @click="handlePaymentSubmit()">
+								<template x-if="!stripeReady">
+									<div class="spinner-border spinner-border-sm text-warning" role="status">
+										<span class="visually-hidden">Loading...</span>
+									</div>
+								</template>
+								<template x-if="stripeReady"><span>Pay Now - <span x-text="`$${netTotalToStripe.toFixed(2)}`"></span></template>
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

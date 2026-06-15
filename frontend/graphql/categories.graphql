@@ -358,3 +358,30 @@ mutation createCart($createCart: CreateCartDto!) {
     userId
   }
 }
+
+query userCart {
+  cart: getUserCart {
+    id
+    cartItem {
+      quantity
+      id
+      product {
+        id
+        name
+        price
+        image {
+          url
+        }
+      }
+    }
+  }
+}
+
+mutation createOrder($createOrder: CreateOrderDto!) {
+  order: createOrder(createOrder: $createOrder) {
+    id
+    user {
+      id
+    }
+  }
+}

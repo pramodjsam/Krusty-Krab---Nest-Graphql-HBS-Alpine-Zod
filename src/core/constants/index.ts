@@ -2,6 +2,7 @@ import { registerEnumType } from '@nestjs/graphql';
 
 export const CLOUDINARY = 'CLOUDINARY';
 export const REDIS_CLIENT = 'REDIS_CLIENT';
+export const STRIPE_CLIENT = "STRIPE_CLIENT";
 
 export enum Role {
   USER = 'USER',

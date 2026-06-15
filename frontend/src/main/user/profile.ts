@@ -16,6 +16,7 @@ type ProfilePage = {
     id: number;
     name: string;
     email: string;
+    phone: string;
     address: string;
     city: string;
     province: string;
@@ -34,6 +35,7 @@ export function profilePage(): ProfilePage {
       id: 0,
       name: '',
       email: '',
+      phone: '',
       address: '',
       city: '',
       province: '',
@@ -42,6 +44,7 @@ export function profilePage(): ProfilePage {
     errors: {
       name: '',
       email: '',
+      phone: '',
       address: '',
       city: '',
       province: '',
@@ -82,7 +85,6 @@ export function profilePage(): ProfilePage {
         });
 
         this.errors = fieldErrors;
-        console.log('error', this.errors, this.form);
         notyNotification('Please fix the errors', 'error');
         return;
       }
@@ -95,6 +97,7 @@ export function profilePage(): ProfilePage {
           updateUser: {
             name: this.form.name,
             address: this.form.address,
+            phone: this.form.phone,
             city: this.form.city,
             province: this.form.province,
             zipCode: this.form.zipCode,

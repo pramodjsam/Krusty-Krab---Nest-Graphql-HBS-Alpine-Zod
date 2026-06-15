@@ -180,7 +180,7 @@ type Query {
   getUser(id: Int!): User!
   currentUser: User!
   getAllCarts: [ResponseCartDto!]!
-  getUserCart: ResponseCartDto!
+  getUserCart: Cart
   getCart(id: Int!): ResponseCartDto!
   getCartItem(id: Int!): ResponseCartItemDto!
   getAllOrders(page: Int, limit: Int, sort: [[String]], search: String): OrderPaginated!

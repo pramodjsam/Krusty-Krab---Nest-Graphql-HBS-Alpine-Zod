@@ -6,10 +6,7 @@ export const registerSchema = z
     email: z.email('Invalid email address'),
     phone: z.preprocess(
       (value) => (value === '' ? undefined : value),
-      z
-        .string()
-        .regex(/^\d{10}$/, 'Phone number must be exactly 10 digits')
-        .optional(),
+      z.string().regex(/^\d{10}$/, 'Phone number must be exactly 10 digits'),
     ),
     address: z.preprocess(
       (value) => (value === '' ? undefined : value),
@@ -51,10 +48,7 @@ export const updateProfileSchema = z.object({
   email: z.email('Invalid email address'),
   phone: z.preprocess(
     (value) => (value === '' || value === null ? undefined : value),
-    z
-      .string()
-      .regex(/^\d{10}$/, 'Phone number must be exactly 10 digits')
-      .optional(),
+    z.string().regex(/^\d{10}$/, 'Phone number must be exactly 10 digits'),
   ),
   address: z.preprocess(
     (value) => (value === '' || value === null ? undefined : value),
@@ -77,5 +71,40 @@ export const updateProfileSchema = z.object({
         'Invalid Canadian postal code',
       )
       .optional(),
+  ),
+});
+
+export const personalInformationCartPage = z.object({
+  name: z.string().min(1, 'Name is required'),
+  email: z.email('Invalid email address'),
+  phone: z
+    .preprocess(
+      (value) => (value === '' ? undefined : value),
+      z.string().regex(/^\d{10}$/, 'Phone number must be exactly 10 digits'),
+    )
+    .optional(),
+});
+
+export const shippingAddressCartPage = z.object({
+  address: z.preprocess(
+    (value) => (value === '' || value === null ? undefined : value),
+    z.string().min(5, 'Address is required'),
+  ),
+  city: z.preprocess(
+    (value) => (value === '' || value === null ? undefined : value),
+    z.string().min(2, 'City is required'),
+  ),
+  province: z.preprocess(
+    (value) => (value === '' || value === null ? undefined : value),
+    z.string().min(1, 'Province is required'),
+  ),
+  zipCode: z.preprocess(
+    (value) => (value === '' || value === null ? undefined : value),
+    z
+      .string()
+      .regex(
+        /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/,
+        'Invalid Canadian postal code',
+      ),
   ),
 });

@@ -1,180 +1,209 @@
-<section id='cart' class='my-5'>
-	<div class='container'>
+<section id="cart" class="my-5" x-data="cartPage()">
+	{{> common/loader state="loading"}}
+	<div class="container">
 		<h2>Order Details</h2>
-		<div class='row mt-4'>
-			<div class='col'>
-				<div id='itemAccordion' class='accordion'>
+		<div class="row mt-4">
+			<div class="col">
+				<div id="itemAccordion" class="accordion">
 					{{!-- Accordion item --}}
-					<div class='accordion-item'>
-						<h2 class='accordion-header'>
+					<div class="accordion-item">
+						<h2 class="accordion-header">
 							<button
-								class='accordion-button'
-								type='button'
-								data-bs-toggle='collapse'
-								data-bs-target='#collapseOne'
-								aria-expanded='true'
-								aria-controls='collapseOne'
+								class="accordion-button"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapseOne"
+								aria-expanded="true"
+								aria-controls="collapseOne"
 							>
 								Items
 							</button>
 						</h2>
-						<div id='collapseOne' class='accordion-collapse collapse show' data-bs-parent='#itemAccordion'>
-							<div class='accordion-body'>
-								<div class='container'>
-									<div class='row d-flex align-items-center justify-content-between'>
-										<div class='col-12 col-md-12 mb-3'>
-											<div class='row d-flex align-items-center justify-content-between'>
-												<div
-													class='col-12 col-md-1 d-flex align-items-center justify-content-center'
-												>
-													<img
-														class='order__img'
-														src='/images/sidebar/Beef.webp'
-														alt='order mac'
-													/>
-												</div>
-												<div class='col-md-5'>
-													<h4 class='order__title'>Burger</h4>
-												</div>
-												<div class='col-md-1'>
-													<h5>$12.99</h5>
-												</div>
-												<div class='col-md-2'>
-													<label class='form-label'>Qty</label>
-													<select class='form-control mb-2'>
-														<option value='1'>1</option>
-														<option value='2'>2</option>
-														<option value='3'>3</option>
-													</select>
-												</div>
-												<div class='col-md-2'>
-													<button class='btn btn-outline-danger'>Remove</button>
-												</div>
-											</div>
+						<div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#itemAccordion">
+							<div class="accordion-body">
+								<div class="container">
+									<div class="row d-flex align-items-center justify-content-between">
+										<div class="col-12 col-md-12 mb-3">
+											<template x-if="cartItems && cartItems.length > 0">
+												<template x-for="cartItem in cartItems" :key="cartItem.id">
+													<div
+														class="row d-flex align-items-center justify-content-between my-3"
+													>
+														<div
+															class="col-12 col-md-1 d-flex align-items-center justify-content-center"
+														>
+															<img
+																class="order__img"
+																:src="cartItem.product.image.url || '/images/burger.png'"
+																alt="order mac"
+															/>
+														</div>
+														<div class="col-md-5">
+															<h4 class="order__title" x-text="cartItem.product.name">
+																Burger
+															</h4>
+														</div>
+														<div class="col-md-1">
+															<h5 x-text="`$${cartItem.product.price}`">$12.99</h5>
+														</div>
+														<div class="col-md-2">
+															<label class="form-label">Qty</label>
+															<select
+																class="form-control mb-2"
+																x-model.number="cartItem.quantity"
+																@change="handleQuantityChange(cartItem.product)"
+															>
+																<template x-for="n in qtyOptions" :key="n">
+																	<option
+																		:selected="cartItem.quantity === n"
+																		:value="n"
+																		x-text="n"
+																	>
+																		1
+																	</option>
+																</template>
+															</select>
+														</div>
+														<div class="col-md-2">
+															<button
+																class="btn btn-outline-danger"
+																@click="handleRemoveFromCart(cartItem.product)"
+															>
+																Remove
+															</button>
+														</div>
+													</div>
+												</template>
+											</template>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					{{!-- End of Accordion Item --}}
-
-					{{!-- Accordion item --}}
-					<div class='accordion-item'>
-						<h2 class='accordion-header'>
+					{{!-- End of Accordion Item --}} {{!-- Accordion item --}}
+					<div class="accordion-item">
+						<h2 class="accordion-header">
 							<button
-								class='accordion-button collapsed'
-								type='button'
-								data-bs-toggle='collapse'
-								data-bs-target='#collapseTwo'
-								aria-expanded='false'
-								aria-controls='collapseTwo'
+								class="accordion-button collapsed"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapseTwo"
+								aria-expanded="false"
+								aria-controls="collapseTwo"
 							>
 								Personal Information
 							</button>
 						</h2>
-						<div id='collapseTwo' class='accordion-collapse collapse' data-bs-parent='#itemAccordion'>
-							<div class='accordion-body'>
+						<div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#itemAccordion">
+							<div class="accordion-body">
 								<div>
-									<label class='form-label text-black' for='cartName'>Name</label>
+									<label class="form-label text-black" for="cartName">Name</label>
 									<input
-										id='cartName'
-										class='form-control border-secondary mb-3'
-										name='name'
-										type='text'
-										placeholder='Name'
+										id="cartName"
+										class="form-control border-secondary mb-3"
+										:class="{'border border-danger': errors['user']}"
+										name="name"
+										type="text"
+										disabled
+										placeholder="Name"
+										x-model="shippingForm.user"
 									/>
 								</div>
 								<div>
-									<label class='form-label text-black' for='cartEmail'>Email</label>
+									<label class="form-label text-black" for="cartEmail">Email</label>
 									<input
-										id='cartEmail'
-										class='form-control border-secondary mb-3'
-										name='email'
-										type='email'
-										placeholder='email@email.com'
+										id="cartEmail"
+										class="form-control border-secondary mb-3"
+										:class="{'border border-danger': errors['email']}"
+										disabled
+										name="email"
+										type="email"
+										placeholder="email@email.com"
+										x-model="shippingForm.email"
 									/>
 								</div>
+								{{!--
 								<div>
-									<label class='form-label text-black' for='cartPhone'>Phone</label>
+									<label class="form-label text-black" for="cartPhone">Phone</label>
 									<input
-										id='cartPhone'
-										class='form-control border-secondary mb-3'
-										name='phone'
-										type='text'
-										placeholder='Your 10 digit phone number'
+										id="cartPhone"
+										class="form-control border-secondary mb-3"
+										:class="{'border border-danger': errors['phone']}"
+										name="phone"
+										type="text"
+										placeholder="Your 10 digit phone number"
+										x-model="shippingForm.phone"
 									/>
 								</div>
+								--}}
 							</div>
 						</div>
 					</div>
-					{{!-- End of Accordion item --}}
-
-					{{!-- Accordion --}}
-					<div class='accordion-item'>
-						<h2 class='accordion-header'>
+					{{!-- End of Accordion item --}} {{!-- Accordion --}}
+					<div class="accordion-item">
+						<h2 class="accordion-header">
 							<button
-								class='accordion-button collapsed'
-								type='button'
-								data-bs-toggle='collapse'
-								data-bs-target='#collapseThree'
-								aria-expanded='false'
-								aria-controls='collapseThree'
+								class="accordion-button collapsed"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapseThree"
+								aria-expanded="false"
+								aria-controls="collapseThree"
 							>
 								Shipping Address
 							</button>
 						</h2>
-						<div id='collapseThree' class='accordion-collapse collapse' data-bs-parent='#itemAccordion'>
-							<div class='accordion-body'>
+						<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#itemAccordion">
+							<div class="accordion-body">
 								<div>
-									<label class='form-label text-black' for='cartAddress'>Address</label>
+									<label class="form-label text-black" for="cartAddress">Address</label>
 									<input
-										id='cartAddress'
-										class='form-control border-secondary mb-3'
-										type='text'
-										name='address'
-										placeholder='Enter Address'
+										id="cartAddress"
+										class="form-control border-secondary mb-3"
+										:class="{'border border-danger': errors['address']}"
+										type="text"
+										name="address"
+										placeholder="Enter Address"
+										x-model="shippingForm.address"
 									/>
 								</div>
 								<div>
-									<label class='form-label text-black' for='cartBranch'>Branch</label>
-									<select id='cartBranch' class='form-control border-secondary  mb-3' name='branch'>
-										<option value=''>Please select branch</option>
-										<option value='kitchener'>Kitchener</option>
-										<option value='waterloo'>Waterloo</option>
-									</select>
-								</div>
-								<div>
-									<label class='form-label text-black' for='cartCity'>City</label>
+									<label class="form-label text-black" for="cartCity">City</label>
 									<input
-										id='cartCity'
-										class='form-control border-secondary  mb-3'
-										type='text'
-										name='city'
-										placeholder='Enter City'
+										id="cartCity"
+										class="form-control border-secondary mb-3"
+										:class="{'border border-danger': errors['city']}"
+										type="text"
+										name="city"
+										placeholder="Enter City"
+										x-model="shippingForm.city"
 									/>
 								</div>
 								<div>
-									<label class='form-label text-black' for='cartProvince'>Province</label>
+									<label class="form-label text-black" for="cartProvince">Province</label>
 									<input
-										id='cartProvince'
-										class='form-control border-secondary  mb-3'
-										type='text'
-										name='province'
-										placeholder='Enter Province'
+										id="cartProvince"
+										class="form-control border-secondary mb-3"
+										:class="{'border border-danger': errors['province']}"
+										type="text"
+										name="province"
+										placeholder="Enter Province"
+										x-model="shippingForm.province"
 									/>
 								</div>
 								<div>
-									<label class='form-label text-black' for='cartZipCode'>Zip Code</label>
+									<label class="form-label text-black" for="cartZipCode">Zip Code</label>
 									<input
-										id='cartZipCode'
-										class='form-control border-secondary  mb-3'
-										type='text'
-										name='zipCode'
-										placeholder='Enter zip code'
+										id="cartZipCode"
+										class="form-control border-secondary mb-3"
+										:class="{'border border-danger': errors['zipCode']}"
+										type="text"
+										name="zipCode"
+										placeholder="Enter zip code"
+										x-model="shippingForm.zipCode"
 									/>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -183,28 +212,30 @@
 			</div>
 		</div>
 
-		<div class='row mt-5'>
-			<div class='col'>
-				<div class='text-end'>
+		<div class="row mt-5">
+			<div class="col">
+				<div class="text-end">
 					<h5>
 						Total:
-						<span>$12.99</span>
+						<span x-text="`$${total.toFixed(2)}`">$12.99</span>
 					</h5>
 					<h5>
 						Delivery:
-						<span>$5.00</span>
+						<span x-text="`$${deliveryFee.toFixed(2)}`">$5.00</span>
 					</h5>
 					<h5>
-						Tax:
-						<span>13%</span>
+						Tax (13%):
+						<span x-text="`$${tax.toFixed(2)}`">13%</span>
 					</h5>
 					<hr />
 					<h5>
 						Net Total:
-						<span>$50.99</span>
+						<span x-text="`$${netTotal.toFixed(2)}`">$50.99</span>
 					</h5>
-					<a href='/cart/checkout'>
-						<button class='btn btn-danger btn-lg mt-4 mb-5'>Proceed to Payment</button>
+					<a href="#">
+						<button class="btn btn-danger btn-lg mt-4 mb-5" @click="handleProceedToPayment()">
+							Proceed to Payment
+						</button>
 					</a>
 				</div>
 			</div>

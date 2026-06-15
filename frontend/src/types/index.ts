@@ -108,3 +108,25 @@ export const shippingAddressCartPage = z.object({
       ),
   ),
 });
+
+export const forgotPasswordFormOne = z.object({
+  email: z.email('Invalid email address'),
+});
+
+export const forgotPasswordFormTwo = z.object({
+  code: z
+    .string()
+    .min(4, 'Code must be 4 digits')
+    .max(4, 'Code must be 4 digits')
+    .regex(/^\d{4}$/, 'Code must be numeric'),
+});
+
+export const forgotPasswordFormThree = z
+  .object({
+    password: z.string().min(4, ' Password must be at least 4 characters'),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Passwords do not match',
+    path: ['confirmPassword'],
+  });

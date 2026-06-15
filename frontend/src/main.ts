@@ -18,6 +18,7 @@ import { orderPage } from './main/user/order';
 import { orderDetailsPage } from './main/user/order-details';
 import { cartPage } from './main/cart';
 import { checkoutPage } from './main/cart/checkout';
+import { forgotPassword } from './main/auth/forgot-password';
 
 Alpine.plugin(persist);
 
@@ -38,6 +39,7 @@ Alpine.data('orderPage', orderPage);
 Alpine.data('orderDetailsPage', orderDetailsPage);
 Alpine.data('cartPage', cartPage);
 Alpine.data('checkoutPage', checkoutPage);
+Alpine.data('forgotPassword', forgotPassword);
 
 (window as any).showNotification = notyNotification;
 

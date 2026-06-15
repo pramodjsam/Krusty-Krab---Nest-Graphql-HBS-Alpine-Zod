@@ -385,3 +385,24 @@ mutation createOrder($createOrder: CreateOrderDto!) {
     }
   }
 }
+
+mutation forgotPassword($sendReset: SendResetTokenDto!) {
+  auth: forgotPassword(sendResetToken: $sendReset) {
+    success
+    message
+  }
+}
+
+mutation verifyToken($verifyToken: VerifyTokenDto!) {
+  auth: verifyToken(verifyToken: $verifyToken) {
+    success
+    message
+  }
+}
+
+mutation resetPassword($resetPassword: ResetPasswordDto!) {
+  auth: resetPassword(resetPassword: $resetPassword) {
+    success
+    message
+  }
+}

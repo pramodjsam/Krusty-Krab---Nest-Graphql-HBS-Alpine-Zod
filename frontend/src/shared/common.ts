@@ -132,3 +132,15 @@ export function truncateString(content: string, maxLength: number) {
     return content;
   }
 }
+
+export async function toBase64(url: string): Promise<string> {
+  const res = await fetch(url);
+  const blob = await res.blob();
+
+  return await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}

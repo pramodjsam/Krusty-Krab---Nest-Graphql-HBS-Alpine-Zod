@@ -29,7 +29,9 @@
 								<td x-text="order.createdAt">14 May 2020 15:30 EDT</td>
 								<td x-text="order.status">Confirmed</td>
 								<td>
-									<button class="me-2 btn-sm btn btn-danger">PDF</button>
+									<button class="me-2 btn-sm btn btn-danger" @click="downloadInvoice(order)">
+										PDF
+									</button>
 									<a class="text-decoration-none text-black" :href="`/user/order/${order.id}`">
 										<button class="btn btn-sm btn-warning">Details</button>
 									</a>

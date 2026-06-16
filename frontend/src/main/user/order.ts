@@ -6,6 +6,7 @@ import {
 } from '@/generated/graphql';
 import { paginationPages } from '@/shared/common';
 import { graphqlRequest } from '@/shared/graphqlClient';
+import { getInvoice } from '@/shared/invoice';
 import { notyNotification } from '@/shared/notification';
 
 type OrderPage = {
@@ -27,6 +28,7 @@ type OrderPage = {
   handleSearchSubmit(): void;
   clearSearch(): void;
   fetchOrders(page?: number, limit?: number): Promise<void>;
+  downloadInvoice(order: Partial<Order>): Promise<void>;
   init(): Promise<void>;
 };
 
@@ -94,6 +96,9 @@ export function orderPage(): OrderPage {
     clearSearch() {
       this.searchText = '';
       this.fetchOrders(1);
+    },
+    async downloadInvoice(order: Partial<Order>) {
+      await getInvoice(order);
     },
     async init() {
       await this.fetchOrders();

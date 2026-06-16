@@ -22,6 +22,9 @@ import {
   paginate,
   PaginateQuery,
 } from 'nestjs-paginate';
+import { render } from '@react-email/render';
+import PasswordTokenEmail from '../../core/email/views/PasswordTokenEmail';
+import PasswordConfirmedEmail from 'src/core/email/views/PasswordConfirmedEmail';
 
 @Injectable()
 export class UserService {
@@ -131,7 +134,10 @@ export class UserService {
       from: `admin@email.com <no-reply@email.com>`,
       subject: `Password Reset Request`,
       text: `Hello ${user.name}, your reset token is ${resetToken}`,
-      html: `<h1>Hello ${user.name}, your reset token is ${resetToken}<h1>`,
+      // html: `<h1>Hello ${user.name}, your reset token is ${resetToken}<h1>`,
+      html: await render(
+        PasswordTokenEmail({ name: user.name, token: resetToken }),
+      ),
     };
 
     this.emailClient.emit(EMAIL_SERVICE_PUB, emailData);
@@ -181,7 +187,8 @@ export class UserService {
       from: `admin@email.com <no-reply@email.com>`,
       subject: 'Password Reset Successful',
       text: `Hello ${user.name}, your password has been changed successfully`,
-      html: `<h1>Hello ${user.name}, your password has been changed successfully</h1>`,
+      // html: `<h1>Hello ${user.name}, your password has been changed successfully</h1>`,
+      html: await render(PasswordConfirmedEmail({ name: user.name })),
     };
 
     this.emailClient.emit(EMAIL_SERVICE_PUB, emailData);

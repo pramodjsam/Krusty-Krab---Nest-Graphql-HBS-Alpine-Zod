@@ -21,7 +21,8 @@
     "css:build": "postcss public/css/index.css -o public/dist/index.css",
     "css:watch": "postcss public/css/index.css -o public/css/dist/index.css --watch",
     "codegen": "graphql-codegen",
-    "codegen:dev": "graphql-codegen --watch"
+    "codegen:dev": "graphql-codegen --watch",
+    "email:dev": "email dev --dir ./src/core/email/views -p 3002"
   },
   "dependencies": {
     "@apollo/server": "^5.5.1",
@@ -40,6 +41,10 @@
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/swagger": "^11.4.4",
     "@nestjs/typeorm": "^11.0.1",
+    "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.0.8",
+    "@react-email/tailwind": "^2.0.7",
+    "@react-email/ui": "^6.6.0",
     "alpinejs": "^3.15.12",
     "amqp-connection-manager": "^5.0.0",
     "amqplib": "^2.0.1",
@@ -59,6 +64,10 @@
     "nestjs-paginate": "^13.3.0",
     "nodemailer": "^8.0.8",
     "pg": "^8.21.0",
+    "preview-email": "^3.1.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-email": "^6.6.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
     "stripe": "^22.2.1",
@@ -83,6 +92,8 @@
     "@types/hbs": "^4.0.5",
     "@types/jest": "^30.0.0",
     "@types/node": "^22.10.7",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "@types/supertest": "^6.0.2",
     "concurrently": "^10.0.3",
     "eslint": "^9.18.0",
@@ -109,12 +120,13 @@
     "moduleFileExtensions": [
       "js",
       "json",
-      "ts"
+      "ts",
+      "tsx"
     ],
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
+      "^.+\\.(ts|tsx|js|jsx)$": "ts-jest"
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s"

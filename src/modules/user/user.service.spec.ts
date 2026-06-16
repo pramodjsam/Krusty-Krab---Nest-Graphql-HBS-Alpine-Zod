@@ -14,6 +14,10 @@ import { VerifyTokenDto } from './dto/verify-token.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { paginate, Paginated, PaginateQuery } from 'nestjs-paginate';
 
+jest.mock('@react-email/render', () => ({
+  render: jest.fn().mockResolvedValue('<html>mock email</html>'),
+}));
+
 jest.mock('nestjs-paginate', () => ({
   ...jest.requireActual('nestjs-paginate'),
   paginate: jest.fn(),

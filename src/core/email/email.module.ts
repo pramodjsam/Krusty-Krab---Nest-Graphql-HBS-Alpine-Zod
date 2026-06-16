@@ -23,6 +23,7 @@ import { EmailConsumer } from './email.consumer';
         defaults: {
           from: "'nest-modules' <modules@nestjs.com>",
         },
+        preview: true,
       }),
       inject: [ConfigService],
     }),

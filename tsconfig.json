@@ -15,7 +15,8 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "paths": {
-      "src/*": ["./src/*"]
+      "src/*": ["./src/*"],
+      "react": ["./node_modules/@types/react"]
     },
     "incremental": false,
     "noEmit": false,
@@ -24,7 +25,8 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "jsx": "react-jsx"
   },
   "include": ["src/**/*"],
   "exclude": ["frontend/**", "node_modules"]
